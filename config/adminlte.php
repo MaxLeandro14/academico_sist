@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'Opções',
+        'OPÇÕES',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
@@ -121,7 +121,7 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        'ACCOUNT SETTINGS',
+        'CONFIGURAÇÕES',
         [
             'text' => 'Profile',
             'url'  => 'admin/settings',
