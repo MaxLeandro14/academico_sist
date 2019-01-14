@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Escola Nome',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Painel</b>LTE',
+    'logo' => '<b>Escola</b>Nome',
 
-    'logo_mini' => '',
+    'logo_mini' => '<b>E</b>N',
 
     /*
     |--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'painel',
 
     'logout_url' => 'logout',
 
@@ -108,80 +108,75 @@ return [
     */
 
     'menu' => [
-        'OPÇÕES',
+        'MENU',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Home',
+            'icon'    => 'home',
+            'url'  => 'painel',
         ],
-        'CONFIGURAÇÕES',
+
         [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text'    => 'Cadastrar',
+            'icon'    => 'user-plus',
             'submenu' => [
                 [
-                    'text' => 'Level One',
+                    'text' => 'Turma',
+                    'url'  => 'cadastrar_turma',
+                ],
+                [
+                    'text' => 'Disciplina',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Professor',
+                    'url'  => '#',
                 ],
                 [
-                    'text' => 'Level One',
+                    'text' => 'Aluno',
+                    'url'  => 'cadastrar_aluno',
+                ],
+            ],
+        ],
+
+        [
+            'text'    => 'Editar',
+            'icon'    => 'edit',
+            'submenu' => [
+                [
+                    'text' => 'Turma',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Disciplina',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Professor',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Aluno',
                     'url'  => '#',
                 ],
             ],
         ],
-        'LABELS',
+
         [
-            'text'       => 'Important',
-            'icon_color' => 'red',
+            'text' => 'Pesquisar',
+            'icon'    => 'search',
+            'url'  => '#',
         ],
+
         [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
+            'text' => 'Financeiro',
+            'icon'    => 'balance-scale',
+            'url'  => '#',
         ],
     ],
 
