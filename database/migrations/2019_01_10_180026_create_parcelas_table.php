@@ -16,10 +16,14 @@ class CreateParcelasTable extends Migration
         Schema::create('parcelas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('valor_parcela');
-            $table->string('id_aluno');
             $table->string('mes_parcela');
             $table->string('status');
             $table->string('data_pagamento');
+
+            
+            $table->unsignedInteger('id_aluno');
+            $table->foreign('id_aluno')->references('id')->on('alunos');
+
             $table->timestamps();
         });
     }
