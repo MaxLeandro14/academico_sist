@@ -159,7 +159,7 @@
           <select class="form-control" name="situacao_procedencia">
             <option>Aprovado</option>
             <option>Reprovado</option>
-            <option>Pedência</option>
+            <option>Pendência</option>
             <option>Cursando</option>
             <option>Transferido</option>
           </select>
