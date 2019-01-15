@@ -108,19 +108,14 @@ return [
     */
 
     'menu' => [
-        'MENU',
-        [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-
+        'HOME',
         [
             'text' => 'Home',
             'icon'    => 'home',
             'url'  => 'painel',
         ],
 
+        'ADMINISTRATIVO',
         [
             'text'    => 'Cadastrar',
             'icon'    => 'user-plus',
@@ -130,12 +125,8 @@ return [
                     'url'  => 'cadastrar_turma',
                 ],
                 [
-                    'text' => 'Disciplina',
-                    'url'  => '#',
-                ],
-                [
                     'text' => 'Professor',
-                    'url'  => '#',
+                    'url'  => 'cadastrar_professor',
                 ],
                 [
                     'text' => 'Aluno',
@@ -168,6 +159,12 @@ return [
         ],
 
         [
+            'text' => 'Relacionar',
+            'icon'    => 'link',
+            'url'  => 'relacionar',
+        ],
+
+        [
             'text' => 'Pesquisar',
             'icon'    => 'search',
             'url'  => '#',
@@ -177,6 +174,19 @@ return [
             'text' => 'Financeiro',
             'icon'    => 'balance-scale',
             'url'  => '#',
+        ],
+
+        'PROFESSOR',
+        /*[
+            'text' => 'Meu Dirário',
+            'icon'    => 'file-text-o',
+            'url'  => '#',
+        ],*/
+
+        [
+            'text' => 'Minhas Turmas',
+            'icon'    => 'users',
+            'url'  => 'minhas_turmas',
         ],
     ],
 
