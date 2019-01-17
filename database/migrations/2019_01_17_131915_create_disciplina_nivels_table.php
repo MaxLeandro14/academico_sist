@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDisciplinaProfessorsTable extends Migration
+class CreateDisciplinaNivelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateDisciplinaProfessorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('disciplina_professors', function (Blueprint $table) {
+        Schema::create('disciplina_nivels', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nivel');
             $table->unsignedInteger('id_disciplina');
             $table->foreign('id_disciplina')->references('id')->on('disciplinas');
-            
-            $table->unsignedInteger('id_professor');
-            $table->foreign('id_professor')->references('id')->on('professors');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateDisciplinaProfessorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('disciplina_professors');
+        Schema::dropIfExists('disciplina_nivels');
     }
 }

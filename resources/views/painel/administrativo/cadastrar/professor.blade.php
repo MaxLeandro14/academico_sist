@@ -14,13 +14,25 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form">
+  <form action="{{ route('cadastra_professor') }}" method="POST">
+    {{csrf_field()}}
     <div class="box-body">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           <div class="form-group">
             <label for="">Nome do Professor</label>
-            <input type="text" class="form-control" placeholder="Nome do Professor" name="nome_professor">
+            <input type="text" class="form-control" placeholder="Nome do Professor" name="nome_professor" required>
+            <input type="hidden" name="id_professor">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Disciplina</label>
+            <select class="form-control select2" name="id_disciplina">
+              @foreach($disciplinas as $disciplina)
+              <option value="{{ $disciplina->id }}">{{ $disciplina->nome_disciplina }}</option>
+              @endforeach
+            </select>
           </div>
         </div>
       </div>

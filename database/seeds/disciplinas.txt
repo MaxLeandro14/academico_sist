@@ -1,0 +1,32 @@
+Português
+Inglês
+História
+Geografia
+Matemática
+Arte
+Ciências
+E. Religioso
+Espanhol
+Ed. Física
+
+Física
+História do MA
+Geografia do MA
+Química
+Biologia
+Meio Ambiente
+Redação
+Filosofia
+Literatura
+Religião
+
+Matemática 1
+Matemática 2
+História 1
+História 2
+Geografia 1
+Geografia 2
+Física 1
+Física 2
+Biologia 1
+Biologia 2

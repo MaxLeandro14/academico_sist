@@ -10,7 +10,7 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Informações da Turma</h3>
+    <h3 class="box-title">Diário do professor: <strong>1° Bimestre</strong></h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
@@ -77,7 +77,7 @@
         </div>
       </div>
       <hr>
-      <table id="tabela" class="table" pageLength='10' aaSorting='0 asc'>
+      <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
         <thead>
           <tr>
           <th>ID</th>

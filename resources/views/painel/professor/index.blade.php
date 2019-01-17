@@ -15,7 +15,7 @@
   <!-- form start -->
   <form role="form">
     <div class="box-body">
-      <table id="tabela" class="table" pageLength='10' aaSorting='0 asc'>
+      <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
         <thead>
           <tr>
           <th>Código</th>
@@ -23,82 +23,42 @@
           <th>Série</th>
           <th>Ano</th>
           <th>Status</th>
-          <th><a href="{{ route('turma') }}">Mais detalhes <i class="fa fa-external-link"></i></a></th>
+          <th><a href="{{ route('turma') }}">Meu diário <i class="fa fa-external-link"></i></a></th>
           </tr>
         </thead>
 
         <tbody>
             <tr>
-                <td>Tiger Nixon</td>
+                <td>01212</td>
                 <td>System Architect</td>
-                <td>Edinburgh</td>
+                <td>1</td>
                 <td>61</td>
                 <td>2011/04/25</td>
-                <td>$320,800</td>
+                <td><a href="#">1B</a> <a href="#">2B</a> <a href="#">3B</a> <a href="#">4B</a></td>
             </tr>
             <tr>
-                <td>Garrett Winters</td>
+                <td>151545</td>
                 <td>Accountant</td>
-                <td>Tokyo</td>
+                <td>4</td>
                 <td>63</td>
                 <td>2011/07/25</td>
-                <td>$170,750</td>
+                <td>1B 2B 3B 4B</td>
             </tr>
             <tr>
-                <td>Ashton Cox</td>
+                <td>4645</td>
                 <td>Junior Technical Author</td>
-                <td>San Francisco</td>
+                <td>5</td>
                 <td>66</td>
                 <td>2009/01/12</td>
-                <td>$86,000</td>
+                <td>1B 2B 3B 4B</td>
             </tr>
             <tr>
-                <td>Cedric Kelly</td>
+                <td>54654</td>
                 <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
+                <td>8</td>
                 <td>22</td>
                 <td>2012/03/29</td>
-                <td>$433,060</td>
-            </tr>
-            <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td>2008/11/28</td>
-                <td>$162,700</td>
-            </tr>
-            <tr>
-                <td>Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2012/12/02</td>
-                <td>$372,000</td>
-            </tr>
-            <tr>
-                <td>Herrod Chandler</td>
-                <td>Sales Assistant</td>
-                <td>San Francisco</td>
-                <td>59</td>
-                <td>2012/08/06</td>
-                <td>$137,500</td>
-            </tr>
-            <tr>
-                <td>Rhona Davidson</td>
-                <td>Integration Specialist</td>
-                <td>Tokyo</td>
-                <td>55</td>
-                <td>2010/10/14</td>
-                <td>$327,900</td>
-            </tr>
-            <tr>
-                <td>Colleen Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td>2009/09/15</td>
-                <td>$205,500</td>
+                <td>1B 2B 3B 4B</td>
             </tr>
           </tbody>
       </table>

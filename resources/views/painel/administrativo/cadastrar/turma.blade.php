@@ -40,26 +40,38 @@
       </div>
 
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="form-group">
-            <label>Serie</label>
-            <select class="form-control" name="serie">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
+            <label>Nível</label>
+            <select class="form-control select2" name="serie" id="serie" onselect="hide();">
+              <option value="Fundamental 1">Fundamental 1</option>
+              <option value="Fundamental 2">Fundamental 2</option>
+              <option>Médio</option>
             </select>
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>Ano</label>
+            <select class="form-control select2" name="ano" id="ano">
+              <option>1° ano</option>
+              <option>2° ano</option>
+              <option>3° ano</option>
+              <option>4° ano</option>
+              <option>5° ano</option>
+              <option>6° ano</option>
+              <option>7° ano</option>
+              <option>8° ano</option>
+              <option>9° ano</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-2">
           <div class="form-group">
             <label>Turno</label>
-            <select class="form-control" name="turno">
+            <select class="form-control select2" name="turno">
               <option>Matutino</option>
               <option>Vespertino</option>
               <option>Noturno</option>
@@ -67,11 +79,24 @@
           </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-5">
           <label for="">Descrição</label>
           <div class="input-group">
             <textarea rows="5" cols="180" class="form-control" placeholder="" name="descricao"></textarea>
           </div>    
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Professores</label>
+            <select class="form-control select2" multiple="" name="turno">
+              @foreach($professores as $professor)
+              <option>{{ $professor->nome_professor }}</option>
+              @endforeach
+            </select>
+          </div>
         </div>
       </div>
 
@@ -84,5 +109,26 @@
     </div>
   </form>
 </div>
+<script type="text/javascript">
+function hide(){
+  var valor = document.getElementById("serie").value;
+  alert(valor);
+  /*if(valor == 'Funcionário'){
+    $("#matricula").show();
+    $("#setor").show();
+    $("#curso").hide();
+  }
+  if(valor == 'Aluno'){
+    $("#curso").show();
+    $("#matricula").show();
+    $("#setor").hide();
+  }
+  if(valor == 'Programas Especiais' || valor == 'Comunidade' || valor == 'Dependente'){
+    $("#curso").hide();
+    $("#matricula").hide();
+    $("#setor").hide();
+  }*/
 
+  };
+</script>
 @stop
