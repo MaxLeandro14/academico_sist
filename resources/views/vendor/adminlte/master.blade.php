@@ -49,6 +49,13 @@
 @if(config('adminlte.plugins.select2'))
     <!-- Select2 -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.select2').select2({
+                //maximumSelectionLength: 2
+            });
+        });
+    </script>
 @endif
 
 @if(config('adminlte.plugins.datatables'))
@@ -67,7 +74,7 @@
             order = order.concat(value[i]);
         }
       $(document).ready(function() {
-        $('#tabela').DataTable({
+        $('table.tabela').DataTable({
             "bJQueryUI": true,
             "sPaginationType": "full_numbers",
             "pageLength": pageLength,
