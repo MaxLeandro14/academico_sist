@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'painel',
+    'dashboard_url' => '/',
 
     'logout_url' => 'logout',
 
@@ -112,7 +112,7 @@ return [
         [
             'text' => 'Home',
             'icon'    => 'home',
-            'url'  => 'painel',
+            'url'  => '/',
         ],
 
         'ADMINISTRATIVO',

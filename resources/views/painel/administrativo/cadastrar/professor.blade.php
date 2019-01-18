@@ -28,7 +28,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Disciplina</label>
-            <select class="form-control select2" name="id_disciplina">
+            <select class="form-control select2" multiple="multiple" name="id_disciplina[]" required="">
               @foreach($disciplinas as $disciplina)
               <option value="{{ $disciplina->id }}">{{ $disciplina->nome_disciplina }}</option>
               @endforeach
@@ -44,7 +44,32 @@
       <a type="button" class="btn btn-default">Voltar</a>
     </div>
   </form>
+  <br><br>
+  <div class="box-header with-border">
+    <h3 class="box-title">Professores cadastrados</h3>
+  </div>  
+  <div style=" margin:auto; width: 90%" >
+    <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
+    <thead>
+      <tr>
+        <th>Código Professor</th>
+        <th>Nome</th>
+        <th>Disciplina</th>
+      </tr>
+    </thead>
 
+    <tbody>
+      @foreach($disciplinas_professores as $disciplina_professor)
+      <tr>
+        <td>{{ $disciplina_professor->id_professor }}</td>
+        <td>{{ $disciplina_professor->nome_professor }}</td>
+        <td>{{ $disciplina_professor->nome_disciplina }}</td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+</div>
+<br>
 </div>
 
 @stop

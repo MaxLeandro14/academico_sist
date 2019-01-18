@@ -12,7 +12,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     })->name('cadastrar_aluno');
 
     //index
-    Route::get('cadastrar_professor', ['as'=> 'cadastrar_professor', 'uses'=>'PainelController@listaDisciplinas']);
+    Route::get('cadastrar_professor', ['as'=> 'cadastrar_professor', 'uses'=>'PainelController@Lista_Disciplina_e_Professor']);
     //cadastra
     Route::post('cadastra_professor', ['as'=> 'cadastra_professor', 'uses'=>'PainelController@cadastra_professor']);
     

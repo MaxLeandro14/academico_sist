@@ -92,8 +92,8 @@
           <div class="form-group">
             <label>Professores</label>
             <select class="form-control select2" multiple="" name="turno">
-              @foreach($professores as $professor)
-              <option>{{ $professor->nome_professor }}</option>
+              @foreach($disciplinas_professores as $disciplina_professor)
+              <option>{{ $disciplina_professor->nome_professor }} - {{ $disciplina_professor->nome_disciplina }}</option>
               @endforeach
             </select>
           </div>
