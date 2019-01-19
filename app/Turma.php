@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Turma extends Model
 {
     protected $fillable = [
-    	'data_inicial','data_final','serie','descricao','ano','turno'
+    	'descricao','data_inicial','data_final','serie','ano','turno'
     ];
 }

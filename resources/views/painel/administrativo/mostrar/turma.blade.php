@@ -3,14 +3,14 @@
 @section('title', 'Painel Dashboard')
 
 @section('content_header')
-    <h1>Cadastro de Turma</h1>
+    <h1>Informações da Turma</h1>
 @stop
 
 @section('content')
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Nova Turma</h3>
+    <h3 class="box-title">Turma - {{ $turmas[0]->descricao }} </h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
@@ -23,7 +23,7 @@
             <label for="">Data de Início</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" class="form-control" placeholder="Data de início" name="data_inicial">
+              <input disabled type="date" class="form-control" placeholder="Data de início" name="data_inicial">
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select class="form-control select2_nivel" required name="serie" id="serie" onselect="fnhs();" onchange="fnhs();">
+            <select class="form-control select2_nivel" required name="serie">
               <option></option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
@@ -93,12 +93,32 @@
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
-            <label>Professores</label>
-            <select class="form-control select2_professores" multiple="multiple" name="professores[]">
-              @foreach($disciplinas_professores as $disciplina_professor)
-              <option value="{{ $disciplina_professor->id }},{{ $disciplina_professor->id_disciplina }},{{ $disciplina_professor->id_professor }}" >{{ $disciplina_professor->codigo_professor }} - {{ $disciplina_professor->nome_professor }} - {{ $disciplina_professor->nome_disciplina }}</option>
-              @endforeach
-            </select>
+                <br><br>
+              <div class="box-header with-border">
+                <h3 class="box-title">Professores da Turma</h3>
+              </div>  
+              <div style=" margin:auto; width: 100%" >
+                <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Professor</th>
+                    <th>Disciplina</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  @foreach($turmas as $turma)
+                  <tr>
+                    <td> {{ $turma->codigo_professor }} </td>
+                    <td> {{ $turma->nome_professor }} </td>
+                    <td> {{ $turma->nome_disciplina }} </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -107,52 +127,8 @@
     <!-- /.box-body -->
 
     <div class="box-footer">
-      <button type="submit" class="btn btn-primary">Salvar</button>
       <a type="button" class="btn btn-default">Voltar</a>
     </div>
   </form>
-    <br><br>
-  <div class="box-header with-border">
-    <h3 class="box-title">Turmas cadastradas</h3>
-  </div>  
-  <div style=" margin:auto; width: 90%" >
-    <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>Descrição</th>
-        <th>Série</th>
-        <th>Ano</th>
-        <th>Turno</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      @foreach($turmas as $turma)
-      <tr>
-        <td>{{ $turma->id }}</td>
-        <td><a href="{{ route('mostra_turma',$turma->id) }}">{{ $turma->descricao }}</a></td>
-        <td>{{ $turma->serie }}</td>
-        <td>{{ $turma->ano }}</td>
-        <td>{{ $turma->turno }}</td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
 </div>
-<br>
-</div>
-<script type="text/javascript">
-function fnhss(){
-  var valor = document.getElementById('serie').value;
-  var id1 = document.getElementById('id1');
-  
-  if(valor == 'Fundamental 1'){
-  
-    id1.style.display = "none";
-    
-  }
-
-  };
-</script>
 @stop

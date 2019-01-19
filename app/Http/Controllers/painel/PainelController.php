@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Disciplina;
 use App\Professor;
 use App\DisciplinaProfessor;
+use App\Turma;
+use App\TurmaDisciplina;
 
 
 class PainelController extends Controller
@@ -27,13 +29,51 @@ class PainelController extends Controller
       ->select('disciplina_professors.*','disciplinas.nome_disciplina', 'professors.nome_professor','professors.codigo_professor')
       ->get();
 
-      return view('painel/administrativo/cadastrar/turma', compact('disciplinas_professores'));
+      $turmas = DB::table('turmas')
+      ->select('id','descricao', 'serie','ano','turno')
+      ->get();
+
+      return view('painel/administrativo/cadastrar/turma', compact(['disciplinas_professores','turmas']));
     }
 
     public  function cadastrar_turma(Request $req)
     {
-      $dados = $req->all();
-      dd($dados);
+
+      $professor_disciplina = $req->input('professores');
+      $dados = explode(',', $professor_disciplina[0]);
+      
+      //Insere Turma
+      $input = $req->except('professores');
+      $input['id_disciplina_professor'] = $dados[0];
+      $input['id_disciplina'] = $dados[1];
+      $input['id_professor'] = $dados[2];
+      $form = Turma::create($input);
+
+      //Insere TurmaDisciplina
+      foreach ($professor_disciplina as $professor_disciplina) {
+        
+        $dados = explode(',', $professor_disciplina);  
+        $input['id_turma'] = $form->id;
+        TurmaDisciplina::create($input);
+        
+      }
+
+      return redirect()->route('cadastrar_turma');
+      
+    }
+
+    public function mostra_turma($id)
+    {
+
+      $turmas = DB::table('turma_disciplinas')
+      ->join('turmas', 'turma_disciplinas.id_turma', '=', 'turmas.id')
+      ->join('disciplina_professors', 'turma_disciplinas.id_disciplina_professor', '=', 'disciplina_professors.id')
+      ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
+      ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
+      ->select('turma_disciplinas.id_turma','turmas.*','professors.*','disciplinas.*')->where('turmas.id', '=', $id)
+      ->get();
+
+      return view('painel/administrativo/mostrar/turma', compact('turmas'));
     }    
 
     //Cadastro de Professor
@@ -80,7 +120,7 @@ class PainelController extends Controller
       return redirect()->route('cadastrar_professor');
     }
 
-    
+
 
 
 }

@@ -6,6 +6,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     //Cadastrar Turma
     Route::get('cadastrar_turma', ['as'=> 'cadastrar_turma', 'uses'=>'PainelController@index_cadastrar_turma']);
     Route::post('cadastra_turma', ['as'=> 'cadastra_turma', 'uses'=>'PainelController@cadastrar_turma']);
+    Route::get('mostra_turma/{id}', ['as'=> 'mostra_turma', 'uses'=>'PainelController@mostra_turma']);
 
     //Cadastrar Professor
     Route::get('cadastrar_professor', ['as'=> 'cadastrar_professor', 'uses'=>'PainelController@index_cadastrar_professor']);
