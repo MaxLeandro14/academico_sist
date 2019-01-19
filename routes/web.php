@@ -3,18 +3,20 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
 
     Route::get('/', 'PainelController@index')->name('painel.home');
     
-    //Route::get('/painel', 'PainelController@index')->name('painel.home');
+    //Cadastrar Turma
+    Route::get('cadastrar_turma', ['as'=> 'cadastrar_turma', 'uses'=>'PainelController@index_cadastrar_turma']);
+    Route::post('cadastra_turma', ['as'=> 'cadastra_turma', 'uses'=>'PainelController@cadastrar_turma']);
 
-    Route::get('cadastrar_turma', ['as'=> 'cadastrar_turma', 'uses'=>'PainelController@cadastrar_turma']);
+    //Cadastrar Professor
+    Route::get('cadastrar_professor', ['as'=> 'cadastrar_professor', 'uses'=>'PainelController@index_cadastrar_professor']);
+    Route::post('cadastra_professor', ['as'=> 'cadastra_professor', 'uses'=>'PainelController@cadastrar_professor']);
+
 
     Route::get('/cadastrar_aluno', function () {
         return view('painel/administrativo/cadastrar/aluno');
     })->name('cadastrar_aluno');
 
-    //index
-    Route::get('cadastrar_professor', ['as'=> 'cadastrar_professor', 'uses'=>'PainelController@lista_disciplina_e_professor']);
-    //cadastra
-    Route::post('cadastra_professor', ['as'=> 'cadastra_professor', 'uses'=>'PainelController@cadastra_professor']);
+    
     
     Route::get('/relacionar', function () {
         return view('painel/administrativo/relacionar/index');

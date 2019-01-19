@@ -17,8 +17,27 @@ class PainelController extends Controller
       return view('painel.home.index');
     }
 
+    //Cadastro de Turma
+    public function index_cadastrar_turma()
+    {
 
-    public function lista_disciplina_e_professor()
+      $disciplinas_professores = DB::table('disciplina_professors')
+      ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
+      ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
+      ->select('disciplina_professors.*','disciplinas.nome_disciplina', 'professors.nome_professor','professors.codigo_professor')
+      ->get();
+
+      return view('painel/administrativo/cadastrar/turma', compact('disciplinas_professores'));
+    }
+
+    public  function cadastrar_turma(Request $req)
+    {
+      $dados = $req->all();
+      dd($dados);
+    }    
+
+    //Cadastro de Professor
+    public function index_cadastrar_professor()
     {
       $disciplinas = Disciplina::all();
 
@@ -32,11 +51,11 @@ class PainelController extends Controller
 
     }
 
-    public function cadastra_professor(Request $req)
+    public function cadastrar_professor(Request $req)
     {
 
+      //Gera codigo para professor
       $codigo_professor = strtoupper(bin2hex(random_bytes(2)));
-
       while (DB::table('professors')->where('codigo_professor', '=', $codigo_professor)->count() > 0) {
         $codigo_professor = strtoupper(bin2hex(random_bytes(2)));
       }
@@ -61,16 +80,7 @@ class PainelController extends Controller
       return redirect()->route('cadastrar_professor');
     }
 
-    public function cadastrar_turma()
-    {
+    
 
-      $disciplinas_professores = DB::table('disciplina_professors')
-      ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
-      ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
-      ->select('disciplina_professors.*','disciplinas.nome_disciplina', 'professors.nome_professor','professors.codigo_professor')
-      ->get();
-
-      return view('painel/administrativo/cadastrar/turma', compact('disciplinas_professores'));
-    }
 
 }

@@ -14,9 +14,9 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form">
+  <form action="{{ route('cadastra_turma') }}" method="POST" >
+    {{csrf_field()}}
     <div class="box-body">
-
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -94,9 +94,9 @@
         <div class="col-md-12">
           <div class="form-group">
             <label>Professores</label>
-            <select class="form-control select2_professores" multiple="" name="turno">
+            <select class="form-control select2_professores" multiple="multiple" name="professores[]">
               @foreach($disciplinas_professores as $disciplina_professor)
-              <option>{{ $disciplina_professor->codigo_professor }} - {{ $disciplina_professor->nome_professor }} - {{ $disciplina_professor->nome_disciplina }}</option>
+              <option value="{{ $disciplina_professor->id_professor }}" >{{ $disciplina_professor->codigo_professor }} - {{ $disciplina_professor->nome_professor }} - {{ $disciplina_professor->nome_disciplina }}</option>
               @endforeach
             </select>
           </div>
