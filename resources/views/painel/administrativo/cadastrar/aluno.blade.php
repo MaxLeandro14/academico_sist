@@ -27,7 +27,8 @@
         <div class="col-md-2">
           <div class="form-group">
             <label for="">Sexo</label>
-            <select class="form-control" name="sexo">
+            <select class="form-control select2_sexo" name="sexo">
+              <option></option>
               <option>M</option>
               <option>F</option>
             </select>
@@ -56,7 +57,8 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="">Responsável</label>
-            <select class="form-control" name="pai_mae_responsavel">
+            <select class="form-control select2_responsavel" name="pai_mae_responsavel">
+              <option></option>
               <option>Pai</option>
               <option>Mãe</option>
               <option>Outro</option>
@@ -156,7 +158,8 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">Situação</label>
-          <select class="form-control" name="situacao_procedencia">
+          <select class="form-control select2_situacao" name="situacao_procedencia">
+            <option></option>
             <option>Aprovado</option>
             <option>Reprovado</option>
             <option>Pendência</option>

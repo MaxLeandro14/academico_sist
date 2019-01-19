@@ -28,7 +28,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Disciplina</label>
-            <select class="form-control select2" multiple="multiple" name="id_disciplina[]" required="">
+            <select class="form-control select2_disciplina" multiple="multiple" name="id_disciplina[]" required="">
               @foreach($disciplinas as $disciplina)
               <option value="{{ $disciplina->id }}">{{ $disciplina->nome_disciplina }}</option>
               @endforeach
@@ -61,7 +61,7 @@
     <tbody>
       @foreach($disciplinas_professores as $disciplina_professor)
       <tr>
-        <td>{{ $disciplina_professor->id_professor }}</td>
+        <td>{{ $disciplina_professor->codigo_professor }}</td>
         <td>{{ $disciplina_professor->nome_professor }}</td>
         <td>{{ $disciplina_professor->nome_disciplina }}</td>
       </tr>

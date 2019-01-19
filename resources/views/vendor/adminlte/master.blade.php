@@ -51,8 +51,52 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.select2').select2({
+            $('.select2_nivel').select2({
+                
+                placeholder: "Selecione um Nível",
+                
+            });
+
+            $('.select2_serie').select2({
+                
+                placeholder: "Selecione um Ano",
+                
+            });
+            
+            $('.select2_professores').select2({
                 //maximumSelectionLength: 2
+                placeholder: "Adicione Professores",
+                
+            });
+
+            $('.select2_turno').select2({
+                
+                placeholder: "Selecione um Turno",
+                
+            });
+
+            $('.select2_disciplina').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Selecione disciplinas",
+                
+            });
+
+            $('.select2_responsavel').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Selecione o Responsável",
+                
+            });
+
+            $('.select2_sexo').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Selecione o Sexo",
+                
+            });
+
+            $('.select2_situacao').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Selecione a Situação",
+                
             });
         });
     </script>

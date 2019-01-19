@@ -43,9 +43,10 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select class="form-control select2" name="serie" id="serie" onselect="hide();">
-              <option value="Fundamental 1">Fundamental 1</option>
-              <option value="Fundamental 2">Fundamental 2</option>
+            <select class="form-control select2_nivel" required name="serie" id="serie" onselect="fnhs();" onchange="fnhs();">
+              <option></option>
+              <option>Fundamental 1</option>
+              <option>Fundamental 2</option>
               <option>Médio</option>
             </select>
           </div>
@@ -54,16 +55,17 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Ano</label>
-            <select class="form-control select2" name="ano" id="ano">
-              <option>1° ano</option>
-              <option>2° ano</option>
-              <option>3° ano</option>
-              <option>4° ano</option>
-              <option>5° ano</option>
-              <option>6° ano</option>
-              <option>7° ano</option>
-              <option>8° ano</option>
-              <option>9° ano</option>
+            <select class="form-control select2_serie" name="ano" id="ano">
+              <option></option>
+              <option id="id1">1° ano</option>
+              <option id="id2">2° ano</option>
+              <option id="id3">3° ano</option>
+              <option id="id4">4° ano</option>
+              <option id="id5">5° ano</option>
+              <option id="id6">6° ano</option>
+              <option id="id7">7° ano</option>
+              <option id="id8">8° ano</option>
+              <option id="id9">9° ano</option>
             </select>
           </div>
         </div>
@@ -71,7 +73,8 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Turno</label>
-            <select class="form-control select2" name="turno">
+            <select class="form-control select2_turno" name="turno">
+              <option></option>
               <option>Matutino</option>
               <option>Vespertino</option>
               <option>Noturno</option>
@@ -91,9 +94,9 @@
         <div class="col-md-12">
           <div class="form-group">
             <label>Professores</label>
-            <select class="form-control select2" multiple="" name="turno">
+            <select class="form-control select2_professores" multiple="" name="turno">
               @foreach($disciplinas_professores as $disciplina_professor)
-              <option>{{ $disciplina_professor->nome_professor }} - {{ $disciplina_professor->nome_disciplina }}</option>
+              <option>{{ $disciplina_professor->codigo_professor }} - {{ $disciplina_professor->nome_professor }} - {{ $disciplina_professor->nome_disciplina }}</option>
               @endforeach
             </select>
           </div>
@@ -110,24 +113,15 @@
   </form>
 </div>
 <script type="text/javascript">
-function hide(){
-  var valor = document.getElementById("serie").value;
-  alert(valor);
-  /*if(valor == 'Funcionário'){
-    $("#matricula").show();
-    $("#setor").show();
-    $("#curso").hide();
+function fnhss(){
+  var valor = document.getElementById('serie').value;
+  var id1 = document.getElementById('id1');
+  
+  if(valor == 'Fundamental 1'){
+  
+    id1.style.display = "none";
+    
   }
-  if(valor == 'Aluno'){
-    $("#curso").show();
-    $("#matricula").show();
-    $("#setor").hide();
-  }
-  if(valor == 'Programas Especiais' || valor == 'Comunidade' || valor == 'Dependente'){
-    $("#curso").hide();
-    $("#matricula").hide();
-    $("#setor").hide();
-  }*/
 
   };
 </script>
