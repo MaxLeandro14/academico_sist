@@ -19,7 +19,7 @@ class PainelController extends Controller
       return view('painel.home.index');
     }
 
-    //Cadastro de Turma
+    //TURMA
     public function index_cadastrar_turma()
     {
 
@@ -75,8 +75,8 @@ class PainelController extends Controller
       ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
       ->select('turmas.*','professors.*','disciplinas.*')->where('turmas.id', '=', $id)
       ->get();
-      
-      return view('painel/administrativo/mostrar/turma', compact('turma_info'));
+
+      return view('painel/administrativo/visualisar/turma', compact('turma_info'));
     }    
 
     //Cadastro de Professor
