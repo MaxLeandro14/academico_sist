@@ -123,6 +123,7 @@
         <th>Série</th>
         <th>Ano</th>
         <th>Turno</th>
+        <th>Ano Letivo</th>
       </tr>
     </thead>
 
@@ -134,6 +135,7 @@
         <td>{{ $turma->serie }}</td>
         <td>{{ $turma->ano }}</td>
         <td>{{ $turma->turno }}</td>
+        <td>{{ $turma->ano_letivo }}</td>
       </tr>
       @endforeach
     </tbody>

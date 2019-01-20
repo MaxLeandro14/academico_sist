@@ -30,7 +30,7 @@ class PainelController extends Controller
       ->get();
 
       $turmas = DB::table('turmas')
-      ->select('id','descricao', 'serie','ano','turno')
+      ->select('id','descricao', 'serie','ano','turno','ano_letivo')
       ->get();
 
       return view('painel/administrativo/cadastrar/turma', compact(['disciplinas_professores','turmas']));
@@ -47,6 +47,10 @@ class PainelController extends Controller
       $input['id_disciplina_professor'] = $dados[0];
       $input['id_disciplina'] = $dados[1];
       $input['id_professor'] = $dados[2];
+      
+      $ano_letivo = explode('/',date( 'd/m/Y' , strtotime($input['data_inicial'])));
+      $ano_letivo = $ano_letivo[2];
+      $input['ano_letivo'] = $ano_letivo;
       $form = Turma::create($input);
 
       //Insere TurmaDisciplina
@@ -79,7 +83,7 @@ class PainelController extends Controller
       return view('painel/administrativo/visualisar/turma', compact('turma_info'));
     }    
 
-    //Cadastro de Professor
+    //PROFESSOR
     public function index_cadastrar_professor()
     {
       $disciplinas = Disciplina::all();
