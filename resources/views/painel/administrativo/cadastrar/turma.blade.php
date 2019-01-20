@@ -43,7 +43,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select class="form-control select2_nivel" required name="serie" id="serie" onselect="fnhs();" onchange="fnhs();">
+            <select class="form-control select2_nivel" required name="serie" id="serie" onselect="ano_serie();" onchange="ano_serie();">
               <option></option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
@@ -108,7 +108,6 @@
 
     <div class="box-footer">
       <button type="submit" class="btn btn-primary">Salvar</button>
-      <a type="button" class="btn btn-default">Voltar</a>
     </div>
   </form>
     <br><br>
@@ -142,17 +141,5 @@
 </div>
 <br>
 </div>
-<script type="text/javascript">
-function fnhss(){
-  var valor = document.getElementById('serie').value;
-  var id1 = document.getElementById('id1');
-  
-  if(valor == 'Fundamental 1'){
-  
-    id1.style.display = "none";
-    
-  }
 
-  };
-</script>
 @stop

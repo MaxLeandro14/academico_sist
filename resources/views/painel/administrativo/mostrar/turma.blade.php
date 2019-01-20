@@ -10,7 +10,7 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Turma - {{ $turmas[0]->descricao }} </h3>
+    <h3 class="box-title">Turma - {{ $turma_info[0]->descricao }} </h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
@@ -23,7 +23,7 @@
             <label for="">Data de Início</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input disabled type="date" class="form-control" placeholder="Data de início" name="data_inicial">
+              <input value="{{ $turma_info[0]->data_inicial }}" required type="date" class="form-control" placeholder="Data de início" name="data_inicial">
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
             <label for="">Data Final</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" class="form-control" placeholder="Data de início" name="data_final">
+              <input value="{{ $turma_info[0]->data_final }}" required type="date" class="form-control" placeholder="Data de início" name="data_final">
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
           <div class="form-group">
             <label>Nível</label>
             <select class="form-control select2_nivel" required name="serie">
-              <option></option>
+              <option>{{ $turma_info[0]->serie }}</option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
               <option>Médio</option>
@@ -55,17 +55,17 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Ano</label>
-            <select class="form-control select2_serie" name="ano" id="ano">
-              <option></option>
-              <option id="id1">1° ano</option>
-              <option id="id2">2° ano</option>
-              <option id="id3">3° ano</option>
-              <option id="id4">4° ano</option>
-              <option id="id5">5° ano</option>
-              <option id="id6">6° ano</option>
-              <option id="id7">7° ano</option>
-              <option id="id8">8° ano</option>
-              <option id="id9">9° ano</option>
+            <select class="form-control select2_serie" required name="ano">
+              <option>{{ $turma_info[0]->ano }}</option>
+              <option>1° ano</option>
+              <option>2° ano</option>
+              <option>3° ano</option>
+              <option>4° ano</option>
+              <option>5° ano</option>
+              <option>6° ano</option>
+              <option>7° ano</option>
+              <option>8° ano</option>
+              <option>9° ano</option>
             </select>
           </div>
         </div>
@@ -73,8 +73,8 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Turno</label>
-            <select class="form-control select2_turno" name="turno">
-              <option></option>
+            <select class="form-control select2_turno" required name="turno">
+              <option>{{ $turma_info[0]->turno }}</option>
               <option>Matutino</option>
               <option>Vespertino</option>
               <option>Noturno</option>
@@ -85,7 +85,7 @@
         <div class="col-md-5">
           <label for="">Descrição</label>
           <div class="input-group">
-            <textarea rows="5" cols="180" class="form-control" placeholder="" name="descricao"></textarea>
+            <textarea rows="5" cols="180" class="form-control" required name="descricao">{{ $turma_info[0]->descricao }}</textarea>
           </div>    
         </div>
       </div>
@@ -97,7 +97,7 @@
               <div class="box-header with-border">
                 <h3 class="box-title">Professores da Turma</h3>
               </div>  
-              <div style=" margin:auto; width: 100%" >
+              <div>
                 <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
                 <thead>
                   <tr>
@@ -108,7 +108,7 @@
                 </thead>
 
                 <tbody>
-                  @foreach($turmas as $turma)
+                  @foreach($turma_info as $turma)
                   <tr>
                     <td> {{ $turma->codigo_professor }} </td>
                     <td> {{ $turma->nome_professor }} </td>
@@ -127,7 +127,7 @@
     <!-- /.box-body -->
 
     <div class="box-footer">
-      <a type="button" class="btn btn-default">Voltar</a>
+      <a type="button" class="btn btn-default" href="{{ route('cadastrar_turma') }}">Voltar</a>
     </div>
   </form>
 </div>

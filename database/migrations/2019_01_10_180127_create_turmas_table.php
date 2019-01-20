@@ -15,10 +15,10 @@ class CreateTurmasTable extends Migration
     {
         Schema::create('turmas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descricao');
             $table->string('data_inicial');
             $table->string('data_final');
             $table->string('serie');
-            $table->string('descricao');
             $table->string('ano');
             $table->string('turno');
             $table->timestamps();

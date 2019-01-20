@@ -57,7 +57,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="">Responsável</label>
-            <select class="form-control select2_responsavel" name="pai_mae_responsavel">
+            <select class="form-control select2_responsavel" name="pai_mae_responsavel" id="responsavel" onselect="responsavel_aluno()" onchange="responsavel_aluno()" >
               <option></option>
               <option>Pai</option>
               <option>Mãe</option>
@@ -113,27 +113,29 @@
           <input type="text" class="form-control" placeholder="" name="telefone_profissao_mae">
         </div>
       </div>
-
-      <hr><h4> Responsável pelo Aluno</h4>
-      <div class="row">
-        <div class="col-md-3">
-          <label for="">Nome</label>
-          <input type="text" class="form-control" placeholder="" name="outro_responsavel_nome">
-        </div>
-        <div class="col-md-2">
-          <label for="">Grau de parentesco</label>
-          <input type="text" class="form-control" placeholder="" name="outro_responsavel_parentesco">
-        </div>
-        <div class="col-md-5">
-          <label for="">Endereço</label>
-          <input type="text" class="form-control" placeholder="" name="outro_responsavel_endereco">
-        </div>
-        <div class="col-md-2">
-          <label for="">Telefone</label>
-          <input type="text" class="form-control" placeholder="" name="outro_responsavel_telefone">
+      <div id="master">
+      <div id="responsavel_form">
+        <hr><h4> Responsável pelo Aluno</h4>
+        <div class="row">
+          <div class="col-md-3">
+            <label for="">Nome</label>
+            <input type="text" class="form-control" placeholder="" name="outro_responsavel_nome">
+          </div>
+          <div class="col-md-2">
+            <label for="">Grau de parentesco</label>
+            <input type="text" class="form-control" placeholder="" name="outro_responsavel_parentesco">
+          </div>
+          <div class="col-md-5">
+            <label for="">Endereço</label>
+            <input type="text" class="form-control" placeholder="" name="outro_responsavel_endereco">
+          </div>
+          <div class="col-md-2">
+            <label for="">Telefone</label>
+            <input type="text" class="form-control" placeholder="" name="outro_responsavel_telefone">
+          </div>
         </div>
       </div>
-
+    </div>
       <hr><h4> Informações da Escola</h4>
       <div class="row">
         <div class="col-md-4">

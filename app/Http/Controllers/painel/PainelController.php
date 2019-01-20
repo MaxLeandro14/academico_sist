@@ -52,7 +52,10 @@ class PainelController extends Controller
       //Insere TurmaDisciplina
       foreach ($professor_disciplina as $professor_disciplina) {
         
-        $dados = explode(',', $professor_disciplina);  
+        $dados = explode(',', $professor_disciplina);
+        $input['id_disciplina_professor'] = $dados[0];
+        $input['id_disciplina'] = $dados[1];
+        $input['id_professor'] = $dados[2];  
         $input['id_turma'] = $form->id;
         TurmaDisciplina::create($input);
         
@@ -65,15 +68,15 @@ class PainelController extends Controller
     public function mostra_turma($id)
     {
 
-      $turmas = DB::table('turma_disciplinas')
+      $turma_info = DB::table('turma_disciplinas')
       ->join('turmas', 'turma_disciplinas.id_turma', '=', 'turmas.id')
       ->join('disciplina_professors', 'turma_disciplinas.id_disciplina_professor', '=', 'disciplina_professors.id')
       ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
       ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
-      ->select('turma_disciplinas.id_turma','turmas.*','professors.*','disciplinas.*')->where('turmas.id', '=', $id)
+      ->select('turmas.*','professors.*','disciplinas.*')->where('turmas.id', '=', $id)
       ->get();
-
-      return view('painel/administrativo/mostrar/turma', compact('turmas'));
+      
+      return view('painel/administrativo/mostrar/turma', compact('turma_info'));
     }    
 
     //Cadastro de Professor
