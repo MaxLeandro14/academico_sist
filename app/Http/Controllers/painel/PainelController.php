@@ -127,7 +127,7 @@ class PainelController extends Controller
       return redirect()->route('cadastrar_professor');
     }
 
-    //RELACIONAR
+    //MATRICULA ALUNO EM TURMA
     public function index_matricular_aluno()
     {
 
@@ -138,7 +138,7 @@ class PainelController extends Controller
       return view('painel/administrativo/matricular/index', compact('turmas'));
     }
 
-    public function matricular(Request $req, $id)
+    public function matricular_aluno(Request $req, $id)
     {
 
       $turma_info = DB::table('turma_disciplinas')
@@ -171,6 +171,23 @@ class PainelController extends Controller
       
       
       
+    }
+
+
+    //CADASTRA ALUNO
+
+    public function index_cadastrar_aluno()
+    {
+      return view('painel/administrativo/cadastrar/aluno');
+    }
+
+    public function cadastrar_aluno(Request $req)
+    {
+      $dados = $req->all();
+      dd($dados);
+      //$form = Aluno::create($dados);
+      //$dados['id_aluno'] = $form->id;
+      //Parcela::create($dados);
     }
 
 

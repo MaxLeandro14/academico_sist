@@ -14,9 +14,9 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form">
+  <form action="{{ route('cadastra_aluno') }}" method="POST">
+    {{csrf_field()}}
     <div class="box-body">
-
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
