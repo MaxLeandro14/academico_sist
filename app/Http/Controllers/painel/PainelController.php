@@ -127,7 +127,7 @@ class PainelController extends Controller
 
     public function index_minhas_turmas()
     {
-      $codigo_professor = '9EFA';
+      $codigo_professor = '4A00';
       $minhas_turmas = getTurmaDisciplinaWhereID($codigo_professor);
       return view('painel/professor/index',compact('minhas_turmas'));
         

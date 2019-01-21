@@ -35,7 +35,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select class="form-control select2_nivel" required name="nivel">
+            <select class="form-control select2_nivel_modal" required name="nivel">
               <option>{{ $turma_info[0]->nivel }}</option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
@@ -47,7 +47,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Ano</label>
-            <select class="form-control select2_serie" required name="ano">
+            <select class="form-control select2_ano_modal" required name="ano">
               <option>{{ $turma_info[0]->ano }}</option>
               <option>1° ano</option>
               <option>2° ano</option>
@@ -65,7 +65,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Turno</label>
-            <select class="form-control select2_turno" required name="turno">
+            <select class="form-control select2_turno_modal" required name="turno">
               <option>{{ $turma_info[0]->turno }}</option>
               <option>Matutino</option>
               <option>Vespertino</option>
