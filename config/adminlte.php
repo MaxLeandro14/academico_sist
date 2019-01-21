@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'title' => 'Escola Nome',
+    'title' => '',
 
-    'title_prefix' => '',
+    'title_prefix' => 'Colégio Exclusivo Global - ',
 
     'title_postfix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Escola</b>Nome',
+    'logo' => '<b>Exclusivo</b>Global',
 
-    'logo_mini' => '<b>E</b>N',
+    'logo_mini' => '<b>E</b>G',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,9 +159,9 @@ return [
         ],
 
         [
-            'text' => 'Relacionar',
-            'icon'    => 'link',
-            'url'  => 'relacionar',
+            'text' => 'Matricular Aluno',
+            'icon'    => 'plus',
+            'url'  => 'matricular_aluno',
         ],
 
         [

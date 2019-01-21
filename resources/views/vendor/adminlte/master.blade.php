@@ -37,6 +37,9 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <!-- Minhas funcoes JS -->
+    <script src="{{ asset('js/funcoes.js') }}"></script>
 </head>
 <body class="hold-transition @yield('body_class')">
 
@@ -83,19 +86,25 @@
 
             $('.select2_responsavel').select2({
                 //maximumSelectionLength: 2
-                placeholder: "Selecione o Responsável",
+                placeholder: "Selecione um Responsável",
                 
             });
 
             $('.select2_sexo').select2({
                 //maximumSelectionLength: 2
-                placeholder: "Selecione o Sexo",
+                placeholder: "Selecione um Sexo",
                 
             });
 
             $('.select2_situacao').select2({
                 //maximumSelectionLength: 2
-                placeholder: "Selecione a Situação",
+                placeholder: "Selecione uma Situação",
+                
+            });
+
+            $('.select2_aluno').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Adicione Alunos",
                 
             });
         });

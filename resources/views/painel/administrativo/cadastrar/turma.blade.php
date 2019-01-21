@@ -43,7 +43,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select class="form-control select2_nivel" required name="serie" id="serie" onselect="fnhs();" onchange="fnhs();">
+            <select class="form-control select2_nivel" required name="nivel" id="nivel" onselect="ano_serie();" onchange="ano_serie();">
               <option></option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
@@ -83,10 +83,10 @@
         </div>
 
         <div class="col-md-5">
-          <label for="">Descrição</label>
-          <div class="input-group">
-            <textarea rows="5" cols="180" class="form-control" placeholder="" name="descricao"></textarea>
-          </div>    
+          <div class="form-group">
+            <label >Nome</label>
+            <input class="form-control" placeholder="Nome da Turma" name="descricao">
+          </div>
         </div>
       </div>
 
@@ -96,7 +96,7 @@
             <label>Professores</label>
             <select class="form-control select2_professores" multiple="multiple" name="professores[]">
               @foreach($disciplinas_professores as $disciplina_professor)
-              <option value="{{ $disciplina_professor->id_professor }}" >{{ $disciplina_professor->codigo_professor }} - {{ $disciplina_professor->nome_professor }} - {{ $disciplina_professor->nome_disciplina }}</option>
+              <option value="{{ $disciplina_professor->id }},{{ $disciplina_professor->id_disciplina }},{{ $disciplina_professor->id_professor }}" >{{ $disciplina_professor->codigo_professor }} - {{ $disciplina_professor->nome_professor }} - {{ $disciplina_professor->nome_disciplina }}</option>
               @endforeach
             </select>
           </div>
@@ -108,21 +108,40 @@
 
     <div class="box-footer">
       <button type="submit" class="btn btn-primary">Salvar</button>
-      <a type="button" class="btn btn-default">Voltar</a>
     </div>
   </form>
-</div>
-<script type="text/javascript">
-function fnhss(){
-  var valor = document.getElementById('serie').value;
-  var id1 = document.getElementById('id1');
-  
-  if(valor == 'Fundamental 1'){
-  
-    id1.style.display = "none";
-    
-  }
+    <br><br>
+  <div class="box-header with-border">
+    <h3 class="box-title">Turmas cadastradas</h3>
+  </div>  
+  <div style=" margin:auto; width: 90%" >
+    <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Nível</th>
+        <th>Ano</th>
+        <th>Turno</th>
+        <th>Ano Letivo</th>
+      </tr>
+    </thead>
 
-  };
-</script>
+    <tbody>
+      @foreach($turmas as $turma)
+      <tr>
+        <td>{{ $turma->codigo_turma }}</td>
+        <td><a title="Mais Detalhes" href="{{ route('mostra_turma',$turma->id) }}">{{ $turma->descricao }}</a></td>
+        <td>{{ $turma->nivel }}</td>
+        <td>{{ $turma->ano }}</td>
+        <td>{{ $turma->turno }}</td>
+        <td>{{ $turma->ano_letivo }}</td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+</div>
+<br>
+</div>
+
 @stop

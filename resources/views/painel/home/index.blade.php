@@ -14,11 +14,11 @@
            <a href="" class="btn btn-default">
              <div class="row">
                <div class="col-xs-12 text-center">
-                 <i class="fa fa-user fa-4x"></i>
-                 <!--<span class="badge badge-pill badge-info fa-1x">15</span>-->
+                 <i class="fa fa-users fa-4x"></i>
+                 <span class="badge badge-pill badge-info fa-1x">15</span>
                </div>
                <div class="col-xs-12 text-center">
-                 <p>Cadastrar</p>
+                 <p>Turmas cadastradas</p>
                  
                </div>
              </div>

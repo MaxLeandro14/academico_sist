@@ -14,9 +14,9 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form">
+  <form action="{{ route('cadastra_aluno') }}" method="POST">
+    {{csrf_field()}}
     <div class="box-body">
-
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -48,16 +48,16 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">CPF</label>
-          <input type="text" class="form-control" placeholder="" name="cpf">
+          <input type="text" class="form-control" placeholder="CPF" name="cpf">
         </div>
         <div class="col-md-4">
           <label for="">Fone</label>
-          <input type="text" class="form-control" placeholder="" name="fone">
+          <input type="text" class="form-control" placeholder="Contato" name="fone">
         </div>
         <div class="col-md-4">
           <div class="form-group">
             <label for="">Responsável</label>
-            <select class="form-control select2_responsavel" name="pai_mae_responsavel">
+            <select class="form-control select2_responsavel" name="pai_mae_responsavel" id="responsavel" onselect="responsavel_aluno()" onchange="responsavel_aluno()" >
               <option></option>
               <option>Pai</option>
               <option>Mãe</option>
@@ -70,15 +70,15 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">Bairro</label>
-          <input type="text" class="form-control" placeholder="" name="bairro">
+          <input type="text" class="form-control" placeholder="Bairro" name="bairro">
         </div>
         <div class="col-md-4">
           <label for="">Endereço</label>
-          <input type="text" class="form-control" placeholder="" name="endereco">
+          <input type="text" class="form-control" placeholder="Endereço" name="endereco">
         </div>
         <div class="col-md-4">
           <label for="">Cidade</label>
-          <input type="text" class="form-control" placeholder="" name="cidade">
+          <input type="text" class="form-control" placeholder="Cidade" name="cidade">
         </div>
       </div>
 
@@ -86,15 +86,15 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">Nome</label>
-          <input type="text" class="form-control" placeholder="" name="nome_pai">
+          <input type="text" class="form-control" placeholder="Nome do Pai" name="nome_pai">
         </div>
         <div class="col-md-4">
           <label for="">Profissão</label>
-          <input type="text" class="form-control" placeholder="" name="profissao_pai">
+          <input type="text" class="form-control" placeholder="Profissão" name="profissao_pai">
         </div>
         <div class="col-md-4">
           <label for="">Telefone Profissão</label>
-          <input type="text" class="form-control" placeholder="" name="telefone_profissao_pai">
+          <input type="text" class="form-control" placeholder="Contato" name="telefone_profissao_pai">
         </div>
       </div>
 
@@ -102,62 +102,64 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">Nome</label>
-          <input type="text" class="form-control" placeholder="" name="nome_mae">
+          <input type="text" class="form-control" placeholder="Nome da Mãe" name="nome_mae">
         </div>
         <div class="col-md-4">
           <label for="">Profissão</label>
-          <input type="text" class="form-control" placeholder="" name="profissao_mae">
+          <input type="text" class="form-control" placeholder="Profissão" name="profissao_mae">
         </div>
         <div class="col-md-4">
           <label for="">Telefone Profissão</label>
-          <input type="text" class="form-control" placeholder="" name="telefone_profissao_mae">
+          <input type="text" class="form-control" placeholder="Contato" name="telefone_profissao_mae">
         </div>
       </div>
-
-      <hr><h4> Responsável pelo Aluno</h4>
-      <div class="row">
-        <div class="col-md-3">
-          <label for="">Nome</label>
-          <input type="text" class="form-control" placeholder="" name="outro_responsavel_nome">
-        </div>
-        <div class="col-md-2">
-          <label for="">Grau de parentesco</label>
-          <input type="text" class="form-control" placeholder="" name="outro_responsavel_parentesco">
-        </div>
-        <div class="col-md-5">
-          <label for="">Endereço</label>
-          <input type="text" class="form-control" placeholder="" name="outro_responsavel_endereco">
-        </div>
-        <div class="col-md-2">
-          <label for="">Telefone</label>
-          <input type="text" class="form-control" placeholder="" name="outro_responsavel_telefone">
+      <div id="master">
+      <div id="responsavel_form">
+        <hr><h4> Responsável pelo Aluno</h4>
+        <div class="row">
+          <div class="col-md-3">
+            <label for="">Nome</label>
+            <input type="text" class="form-control" placeholder="Nome do Responsável" name="outro_responsavel_nome">
+          </div>
+          <div class="col-md-2">
+            <label for="">Grau de parentesco</label>
+            <input type="text" class="form-control" placeholder="Grau de Parentesco" name="outro_responsavel_parentesco">
+          </div>
+          <div class="col-md-5">
+            <label for="">Endereço</label>
+            <input type="text" class="form-control" placeholder="Endereço" name="outro_responsavel_endereco">
+          </div>
+          <div class="col-md-2">
+            <label for="">Telefone</label>
+            <input type="text" class="form-control" placeholder="Contato" name="outro_responsavel_telefone">
+          </div>
         </div>
       </div>
-
+    </div>
       <hr><h4> Informações da Escola</h4>
       <div class="row">
         <div class="col-md-4">
           <label for="">Nome</label>
-          <input type="text" class="form-control" placeholder="" name="colegio_procedencia">
+          <input type="text" class="form-control" placeholder="Nome da Escola" name="colegio_procedencia">
         </div>
         <div class="col-md-4">
           <label for="">Cidade</label>
-          <input type="text" class="form-control" placeholder="" name="cidade_colegio_procedencia">
+          <input type="text" class="form-control" placeholder="Cidade" name="cidade_colegio_procedencia">
         </div>
         <div class="col-md-2">
           <label for="">UF</label>
-          <input type="text" class="form-control" placeholder="" name="uf_colegio_procedencia">
+          <input type="text" class="form-control" placeholder="UF" name="uf_colegio_procedencia">
         </div>
         <div class="col-md-2">
           <label for="">CEP</label>
-          <input type="text" class="form-control" placeholder="" name="cep">
+          <input type="text" class="form-control" placeholder="CEP" name="cep">
         </div>
       </div>
 
-      <hr><h4> Status do Aluno</h4>
+      <hr><h4> Matrícula do Aluno</h4>
       <div class="row">
         <div class="col-md-4">
-          <label for="">Situação</label>
+          <label for="">Situação do Aluno</label>
           <select class="form-control select2_situacao" name="situacao_procedencia">
             <option></option>
             <option>Aprovado</option>
@@ -189,7 +191,7 @@
           <label for="">Valor da Matrícula</label>
           <div class="input-group">
                 <span class="input-group-addon">R$</span>
-                <input type="text" class="form-control" name="valor_matricula">
+                <input type="text" class="form-control" placeholder="00,00" name="valor_matricula">
               </div>
         </div>
       </div>

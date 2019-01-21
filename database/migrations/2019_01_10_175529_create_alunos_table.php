@@ -17,7 +17,7 @@ class CreateAlunosTable extends Migration
             $table->increments('id');
             $table->string('nome_aluno');
             $table->string('sexo');
-            $table->string('data_nascimento');
+            $table->date('data_nascimento');
             $table->string('cpf');
             $table->string('fone');
             $table->string('bairro');
@@ -39,8 +39,8 @@ class CreateAlunosTable extends Migration
             $table->string('uf_colegio_procedencia');
             $table->string('situacao_procedencia');
             $table->string('cep');
-            $table->string('data_matricula');
-            $table->string('data_cancelamento');
+            $table->date('data_matricula');
+            $table->date('data_cancelamento');
             $table->string('valor_matricula');
             $table->timestamps();
         });
