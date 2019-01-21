@@ -63,7 +63,7 @@
                 @if (config('adminlte.register_url', 'register'))
                     <a href="{{ url(config('adminlte.register_url', 'register')) }}"
                        class="text-center"
-                    >{{ trans('adminlte::adminlte.register_a_new_membership') }}</a>
+                    > Primeiro Acesso<!--{{ trans('adminlte::adminlte.register_a_new_membership') }}--></a>
                 @endif
             </div>
         </div>

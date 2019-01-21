@@ -130,8 +130,10 @@
     <tbody>
       @foreach($turmas as $turma)
       <tr>
-        <td>{{ $turma->codigo_turma }}</td>
-        <td><a title="Mais Detalhes" href="{{ route('mostra_turma',$turma->id) }}">{{ $turma->descricao }}</a></td>
+        <td>
+          <a  class="" data-toggle="modal" data-target="#modal_template" title="Mais Detalhes" href="{{ route('mostra_turma',$turma->id) }}">{{ $turma->codigo_turma }}</a>
+        </td>
+        <td>{{ $turma->descricao }}</td>
         <td>{{ $turma->nivel }}</td>
         <td>{{ $turma->ano }}</td>
         <td>{{ $turma->turno }}</td>
@@ -144,4 +146,5 @@
 <br>
 </div>
 
+@include('painel.administrativo.visualisar.layouts.modal')
 @stop

@@ -19,6 +19,7 @@ function getTodasTurmas()
 {
 	$turmas = DB::table('turmas')
       ->select('turmas.*')
+      ->orderByRaw('created_at','ASC')
       ->get();
 
   	return $turmas;

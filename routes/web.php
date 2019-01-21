@@ -23,7 +23,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
 
     //Minhas Turmas
     Route::get('minhas_turmas','PainelController@index_minhas_turmas')->name('minhas_turmas');
-    //Route::get('minhas_turmas/{id}','PainelController@minhas_turmas')->name('turma');
+    Route::get('minhas_turmas/{id}','PainelController@minhas_turmas')->name('turma');
 
     
 

@@ -42,7 +42,7 @@ class PainelController extends Controller
         $input = formataDadosTurmaDisciplina($professor_disciplina,$form);
         TurmaDisciplina::create($input);   
       }
-      return redirect()->route('cadastrar_turma');    
+      return redirect()->route('cadastrar_turma')->with('message', 'Turma Inserida!');   
     }
 
     public function mostra_turma($id)
@@ -75,7 +75,7 @@ class PainelController extends Controller
         DisciplinaProfessor::create($input);        
       }
       // retorna pra view anterior
-      return redirect()->route('cadastrar_professor');
+      return redirect()->route('cadastrar_professor')->with('message', 'Professor Inserido!');
     }
 
 
@@ -137,7 +137,7 @@ class PainelController extends Controller
 
     public function minhas_turmas()
     {
-
+      
       return view('painel/professor/turma');
         
     }

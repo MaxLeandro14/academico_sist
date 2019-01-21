@@ -1,16 +1,8 @@
-@extends('adminlte::page')
-
-@section('title', 'Painel Dashboard')
-
-@section('content_header')
-    <h1>Informações da Turma</h1>
-@stop
-
-@section('content')
+@include('painel.administrativo.visualisar.layouts.header')
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Turma - {{ $turma_info[0]->descricao }} - {{ $turma_info[0]->codigo_turma }}  </h3>
+    <h3 class="box-title">Turma - {{ $turma_info[0]->codigo_turma }}  </h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
@@ -98,7 +90,7 @@
                 <h3 class="box-title">Professores da Turma</h3>
               </div>  
               <div>
-                <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
+                <table id="tabela" class="table tabela_modal" pageLength='5' aaSorting='0 asc'>
                 <thead>
                   <tr>
                     <th>Código</th>
@@ -127,8 +119,9 @@
     <!-- /.box-body -->
 
     <div class="box-footer">
-      <a type="button" class="btn btn-default" href="{{ route('cadastrar_turma') }}">Voltar</a>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
     </div>
   </form>
 </div>
-@stop
+
+@include('painel.administrativo.visualisar.layouts.footer')

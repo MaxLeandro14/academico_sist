@@ -25,17 +25,19 @@
             <th>Turno</th>
             <th>Ano Letivo</th>
             <th>Disciplina</th>
+            <th>Bimestre</th>
           </tr>
         </thead>
         @foreach($minhas_turmas as $minha_turma)
           <tr>
-            <td>{{ $minha_turma->codigo_turma }}</td>
+            <td><a href=" {{ route('turma',$minha_turma->id) }} ">{{ $minha_turma->codigo_turma }}</a></td>
             <td>{{ $minha_turma->descricao }}</td>
             <td>{{ $minha_turma->nivel }}</td>
             <td>{{ $minha_turma->ano }}</td>
             <td>{{ $minha_turma->turno }}</td>
             <td>{{ $minha_turma->ano_letivo }}</td>
             <td>{{ $minha_turma->nome_disciplina }}</td>
+            <td>1B 2B 3B 4B</td>
           </tr>
         @endforeach
 

@@ -201,7 +201,6 @@
 
     <div class="box-footer">
       <button type="submit" class="btn btn-primary">Salvar</button>
-      <a type="button" class="btn btn-default">Voltar</a>
     </div>
   </form>
 </div>
