@@ -30,7 +30,7 @@
         </thead>
         @foreach($minhas_turmas as $minha_turma)
           <tr>
-            <td><a href=" {{ route('turma',$minha_turma->id) }} ">{{ $minha_turma->codigo_turma }}</a></td>
+            <td><a href=" {{ route('turma',$minha_turma->codigo_turma) }} ">{{ $minha_turma->codigo_turma }}</a></td>
             <td>{{ $minha_turma->descricao }}</td>
             <td>{{ $minha_turma->nivel }}</td>
             <td>{{ $minha_turma->ano }}</td>

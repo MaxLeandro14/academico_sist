@@ -29,14 +29,14 @@ function getTodasTurmas()
 
 
 if (! function_exists('getTurmaWhereID')) {
-function getTurmaWhereID($id_turma)
+function getTurmaWhereID($codigo_turma)
 {
 	$turma_info = DB::table('turma_disciplinas')
 	->join('turmas', 'turma_disciplinas.id_turma', '=', 'turmas.id')
 	->join('disciplina_professors', 'turma_disciplinas.id_disciplina_professor', '=', 'disciplina_professors.id')
 	->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
 	->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
-	->select('turmas.*','professors.nome_professor','professors.codigo_professor','disciplinas.nome_disciplina')->where('turmas.id', '=', $id_turma)
+	->select('turmas.*','professors.nome_professor','professors.codigo_professor','disciplinas.nome_disciplina')->where('turmas.codigo_turma', '=', $codigo_turma)
 	->get();
 
   	return $turma_info;
@@ -46,12 +46,12 @@ function getTurmaWhereID($id_turma)
 
 
 if (! function_exists('getAlunoWhereID')) {
-function getAlunoWhereID($id_turma)
+function getAlunoWhereID($codigo_turma)
 {
 	$alunos_turma = DB::table('turma_alunos')
       ->join('turmas', 'turma_alunos.id_turma', '=', 'turmas.id')
       ->join('alunos', 'turma_alunos.id_aluno', '=', 'alunos.id')
-      ->select('turma_alunos.*','alunos.nome_aluno','alunos.cpf','alunos.situacao_procedencia')->where('turmas.id', '=', $id_turma)
+      ->select('turma_alunos.*','alunos.nome_aluno','alunos.cpf','alunos.situacao_procedencia')->where('turmas.codigo_turma', '=', $codigo_turma)
       ->get();
 
   	return $alunos_turma;

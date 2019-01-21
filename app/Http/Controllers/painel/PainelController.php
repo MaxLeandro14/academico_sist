@@ -45,9 +45,9 @@ class PainelController extends Controller
       return redirect()->route('cadastrar_turma')->with('message', 'Turma Inserida!');   
     }
 
-    public function mostra_turma($id)
+    public function mostra_turma($codigo_turma)
     {
-      $turma_info = getTurmaWhereID($id);
+      $turma_info = getTurmaWhereID($codigo_turma);
       return view('painel/administrativo/visualisar/turma', compact('turma_info'));
     }    
 
@@ -87,11 +87,11 @@ class PainelController extends Controller
       return view('painel/administrativo/matricular/index', compact('turmas'));
     }
 
-    public function matricular_aluno(Request $req, $id)
+    public function matricular_aluno(Request $req, $codigo_turma)
     {
-      $turma_info = getTurmaWhereID($id);
+      $turma_info = getTurmaWhereID($codigo_turma);
       $todos_alunos = Aluno::all();
-      $alunos_turma = getAlunoWhereID($id);
+      $alunos_turma = getAlunoWhereID($codigo_turma);
       $dados = $req->all();
 
       if(!$dados)

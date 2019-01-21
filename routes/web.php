@@ -6,7 +6,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     //Turma
     Route::get('cadastrar_turma', 'PainelController@index_cadastrar_turma')->name('cadastrar_turma');
     Route::post('cadastrar_turma', 'PainelController@cadastrar_turma')->name('cadastra_turma');
-    Route::get('cadastrar_turma/{id}','PainelController@mostra_turma')->name('mostra_turma');
+    Route::get('cadastrar_turma/{codigo_turma}','PainelController@mostra_turma')->name('mostra_turma');
 
     //Professor
     Route::get('cadastrar_professor','PainelController@index_cadastrar_professor')->name('cadastrar_professor');
@@ -14,8 +14,8 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
 
     //Matricula
     Route::get('matricular_aluno','PainelController@index_matricular_aluno')->name('matricular_aluno');
-    Route::get('matricular_aluno/{id}', 'PainelController@matricular_aluno')->name('matricula_aluno');
-    Route::post('matricular_aluno/{id}', 'PainelController@matricular_aluno')->name('matricula_aluno');
+    Route::get('matricular_aluno/{codigo_turma}', 'PainelController@matricular_aluno')->name('matricula_aluno');
+    Route::post('matricular_aluno/{codigo_turma}', 'PainelController@matricular_aluno')->name('matricula_aluno');
 
     //Aluno
     Route::get('cadastrar_aluno','PainelController@index_cadastrar_aluno')->name('cadastrar_aluno');
@@ -23,7 +23,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
 
     //Minhas Turmas
     Route::get('minhas_turmas','PainelController@index_minhas_turmas')->name('minhas_turmas');
-    Route::get('minhas_turmas/{id}','PainelController@minhas_turmas')->name('turma');
+    Route::get('minhas_turmas/{codigo_turma}','PainelController@minhas_turmas')->name('turma');
 
     
 
