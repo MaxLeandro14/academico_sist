@@ -101,6 +101,12 @@
                 placeholder: "Selecione a Situação",
                 
             });
+
+            $('.select2_aluno').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Adicione Alunos",
+                
+            });
         });
     </script>
 @endif

@@ -159,9 +159,9 @@ return [
         ],
 
         [
-            'text' => 'Relacionar',
-            'icon'    => 'link',
-            'url'  => 'relacionar',
+            'text' => 'Matricular Aluno',
+            'icon'    => 'plus',
+            'url'  => 'matricular_aluno',
         ],
 
         [

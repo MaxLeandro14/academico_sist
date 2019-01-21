@@ -120,7 +120,7 @@
       <tr>
         <th>id</th>
         <th>Descrição</th>
-        <th>Série</th>
+        <th>Nível</th>
         <th>Ano</th>
         <th>Turno</th>
         <th>Ano Letivo</th>
@@ -131,7 +131,7 @@
       @foreach($turmas as $turma)
       <tr>
         <td>{{ $turma->id }}</td>
-        <td><a href="{{ route('mostra_turma',$turma->id) }}">{{ $turma->descricao }}</a></td>
+        <td><a title="Mais Detalhes" href="{{ route('mostra_turma',$turma->id) }}">{{ $turma->descricao }}</a></td>
         <td>{{ $turma->serie }}</td>
         <td>{{ $turma->ano }}</td>
         <td>{{ $turma->turno }}</td>

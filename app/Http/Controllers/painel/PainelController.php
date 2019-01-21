@@ -10,6 +10,7 @@ use App\Professor;
 use App\DisciplinaProfessor;
 use App\Turma;
 use App\TurmaDisciplina;
+use App\Aluno;
 
 
 class PainelController extends Controller
@@ -87,7 +88,6 @@ class PainelController extends Controller
     public function index_cadastrar_professor()
     {
       $disciplinas = Disciplina::all();
-
       $disciplinas_professores = DB::table('disciplina_professors')
       ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
       ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
@@ -125,6 +125,52 @@ class PainelController extends Controller
       }
       // retorna pra view anterior
       return redirect()->route('cadastrar_professor');
+    }
+
+    //RELACIONAR
+    public function index_matricular_aluno()
+    {
+
+      $turmas = DB::table('turmas')
+      ->select('id','descricao', 'serie','ano','turno','ano_letivo')
+      ->get();
+
+      return view('painel/administrativo/matricular/index', compact('turmas'));
+    }
+
+    public function matricular(Request $req, $id)
+    {
+
+      $turma_info = DB::table('turma_disciplinas')
+      ->join('turmas', 'turma_disciplinas.id_turma', '=', 'turmas.id')
+      ->join('disciplina_professors', 'turma_disciplinas.id_disciplina_professor', '=', 'disciplina_professors.id')
+      ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
+      ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
+      ->select('turmas.*','professors.nome_professor','professors.codigo_professor','disciplinas.nome_disciplina')->where('turmas.id', '=', $id)
+      ->get();
+      
+      $todos_alunos = Aluno::all();
+      
+      $alunos_turma = DB::table('turma_alunos')
+      ->join('turmas', 'turma_alunos.id_turma', '=', 'turmas.id')
+      ->join('alunos', 'turma_alunos.id_aluno', '=', 'alunos.id')
+      ->select('turma_alunos.*','alunos.nome_aluno','alunos.cpf','alunos.situacao_procedencia')->where('turmas.id', '=', $id)
+      ->get();
+
+      $dados = $req->all();
+
+      if(!$dados)
+      return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma']));
+
+      $id_alunos = $req->input('id_alunos');
+      foreach ($id_alunos as $id_aluno) {
+        $dados['id_aluno']  = $id_aluno;
+        //var_dump($dados); 
+        //TurmaAluno::create($dados);
+      }
+      
+      
+      
     }
 
 
