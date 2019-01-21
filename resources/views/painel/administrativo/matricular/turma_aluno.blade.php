@@ -8,9 +8,9 @@
 
 @section('content')
 
-<div class="box box-success">
+<div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Turma - {{ $turma_info[0]->descricao }} </h3>
+    <h3 class="box-title">Turma - {{ $turma_info[0]->descricao }} - {{ $turma_info[0]->codigo_turma }}  </h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
@@ -45,7 +45,7 @@
           <div class="form-group">
             <label>Nível</label>
             <select class="form-control select2_nivel" required name="">
-              <option>{{ $turma_info[0]->serie }}</option>
+              <option>{{ $turma_info[0]->nivel }}</option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
               <option>Médio</option>

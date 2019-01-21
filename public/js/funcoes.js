@@ -1,7 +1,7 @@
 
 function ano_serie()
 {
-  var nivel = document.getElementById('serie');
+  var nivel = document.getElementById('nivel');
   var ano = document.getElementById('ano');
   
   if(nivel.value == 'Fundamental 1'){

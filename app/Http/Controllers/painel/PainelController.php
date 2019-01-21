@@ -32,8 +32,9 @@ class PainelController extends Controller
 
     public  function cadastrar_turma(Request $req)
     {
+      $codigo_turma = geraCodigoTurma();
       $professor_disciplina = $req->input('professores');
-      $input = formataDadosTurma($professor_disciplina,$req);
+      $input = formataDadosTurma($professor_disciplina,$req,$codigo_turma);
       //Insere Turma
       $form = Turma::create($input);
       //Insere TurmaDisciplina
@@ -82,9 +83,7 @@ class PainelController extends Controller
     //MATRICULA ALUNO EM TURMA
     public function index_matricular_aluno()
     {
-      $turmas = DB::table('turmas')
-      ->select('id','descricao', 'serie','ano','turno','ano_letivo')
-      ->get();
+      $turmas = getTodasTurmas();
       return view('painel/administrativo/matricular/index', compact('turmas'));
     }
 
@@ -122,6 +121,25 @@ class PainelController extends Controller
       $form = Aluno::create($dados);
       $dados['id_aluno'] = $form->id;
       Parcela::create($dados);
+    }
+
+
+
+    public function index_minhas_turmas()
+    {
+      $codigo_professor = '9EFA';
+      $minhas_turmas = getTurmaDisciplinaWhereID($codigo_professor);
+      return view('painel/professor/index',compact('minhas_turmas'));
+        
+    }
+
+
+
+    public function minhas_turmas()
+    {
+
+      return view('painel/professor/turma');
+        
     }
 
 

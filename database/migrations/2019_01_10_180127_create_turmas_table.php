@@ -16,9 +16,10 @@ class CreateTurmasTable extends Migration
         Schema::create('turmas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descricao');
+            $table->string('codigo_turma');
             $table->date('data_inicial');
             $table->date('data_final');
-            $table->string('serie');
+            $table->string('nivel');
             $table->string('ano');
             $table->string('turno');
             $table->string('ano_letivo');

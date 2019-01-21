@@ -10,7 +10,7 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Turma - {{ $turma_info[0]->descricao }} </h3>
+    <h3 class="box-title">Turma - {{ $turma_info[0]->descricao }} - {{ $turma_info[0]->codigo_turma }}  </h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
@@ -43,8 +43,8 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select class="form-control select2_nivel" required name="serie">
-              <option>{{ $turma_info[0]->serie }}</option>
+            <select class="form-control select2_nivel" required name="nivel">
+              <option>{{ $turma_info[0]->nivel }}</option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
               <option>Médio</option>
@@ -83,10 +83,10 @@
         </div>
 
         <div class="col-md-5">
-          <label for="">Descrição</label>
-          <div class="input-group">
-            <textarea rows="5" cols="180" class="form-control" required name="descricao">{{ $turma_info[0]->descricao }}</textarea>
-          </div>    
+          <div class="form-group">
+            <label >Nome</label>
+            <input class="form-control" placeholder="Nome da Turma" name="descricao" value="{{ $turma_info[0]->descricao }}">
+          </div>
         </div>
       </div>
 

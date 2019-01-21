@@ -29,9 +29,9 @@
     <tbody>
       @foreach($turmas as $turma)
       <tr>
-        <td>{{ $turma->id }}</td>
+        <td>{{ $turma->codigo_turma }}</td>
         <td><a href="{{ route('matricula_aluno',$turma->id) }}">{{ $turma->descricao }}</a></td>
-        <td>{{ $turma->serie }}</td>
+        <td>{{ $turma->nivel }}</td>
         <td>{{ $turma->ano }}</td>
         <td>{{ $turma->turno }}</td>
         <td>{{ $turma->ano_letivo }}</td>

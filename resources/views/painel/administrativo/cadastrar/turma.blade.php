@@ -43,7 +43,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select class="form-control select2_nivel" required name="serie" id="serie" onselect="ano_serie();" onchange="ano_serie();">
+            <select class="form-control select2_nivel" required name="nivel" id="nivel" onselect="ano_serie();" onchange="ano_serie();">
               <option></option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
@@ -83,10 +83,10 @@
         </div>
 
         <div class="col-md-5">
-          <label for="">Descrição</label>
-          <div class="input-group">
-            <textarea rows="5" cols="180" class="form-control" placeholder="" name="descricao"></textarea>
-          </div>    
+          <div class="form-group">
+            <label >Nome</label>
+            <input class="form-control" placeholder="Nome da Turma" name="descricao">
+          </div>
         </div>
       </div>
 
@@ -118,8 +118,8 @@
     <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
     <thead>
       <tr>
-        <th>id</th>
-        <th>Descrição</th>
+        <th>Código</th>
+        <th>Nome</th>
         <th>Nível</th>
         <th>Ano</th>
         <th>Turno</th>
@@ -130,9 +130,9 @@
     <tbody>
       @foreach($turmas as $turma)
       <tr>
-        <td>{{ $turma->id }}</td>
+        <td>{{ $turma->codigo_turma }}</td>
         <td><a title="Mais Detalhes" href="{{ route('mostra_turma',$turma->id) }}">{{ $turma->descricao }}</a></td>
-        <td>{{ $turma->serie }}</td>
+        <td>{{ $turma->nivel }}</td>
         <td>{{ $turma->ano }}</td>
         <td>{{ $turma->turno }}</td>
         <td>{{ $turma->ano_letivo }}</td>
