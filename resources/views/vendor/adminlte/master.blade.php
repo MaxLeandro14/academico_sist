@@ -86,19 +86,19 @@
 
             $('.select2_responsavel').select2({
                 //maximumSelectionLength: 2
-                placeholder: "Selecione o Responsável",
+                placeholder: "Selecione um Responsável",
                 
             });
 
             $('.select2_sexo').select2({
                 //maximumSelectionLength: 2
-                placeholder: "Selecione o Sexo",
+                placeholder: "Selecione um Sexo",
                 
             });
 
             $('.select2_situacao').select2({
                 //maximumSelectionLength: 2
-                placeholder: "Selecione a Situação",
+                placeholder: "Selecione uma Situação",
                 
             });
 

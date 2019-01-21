@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div class="box box-warning">
+<div class="box box-primary">
   <div class="box-header with-border">
     <h3 class="box-title">Turma - {{ $turma_info[0]->descricao }} </h3>
   </div>
