@@ -1,35 +1,31 @@
 <?php
 $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
-
+    //Home
     Route::get('/', 'PainelController@index')->name('painel.home');
     
-    //Cadastrar Turma
-    Route::get('cadastrar_turma', ['as'=> 'cadastrar_turma', 'uses'=>'PainelController@index_cadastrar_turma']);
-    Route::post('cadastra_turma', ['as'=> 'cadastra_turma', 'uses'=>'PainelController@cadastrar_turma']);
+    //Turma
+    Route::get('cadastrar_turma', 'PainelController@index_cadastrar_turma')->name('cadastrar_turma');
+    Route::post('cadastrar_turma', 'PainelController@cadastrar_turma')->name('cadastra_turma');
+    Route::get('cadastrar_turma/{id}','PainelController@mostra_turma')->name('mostra_turma');
 
-    //Cadastrar Professor
-    Route::get('cadastrar_professor', ['as'=> 'cadastrar_professor', 'uses'=>'PainelController@index_cadastrar_professor']);
-    Route::post('cadastra_professor', ['as'=> 'cadastra_professor', 'uses'=>'PainelController@cadastrar_professor']);
+    //Professor
+    Route::get('cadastrar_professor','PainelController@index_cadastrar_professor')->name('cadastrar_professor');
+    Route::post('cadastrar_professor','PainelController@cadastrar_professor')->name('cadastra_professor');
 
+    //Matricula
+    Route::get('matricular_aluno','PainelController@index_matricular_aluno')->name('matricular_aluno');
+    Route::get('matricular_aluno/{id}', 'PainelController@matricular_aluno')->name('matricula_aluno');
+    Route::post('matricular_aluno/{id}', 'PainelController@matricular_aluno')->name('matricula_aluno');
 
-    Route::get('/cadastrar_aluno', function () {
-        return view('painel/administrativo/cadastrar/aluno');
-    })->name('cadastrar_aluno');
+    //Aluno
+    Route::get('cadastrar_aluno','PainelController@index_cadastrar_aluno')->name('cadastrar_aluno');
+    Route::post('cadastrar_aluno','PainelController@cadastrar_aluno')->name('cadastra_aluno');
+
+    //Minhas Turmas
+    Route::get('minhas_turmas','PainelController@index_minhas_turmas')->name('minhas_turmas');
+    //Route::get('minhas_turmas/{id}','PainelController@minhas_turmas')->name('turma');
 
     
-    
-    Route::get('/relacionar', function () {
-        return view('painel/administrativo/relacionar/index');
-    })->name('relacionar');
-
-    Route::get('/minhas_turmas', function () {
-        return view('painel/professor/index');
-    })->name('minhas_turmas');
-
-    Route::get('/turma', function () {
-        return view('painel/professor/turma');
-    })->name('turma');
-
 
 
 });

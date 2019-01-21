@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Disciplina;
 use App\Professor;
 use App\DisciplinaProfessor;
+use App\Turma;
+use App\TurmaDisciplina;
+use App\Aluno;
 
 
 class PainelController extends Controller
@@ -17,70 +20,128 @@ class PainelController extends Controller
       return view('painel.home.index');
     }
 
-    //Cadastro de Turma
+
+
+    //TURMA
     public function index_cadastrar_turma()
     {
-
-      $disciplinas_professores = DB::table('disciplina_professors')
-      ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
-      ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
-      ->select('disciplina_professors.*','disciplinas.nome_disciplina', 'professors.nome_professor','professors.codigo_professor')
-      ->get();
-
-      return view('painel/administrativo/cadastrar/turma', compact('disciplinas_professores'));
+      $disciplinas_professores = getDisciplinaProfessor();
+      $turmas = getTodasTurmas();
+      return view('painel/administrativo/cadastrar/turma', compact(['disciplinas_professores','turmas']));
     }
 
     public  function cadastrar_turma(Request $req)
     {
-      $dados = $req->all();
-      dd($dados);
+      $codigo_turma = geraCodigoTurma();
+      $professor_disciplina = $req->input('professores');
+      $input = formataDadosTurma($professor_disciplina,$req,$codigo_turma);
+      //Insere Turma
+      $form = Turma::create($input);
+      //Insere TurmaDisciplina
+      foreach ($professor_disciplina as $professor_disciplina) { 
+        $input = formataDadosTurmaDisciplina($professor_disciplina,$form);
+        TurmaDisciplina::create($input);   
+      }
+      return redirect()->route('cadastrar_turma');    
+    }
+
+    public function mostra_turma($id)
+    {
+      $turma_info = getTurmaWhereID($id);
+      return view('painel/administrativo/visualisar/turma', compact('turma_info'));
     }    
 
-    //Cadastro de Professor
+
+
+    //PROFESSOR
     public function index_cadastrar_professor()
     {
       $disciplinas = Disciplina::all();
-
-      $disciplinas_professores = DB::table('disciplina_professors')
-      ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
-      ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
-      ->select('disciplina_professors.*','disciplinas.nome_disciplina', 'professors.nome_professor','professors.codigo_professor')
-      ->get();
-      //dd($disciplinas_professores);
+      $disciplinas_professores = getDisciplinaProfessor();  
       return view('painel/administrativo/cadastrar/professor', compact(['disciplinas','disciplinas_professores']));
-
     }
 
     public function cadastrar_professor(Request $req)
     {
-
       //Gera codigo para professor
-      $codigo_professor = strtoupper(bin2hex(random_bytes(2)));
-      while (DB::table('professors')->where('codigo_professor', '=', $codigo_professor)->count() > 0) {
-        $codigo_professor = strtoupper(bin2hex(random_bytes(2)));
-      }
-      
+      $codigo_professor = geraCodigoProfessor();
       //Insere professor
       $id_disciplina = $req->input('id_disciplina');
-      $input = $req->except('id_disciplina');
-      $input['id_disciplina'] = $id_disciplina[0];
-      $input['codigo_professor'] = $codigo_professor;
+      $input = formataDadosProfessor($req,$id_disciplina,$codigo_professor);
       $form = Professor::create($input);
-      
       //Relaciona professor e disciplina(s)
       foreach ($id_disciplina as $disciplina) {
-        
-        $input = $req->except('id_disciplina');
-        $input['id_disciplina'] = $disciplina;
-        $input['id_professor'] = $form->id;
-        DisciplinaProfessor::create($input);
-        
+        $input = formataDadosDisciplinaProfessor($req,$disciplina,$form);
+        DisciplinaProfessor::create($input);        
       }
       // retorna pra view anterior
       return redirect()->route('cadastrar_professor');
     }
 
-    
+
+
+    //MATRICULA ALUNO EM TURMA
+    public function index_matricular_aluno()
+    {
+      $turmas = getTodasTurmas();
+      return view('painel/administrativo/matricular/index', compact('turmas'));
+    }
+
+    public function matricular_aluno(Request $req, $id)
+    {
+      $turma_info = getTurmaWhereID($id);
+      $todos_alunos = Aluno::all();
+      $alunos_turma = getAlunoWhereID($id);
+      $dados = $req->all();
+
+      if(!$dados)
+      return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma']));
+
+      $id_alunos = $req->input('id_alunos');
+      foreach ($id_alunos as $id_aluno) {
+        $dados['id_aluno']  = $id_aluno;
+        print_r($dados); 
+        //TurmaAluno::create($dados);
+      }
+
+    }
+
+
+
+    //CADASTRA ALUNO
+    public function index_cadastrar_aluno()
+    {
+      return view('painel/administrativo/cadastrar/aluno');
+    }
+
+    public function cadastrar_aluno(Request $req)
+    {
+      $dados = $req->all();
+      //dd($dados);
+      $form = Aluno::create($dados);
+      $dados['id_aluno'] = $form->id;
+      Parcela::create($dados);
+    }
+
+
+
+    public function index_minhas_turmas()
+    {
+      $codigo_professor = '9EFA';
+      $minhas_turmas = getTurmaDisciplinaWhereID($codigo_professor);
+      return view('painel/professor/index',compact('minhas_turmas'));
+        
+    }
+
+
+
+    public function minhas_turmas()
+    {
+
+      return view('painel/professor/turma');
+        
+    }
+
 
 
 }

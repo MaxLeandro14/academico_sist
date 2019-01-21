@@ -15,8 +15,18 @@ class CreateTurmaDisciplinasTable extends Migration
     {
         Schema::create('turma_disciplinas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_turma');
-            $table->string('id_disciplina');
+            
+            $table->unsignedInteger('id_turma');
+            $table->foreign('id_turma')->references('id')->on('turmas');
+
+            $table->unsignedInteger('id_disciplina_professor');
+            $table->foreign('id_disciplina_professor')->references('id')->on('disciplina_professors');
+
+            $table->unsignedInteger('id_disciplina');
+            $table->foreign('id_disciplina')->references('id')->on('disciplinas');
+
+            $table->unsignedInteger('id_professor');
+            $table->foreign('id_professor')->references('id')->on('professors');
             $table->timestamps();
         });
     }
