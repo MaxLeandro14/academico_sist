@@ -48,11 +48,11 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">CPF</label>
-          <input type="text" class="form-control" placeholder="CPF" name="cpf">
+          <input type="text" class="form-control cpf" placeholder="CPF" name="cpf">
         </div>
         <div class="col-md-4">
           <label for="">Fone</label>
-          <input type="text" class="form-control" placeholder="Contato" name="fone">
+          <input type="text" class="form-control telefone" placeholder="Contato" name="fone">
         </div>
         <div class="col-md-4">
           <div class="form-group">
@@ -94,7 +94,7 @@
         </div>
         <div class="col-md-4">
           <label for="">Telefone Profissão</label>
-          <input type="text" class="form-control" placeholder="Contato" name="telefone_profissao_pai">
+          <input type="text" class="form-control telefone" placeholder="Contato" name="telefone_profissao_pai">
         </div>
       </div>
 
@@ -110,7 +110,7 @@
         </div>
         <div class="col-md-4">
           <label for="">Telefone Profissão</label>
-          <input type="text" class="form-control" placeholder="Contato" name="telefone_profissao_mae">
+          <input type="text" class="form-control telefone" placeholder="Contato" name="telefone_profissao_mae">
         </div>
       </div>
       <div id="master">
@@ -131,7 +131,7 @@
           </div>
           <div class="col-md-2">
             <label for="">Telefone</label>
-            <input type="text" class="form-control" placeholder="Contato" name="outro_responsavel_telefone">
+            <input type="text" class="form-control telefone" placeholder="Contato" name="outro_responsavel_telefone">
           </div>
         </div>
       </div>
@@ -152,7 +152,7 @@
         </div>
         <div class="col-md-2">
           <label for="">CEP</label>
-          <input type="text" class="form-control" placeholder="CEP" name="cep">
+          <input type="text" class="form-control cep" placeholder="CEP" name="cep">
         </div>
       </div>
 
@@ -191,10 +191,31 @@
           <label for="">Valor da Matrícula</label>
           <div class="input-group">
                 <span class="input-group-addon">R$</span>
-                <input type="text" class="form-control" placeholder="00,00" name="valor_matricula">
+                <input type="text" class="form-control dinheiro" placeholder="00,00" name="valor_matricula">
               </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label for="">Valor da Mensalidade</label>
+          <div class="input-group">
+                <span class="input-group-addon">R$</span>
+                <input type="text" class="form-control dinheiro" placeholder="00,00" name="valor_parcela">
+              </div>
+        </div>
+        <div class="col-md-4">
+        <div class="form-group">
+          <label for="">Data do Pagamento</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="date" class="form-control" placeholder="Data de Pagamento" name="data_pagamento">
+          </div>
+        </div>
+      </div>
+      
+      </div>
+      
 
     </div>
     <!-- /.box-body -->

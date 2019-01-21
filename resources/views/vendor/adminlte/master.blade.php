@@ -48,6 +48,13 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<script type="text/javascript">
+    $('.cpf').mask('000.000.000-00', {reverse: true});
+    $('.telefone').mask('(00) 0 0000-0000', {reverse: false});
+    $('.cep').mask('00000-000', {reverse: false});
+    $('.dinheiro').mask('000.000.000.000.000,00', {reverse: true});
+</script>
 
 @if(config('adminlte.plugins.select2'))
     <!-- Select2 -->
