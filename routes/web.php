@@ -27,7 +27,10 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
 
     
 
-
 });
+
+Route::get('/register', function(){
+    return view('auth/register');
+})->name('home');
 
 Auth::routes();

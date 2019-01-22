@@ -17,6 +17,7 @@ class CreateProfessorsTable extends Migration
             $table->increments('id');
             $table->string('nome_professor');
             $table->string('codigo_professor');
+            $table->boolean('primeiro_login')->nullable();
             $table->timestamps();
         });
     }

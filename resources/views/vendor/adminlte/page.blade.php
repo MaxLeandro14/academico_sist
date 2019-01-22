@@ -57,16 +57,45 @@
                 <div class="navbar-custom-menu">
 
                     <ul class="nav navbar-nav">
-                        <li>
+                        <li class="nav-item">
                             @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
                                 <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
                                     <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
                                 </a>
                             @else
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                  <span class="hidden-xs">{{Auth::user()['name']}}</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                  <!-- User image -->
+                                  <li class="user-header" style="height: 30%">
+                                    <p>
+                                      {{Auth::user()['name']}}  <small>Professor</small>
+                                    </p>
+                                  </li>
+                                  <!-- Menu Body -->
+                                  <li class="user-body">
+                                    <div class="row">
+                                      <div class="col-xs-4 text-center">
+                                        <a href="#">Código <span class="badge badge-pill badge-info">{{Auth::user()['codigo']}}</span></a>
+                                      </div>
+                                      <div class="col-xs-4 text-center">
+                                        <a href="#">Turmas<span class="badge badge-pill badge-info">2</span></a>
+                                      </div>
+                                      <div class="col-xs-4 text-center">
+                                        <a href="#">Disciplinas <span class="badge badge-pill badge-info">3</span></a>
+                                      </div>
+                                    </div>
+                                    <!-- /.row -->
+                                  </li>
+                                </ul>
+                            </li>
+                        </li>
+                        <li class="nav-item">
                                 <a href="#" title="Sair" 
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                >
-                                    {{Auth::user()['name']}}  <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
+                                ><i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
                                 </a>
                                 <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">
                                     @if(config('adminlte.logout_method'))

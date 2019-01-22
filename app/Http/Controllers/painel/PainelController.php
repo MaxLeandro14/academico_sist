@@ -11,6 +11,7 @@ use App\DisciplinaProfessor;
 use App\Turma;
 use App\TurmaDisciplina;
 use App\Aluno;
+use App\User;
 
 
 class PainelController extends Controller
@@ -69,6 +70,11 @@ class PainelController extends Controller
       $id_disciplina = $req->input('id_disciplina');
       $input = formataDadosProfessor($req,$id_disciplina,$codigo_professor);
       $form = Professor::create($input);
+      /*Insere Usuario professor
+      $input['name'] = $input['nome_professor'];
+      $input['codigo'] = $codigo_professor;
+      User::create($input);
+      */
       //Relaciona professor e disciplina(s)
       foreach ($id_disciplina as $disciplina) {
         $input = formataDadosDisciplinaProfessor($req,$disciplina,$form);
@@ -127,7 +133,7 @@ class PainelController extends Controller
 
     public function index_minhas_turmas()
     {
-      $codigo_professor = '4A00';
+      $codigo_professor = auth()->user()->codigo;
       $minhas_turmas = getTurmaDisciplinaWhereID($codigo_professor);
       return view('painel/professor/index',compact('minhas_turmas'));
         
