@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() !== 'production') {
+            $this->app->singleton(\Faker\Generator::class, function () {
+                return \Faker\Factory::create(env('FAKER_LANGUAGE'));
+            });
+        }
     }
 }

@@ -161,12 +161,9 @@
         <div class="col-md-4">
           <label for="">Situação do Aluno</label>
           <select class="form-control select2_situacao" name="situacao_procedencia">
-            <option></option>
+            <option>Cursando</option>
             <option>Aprovado</option>
             <option>Reprovado</option>
-            <option>Pendência</option>
-            <option>Cursando</option>
-            <option>Transferido</option>
           </select>
         </div>
         <div class="col-md-3">
@@ -174,16 +171,7 @@
             <label for="">Data de Matrícula</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" class="form-control" placeholder="Data de início" name="data_matricula">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="">Data de Cancelamento</label>
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" class="form-control" placeholder="Data de início" name="data_cancelamento">
+              <input type="date" value="{{ date('d/m/Y') }}"  class="form-control" placeholder="Data de início" name="data_matricula">
             </div>
           </div>
         </div>
@@ -191,31 +179,17 @@
           <label for="">Valor da Matrícula</label>
           <div class="input-group">
                 <span class="input-group-addon">R$</span>
-                <input type="text" class="form-control dinheiro" placeholder="00,00" name="valor_matricula">
+                <input type="text" class="form-control" placeholder="00,00" name="valor_matricula">
               </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <label for="">Valor da Mensalidade</label>
           <div class="input-group">
                 <span class="input-group-addon">R$</span>
                 <input type="text" class="form-control dinheiro" placeholder="00,00" name="valor_parcela">
               </div>
         </div>
-        <div class="col-md-4">
-        <div class="form-group">
-          <label for="">Data do Pagamento</label>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-            <input type="date" class="form-control" placeholder="Data de Pagamento" name="data_pagamento">
-          </div>
-        </div>
       </div>
-      
-      </div>
-      
 
     </div>
     <!-- /.box-body -->

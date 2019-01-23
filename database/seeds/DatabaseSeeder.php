@@ -12,7 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          $this->call(UsersTableSeeder::class);
-         $this->call(DisciplinaTableSeeder::class);         
+         $this->call(DisciplinaTableSeeder::class);
+         factory(\App\Aluno::class, 50)->create();         
          //$this->call(ProfessorTableSeeder::class);
          //$this->call(DisciplinaNivelTableSeeder::class);
          
