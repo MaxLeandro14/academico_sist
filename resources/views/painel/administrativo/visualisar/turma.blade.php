@@ -75,10 +75,10 @@
         </div>
 
         <div class="col-md-5">
-          <div class="form-group">
-            <label >Nome</label>
-            <input class="form-control" placeholder="Nome da Turma" name="descricao" value="{{ $turma_info[0]->descricao }}">
-          </div>
+          <label for="">Descrição</label>
+          <div class="input-group">
+            <textarea required rows="5" cols="180" class="form-control" placeholder="Descrição da Turma"  name="descricao">{{ $turma_info[0]->descricao }}</textarea>
+          </div>    
         </div>
       </div>
 

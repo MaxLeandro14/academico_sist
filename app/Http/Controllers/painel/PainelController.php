@@ -12,6 +12,7 @@ use App\Turma;
 use App\TurmaDisciplina;
 use App\Aluno;
 use App\User;
+use App\Parcela;
 
 
 class PainelController extends Controller
@@ -126,7 +127,13 @@ class PainelController extends Controller
       //dd($dados);
       $form = Aluno::create($dados);
       $dados['id_aluno'] = $form->id;
-      Parcela::create($dados);
+      for ($mes=1; $mes <=12; $mes++) { 
+        $dados['mes_parcela'] = $mes;
+        Parcela::create($dados);
+      }
+      
+      return redirect()->route('cadastrar_aluno')->with('message', 'Professor Inserido!');
+      
     }
 
 

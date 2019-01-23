@@ -19,7 +19,7 @@
         <thead>
           <tr>
             <th>Código</th>
-            <th>Nome</th>
+            <th>Descrição</th>
             <th>Nível</th>
             <th>Ano</th>
             <th>Turno</th>

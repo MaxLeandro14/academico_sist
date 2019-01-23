@@ -70,9 +70,9 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
-            <label for="">Descrição</label>
-            <textarea class="form-control" rows="3" ></textarea>
+          <label for="">Descrição</label>
+          <div class="input-group">
+            <textarea rows="5" cols="180" class="form-control" required name=""></textarea>
           </div>
         </div>
       </div>

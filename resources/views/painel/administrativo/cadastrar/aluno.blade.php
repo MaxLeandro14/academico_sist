@@ -21,13 +21,13 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Nome</label>
-            <input type="text" class="form-control" placeholder="Nome do aluno" name="nome_aluno">
+            <input required type="text" class="form-control" placeholder="Nome do aluno" name="nome_aluno">
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
             <label for="">Sexo</label>
-            <select class="form-control select2_sexo" name="sexo">
+            <select required class="form-control select2_sexo" name="sexo">
               <option></option>
               <option>M</option>
               <option>F</option>
@@ -39,7 +39,7 @@
             <label for="">Data Nascimento</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" class="form-control" placeholder="Data de início" name="data_nascimento">
+              <input required type="date" class="form-control" placeholder="Data de início" name="data_nascimento">
             </div>
           </div>
         </div>
@@ -48,16 +48,16 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">CPF</label>
-          <input type="text" class="form-control cpf" placeholder="CPF" name="cpf">
+          <input required type="text" class="form-control cpf" placeholder="CPF" name="cpf">
         </div>
         <div class="col-md-4">
           <label for="">Fone</label>
-          <input type="text" class="form-control telefone" placeholder="Contato" name="fone">
+          <input required type="text" class="form-control telefone" placeholder="Contato" name="fone">
         </div>
         <div class="col-md-4">
           <div class="form-group">
             <label for="">Responsável</label>
-            <select class="form-control select2_responsavel" name="pai_mae_responsavel" id="responsavel" onselect="responsavel_aluno()" onchange="responsavel_aluno()" >
+            <select required class="form-control select2_responsavel" name="pai_mae_responsavel" id="responsavel" onselect="responsavel_aluno()" onchange="responsavel_aluno()" >
               <option></option>
               <option>Pai</option>
               <option>Mãe</option>
@@ -70,15 +70,15 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">Bairro</label>
-          <input type="text" class="form-control" placeholder="Bairro" name="bairro">
+          <input required type="text" class="form-control" placeholder="Bairro" name="bairro">
         </div>
         <div class="col-md-4">
           <label for="">Endereço</label>
-          <input type="text" class="form-control" placeholder="Endereço" name="endereco">
+          <input required type="text" class="form-control" placeholder="Endereço" name="endereco">
         </div>
         <div class="col-md-4">
           <label for="">Cidade</label>
-          <input type="text" class="form-control" placeholder="Cidade" name="cidade">
+          <input required type="text" class="form-control" placeholder="Cidade" name="cidade">
         </div>
       </div>
 
@@ -86,15 +86,15 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">Nome</label>
-          <input type="text" class="form-control" placeholder="Nome do Pai" name="nome_pai">
+          <input required type="text" class="form-control" placeholder="Nome do Pai" name="nome_pai">
         </div>
         <div class="col-md-4">
           <label for="">Profissão</label>
-          <input type="text" class="form-control" placeholder="Profissão" name="profissao_pai">
+          <input required type="text" class="form-control" placeholder="Profissão" name="profissao_pai">
         </div>
         <div class="col-md-4">
           <label for="">Telefone Profissão</label>
-          <input type="text" class="form-control telefone" placeholder="Contato" name="telefone_profissao_pai">
+          <input required type="text" class="form-control telefone" placeholder="Contato" name="telefone_profissao_pai">
         </div>
       </div>
 
@@ -102,15 +102,15 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">Nome</label>
-          <input type="text" class="form-control" placeholder="Nome da Mãe" name="nome_mae">
+          <input required type="text" class="form-control" placeholder="Nome da Mãe" name="nome_mae">
         </div>
         <div class="col-md-4">
           <label for="">Profissão</label>
-          <input type="text" class="form-control" placeholder="Profissão" name="profissao_mae">
+          <input required type="text" class="form-control" placeholder="Profissão" name="profissao_mae">
         </div>
         <div class="col-md-4">
           <label for="">Telefone Profissão</label>
-          <input type="text" class="form-control telefone" placeholder="Contato" name="telefone_profissao_mae">
+          <input required type="text" class="form-control telefone" placeholder="Contato" name="telefone_profissao_mae">
         </div>
       </div>
       <div id="master">
@@ -119,19 +119,19 @@
         <div class="row">
           <div class="col-md-3">
             <label for="">Nome</label>
-            <input type="text" class="form-control" placeholder="Nome do Responsável" name="outro_responsavel_nome">
+            <input required type="text" class="form-control" placeholder="Nome do Responsável" name="outro_responsavel_nome">
           </div>
           <div class="col-md-2">
             <label for="">Grau de parentesco</label>
-            <input type="text" class="form-control" placeholder="Grau de Parentesco" name="outro_responsavel_parentesco">
+            <input required type="text" class="form-control" placeholder="Grau de Parentesco" name="outro_responsavel_parentesco">
           </div>
           <div class="col-md-5">
             <label for="">Endereço</label>
-            <input type="text" class="form-control" placeholder="Endereço" name="outro_responsavel_endereco">
+            <input required type="text" class="form-control" placeholder="Endereço" name="outro_responsavel_endereco">
           </div>
           <div class="col-md-2">
             <label for="">Telefone</label>
-            <input type="text" class="form-control telefone" placeholder="Contato" name="outro_responsavel_telefone">
+            <input required type="text" class="form-control telefone" placeholder="Contato" name="outro_responsavel_telefone">
           </div>
         </div>
       </div>
@@ -140,19 +140,19 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">Nome</label>
-          <input type="text" class="form-control" placeholder="Nome da Escola" name="colegio_procedencia">
+          <input required type="text" class="form-control" placeholder="Nome da Escola" name="colegio_procedencia">
         </div>
         <div class="col-md-4">
           <label for="">Cidade</label>
-          <input type="text" class="form-control" placeholder="Cidade" name="cidade_colegio_procedencia">
+          <input required type="text" class="form-control" placeholder="Cidade" name="cidade_colegio_procedencia">
         </div>
         <div class="col-md-2">
           <label for="">UF</label>
-          <input type="text" class="form-control" placeholder="UF" name="uf_colegio_procedencia">
+          <input required type="text" class="form-control" placeholder="UF" name="uf_colegio_procedencia">
         </div>
         <div class="col-md-2">
           <label for="">CEP</label>
-          <input type="text" class="form-control cep" placeholder="CEP" name="cep">
+          <input required type="text" class="form-control cep" placeholder="CEP" name="cep">
         </div>
       </div>
 
@@ -160,7 +160,7 @@
       <div class="row">
         <div class="col-md-4">
           <label for="">Situação do Aluno</label>
-          <select class="form-control select2_situacao" name="situacao_procedencia">
+          <select required class="form-control select2_situacao" name="situacao_procedencia">
             <option>Cursando</option>
             <option>Aprovado</option>
             <option>Reprovado</option>
@@ -171,7 +171,7 @@
             <label for="">Data de Matrícula</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" value="{{ date('d/m/Y') }}"  class="form-control" placeholder="Data de início" name="data_matricula">
+              <input required type="date" value="{{ date('d/m/Y') }}"  class="form-control" placeholder="Data de início" name="data_matricula">
             </div>
           </div>
         </div>
@@ -179,14 +179,14 @@
           <label for="">Valor da Matrícula</label>
           <div class="input-group">
                 <span class="input-group-addon">R$</span>
-                <input type="text" class="form-control" placeholder="00,00" name="valor_matricula">
+                <input required type="text" class="form-control" placeholder="00,00" name="valor_matricula">
               </div>
         </div>
         <div class="col-md-3">
           <label for="">Valor da Mensalidade</label>
           <div class="input-group">
                 <span class="input-group-addon">R$</span>
-                <input type="text" class="form-control dinheiro" placeholder="00,00" name="valor_parcela">
+                <input required type="text" class="form-control dinheiro" placeholder="00,00" name="valor_parcela">
               </div>
         </div>
       </div>

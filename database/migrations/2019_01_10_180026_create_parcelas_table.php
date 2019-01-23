@@ -17,8 +17,8 @@ class CreateParcelasTable extends Migration
             $table->increments('id');
             $table->string('valor_parcela');
             $table->string('mes_parcela');
-            $table->string('status');
-            $table->date('data_pagamento');
+            $table->string('status')->nullable();
+            $table->date('data_pagamento')->nullable();
             
             $table->unsignedInteger('id_aluno');
             $table->foreign('id_aluno')->references('id')->on('alunos');

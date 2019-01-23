@@ -28,7 +28,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Disciplina</label>
-            <select class="form-control select2_disciplina" multiple="multiple" name="id_disciplina[]" required="">
+            <select class="form-control select2_disciplina" multiple="multiple" name="id_disciplina[]" required>
               @foreach($disciplinas as $disciplina)
               <option value="{{ $disciplina->id }}">{{ $disciplina->nome_disciplina }}</option>
               @endforeach
@@ -51,7 +51,7 @@
     <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
     <thead>
       <tr>
-        <th>Código Professor</th>
+        <th>Código</th>
         <th>Nome</th>
         <th>Disciplina</th>
       </tr>

@@ -23,7 +23,7 @@
             <label for="">Data de Início</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" class="form-control" placeholder="Data de início" name="data_inicial">
+              <input required type="date" class="form-control" placeholder="Data de início" name="data_inicial">
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
             <label for="">Data Final</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" class="form-control" placeholder="Data de início" name="data_final">
+              <input required type="date" class="form-control" placeholder="Data de início" name="data_final">
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select class="form-control select2_nivel" required name="nivel" id="nivel" onselect="ano_serie();" onchange="ano_serie();">
+            <select required class="form-control select2_nivel" required name="nivel" id="nivel" onselect="ano_serie();" onchange="ano_serie();">
               <option></option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
@@ -55,7 +55,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Ano</label>
-            <select class="form-control select2_serie" name="ano" id="ano">
+            <select required class="form-control select2_serie" name="ano" id="ano">
               <option></option>
               <option id="id1">1° ano</option>
               <option id="id2">2° ano</option>
@@ -73,20 +73,17 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Turno</label>
-            <select class="form-control select2_turno" name="turno">
-              <option></option>
+            <select required class="form-control select2_turno" name="turno">
               <option>Matutino</option>
-              <option>Vespertino</option>
-              <option>Noturno</option>
             </select>
           </div>
         </div>
 
         <div class="col-md-5">
-          <div class="form-group">
-            <label >Nome</label>
-            <input class="form-control" placeholder="Nome da Turma" name="descricao">
-          </div>
+          <label for="">Descrição</label>
+          <div class="input-group">
+            <textarea required rows="5" cols="180" class="form-control" placeholder="Descrição da Turma"  name="descricao"></textarea>
+          </div>    
         </div>
       </div>
 
@@ -94,7 +91,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <label>Professores</label>
-            <select class="form-control select2_professores" multiple="multiple" name="professores[]">
+            <select required class="form-control select2_professores" multiple="multiple" name="professores[]">
               @foreach($disciplinas_professores as $disciplina_professor)
               <option value="{{ $disciplina_professor->id }},{{ $disciplina_professor->id_disciplina }},{{ $disciplina_professor->id_professor }}" >{{ $disciplina_professor->codigo_professor }} - {{ $disciplina_professor->nome_professor }} - {{ $disciplina_professor->nome_disciplina }}</option>
               @endforeach
@@ -119,7 +116,6 @@
     <thead>
       <tr>
         <th>Código</th>
-        <th>Nome</th>
         <th>Nível</th>
         <th>Ano</th>
         <th>Turno</th>
@@ -133,7 +129,6 @@
         <td>
           <a  class="" data-toggle="modal" data-target="#modal_template" title="Mais Detalhes" href="{{ route('mostra_turma',$turma->codigo_turma) }}">{{ $turma->codigo_turma }}</a>
         </td>
-        <td>{{ $turma->descricao }}</td>
         <td>{{ $turma->nivel }}</td>
         <td>{{ $turma->ano }}</td>
         <td>{{ $turma->turno }}</td>
