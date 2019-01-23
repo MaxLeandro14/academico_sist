@@ -54,6 +54,14 @@
     $('.telefone').mask('(00) 0 0000-0000', {reverse: false});
     $('.cep').mask('00000-000', {reverse: false});
     $('.dinheiro').mask('000.000.000.000.000,00', {reverse: true});
+    $('.identidade').mask("#.##0-0", {reverse: true});
+</script>
+<script type="text/javascript">
+    function upper(nome){
+    var text = document.getElementById(nome);
+        var upper = text.value.toUpperCase();
+        text.value = upper;
+    }
 </script>
 
 @if(config('adminlte.plugins.select2'))

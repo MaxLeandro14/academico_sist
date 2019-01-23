@@ -71,11 +71,7 @@ class PainelController extends Controller
       $id_disciplina = $req->input('id_disciplina');
       $input = formataDadosProfessor($req,$id_disciplina,$codigo_professor);
       $form = Professor::create($input);
-      /*Insere Usuario professor
-      $input['name'] = $input['nome_professor'];
-      $input['codigo'] = $codigo_professor;
-      User::create($input);
-      */
+      
       //Relaciona professor e disciplina(s)
       foreach ($id_disciplina as $disciplina) {
         $input = formataDadosDisciplinaProfessor($req,$disciplina,$form);
@@ -108,7 +104,7 @@ class PainelController extends Controller
       foreach ($id_alunos as $id_aluno) {
         $dados['id_aluno']  = $id_aluno;
         print_r($dados); 
-        //TurmaAluno::create($dados);
+        TurmaAluno::create($dados);
       }
 
     }
@@ -138,6 +134,7 @@ class PainelController extends Controller
 
 
 
+    //PROFESSOR
     public function index_minhas_turmas()
     {
       $codigo_professor = auth()->user()->codigo;
@@ -146,8 +143,6 @@ class PainelController extends Controller
         
     }
 
-
-
     public function minhas_turmas()
     {
       
@@ -155,6 +150,20 @@ class PainelController extends Controller
         
     }
 
+
+
+    //FINANCEIRO
+    public function index_financeiro_aluno()
+    {
+      $alunos = Aluno::all();
+      return view('painel/administrativo/financeiro/aluno',compact('alunos'));
+    }
+
+    public function index_financeiro_professor()
+    {
+      $professores = Professor::all();
+      return view('painel/administrativo/financeiro/professor',compact('professores'));
+    }
 
 
 }

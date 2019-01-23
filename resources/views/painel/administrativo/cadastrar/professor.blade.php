@@ -16,16 +16,10 @@
   <!-- form start -->
   <form action="{{ route('cadastra_professor') }}" method="POST">
     {{csrf_field()}}
-    <div class="box-body">
+    @include('painel.administrativo.visualisar.layouts.formulario')
+    <br>
       <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="">Nome do Professor</label>
-            <input type="text" class="form-control" placeholder="Nome do Professor" name="nome_professor" required>
-            <input type="hidden" name="id_professor">
-          </div>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="form-group">
             <label>Disciplina</label>
             <select class="form-control select2_disciplina" multiple="multiple" name="id_disciplina[]" required>

@@ -173,7 +173,20 @@ return [
         [
             'text' => 'Financeiro',
             'icon'    => 'balance-scale',
-            'url'  => '#',
+            'submenu' => [
+                [
+                    'text' => 'Aluno',
+                    'url'  => 'financeiro_aluno',
+                ],
+                [
+                    'text' => 'Professor',
+                    'url'  => 'financeiro_professor',
+                ],
+                [
+                    'text' => 'Funcionário',
+                    'url'  => '#',
+                ],
+            ],
         ],
 
         'PROFESSOR',
