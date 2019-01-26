@@ -1,4 +1,4 @@
-@include('painel.administrativo.visualisar.layouts.header')
+@include('painel.administrativo.templates.layouts.header')
 
 <div class="box box-primary">
   <div class="box-header with-border">
@@ -124,4 +124,4 @@
   </form>
 </div>
 
-@include('painel.administrativo.visualisar.layouts.footer')
+@include('painel.administrativo.templates.layouts.footer')

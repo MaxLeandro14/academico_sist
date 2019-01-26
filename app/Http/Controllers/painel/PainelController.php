@@ -50,7 +50,7 @@ class PainelController extends Controller
     public function mostra_turma($codigo_turma)
     {
       $turma_info = getTurmaWhereID($codigo_turma);
-      return view('painel/administrativo/visualisar/turma', compact('turma_info'));
+      return view('painel/administrativo/templates/turma', compact('turma_info'));
     }    
 
 
@@ -156,13 +156,51 @@ class PainelController extends Controller
     public function index_financeiro_aluno()
     {
       $alunos = Aluno::all();
-      return view('painel/administrativo/financeiro/aluno',compact('alunos'));
+      $mostra_footer_header = NULL;
+      return view('painel/administrativo/financeiro/aluno/index',compact(['alunos','mostra_footer_header']));
+    }
+
+    public function financeiro_aluno($id)
+    {
+      $aluno = Aluno::find($id);
+      $parcelas = DB::table('parcelas')->select('parcelas.*')->where('id_aluno','=',$id)->orderByRaw('mes_parcela ASC')->get();
+      return view('painel/administrativo/financeiro/aluno/aluno',compact(['aluno','parcelas']));
+    }
+
+    public function mostra_aluno($id_aluno)
+    {
+      $aluno = Aluno::find($id_aluno);
+      $mostra_footer_header = 'sim';
+      return view('painel.administrativo.templates.aluno', compact(['aluno','mostra_footer_header']));
     }
 
     public function index_financeiro_professor()
     {
       $professores = Professor::all();
-      return view('painel/administrativo/financeiro/professor',compact('professores'));
+      return view('painel/administrativo/financeiro/professor/index',compact('professores'));
+    }
+
+    public function cadastra_parelas(Request $req)
+    {
+
+      $dados = $req->all();
+
+      if(!$dados)
+      return view('painel/administrativo/matricular/teste_parcelas');
+
+      $alunos = Aluno::all();
+
+      foreach ($alunos as $aluno) {
+        
+        $dados['id_aluno'] = $aluno->id;
+        for ($mes=1; $mes <=12; $mes++) { 
+          $dados['mes_parcela'] = $mes;
+          $dados['valor_parcela'] = $aluno->valor_matricula;
+          Parcela::create($dados);
+        }
+        
+      }
+      return redirect()->route('financeiro_aluno');
     }
 
 

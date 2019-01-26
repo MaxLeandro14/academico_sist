@@ -16,7 +16,7 @@
   <!-- form start -->
   <form action="{{ route('cadastra_professor') }}" method="POST">
     {{csrf_field()}}
-    @include('painel.administrativo.visualisar.layouts.formulario')
+    @include('painel.administrativo.templates.layouts.formulario')
     <br>
       <div class="row">
         <div class="col-md-12">

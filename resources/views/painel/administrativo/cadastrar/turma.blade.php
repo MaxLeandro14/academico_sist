@@ -141,5 +141,5 @@
 <br>
 </div>
 
-@include('painel.administrativo.visualisar.layouts.modal')
+@include('painel.administrativo.templates.layouts.modal')
 @stop

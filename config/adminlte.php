@@ -15,7 +15,7 @@ return [
 
     'title' => '',
 
-    'title_prefix' => 'Colégio Exclusivo Global - ',
+    'title_prefix' => 'Colégio Exclusivo  - ',
 
     'title_postfix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Exclusivo</b>Global',
+    'logo' => '<b>Exclusivo</b>',
 
-    'logo_mini' => '<b>E</b>G',
+    'logo_mini' => '<b>E</b>',
 
     /*
     |--------------------------------------------------------------------------

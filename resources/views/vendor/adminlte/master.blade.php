@@ -164,7 +164,7 @@
             },
             "aaSorting": [[aaSorting, order]],
             "aoColumnDefs": [
-                {"sType": "num-html", "aTargets": [0]}
+                {"orderable": false}
      
             ]
         });
