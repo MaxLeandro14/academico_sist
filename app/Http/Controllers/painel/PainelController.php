@@ -152,7 +152,7 @@ class PainelController extends Controller
 
 
 
-    //FINANCEIRO
+    //FINANCEIRO - Aluno
     public function index_financeiro_aluno()
     {
       $alunos = Aluno::all();
@@ -174,6 +174,15 @@ class PainelController extends Controller
       return view('painel.administrativo.templates.aluno', compact(['aluno','mostra_footer_header']));
     }
 
+    public function financeiro_aluno_salva(Request $req, $id_parcela, $mes_parcela )
+    {
+
+      $debug = updateParcela($req,$id_parcela,$mes_parcela);
+      return redirect()->route('financeiro_aluno',$req->input('id_aluno'));
+      
+    }
+
+    //FINANCEIRO - Professor
     public function index_financeiro_professor()
     {
       $professores = Professor::all();

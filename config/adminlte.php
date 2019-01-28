@@ -15,7 +15,7 @@ return [
 
     'title' => '',
 
-    'title_prefix' => 'Colégio Exclusivo  - ',
+    'title_prefix' => 'Exclusivo  - ',
 
     'title_postfix' => '',
 

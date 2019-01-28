@@ -61,7 +61,8 @@
     var text = document.getElementById(nome);
         var upper = text.value.toUpperCase();
         text.value = upper;
-    }
+    };
+
 </script>
 
 @if(config('adminlte.plugins.select2'))
@@ -120,6 +121,12 @@
             $('.select2_aluno').select2({
                 //maximumSelectionLength: 2
                 placeholder: "Adicione Alunos",
+                
+            });
+
+            $('.select2_estado_civil').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Estado Civil",
                 
             });
         });

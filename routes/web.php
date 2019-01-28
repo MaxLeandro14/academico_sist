@@ -25,10 +25,13 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     Route::get('minhas_turmas','PainelController@index_minhas_turmas')->name('minhas_turmas');
     Route::get('minhas_turmas/{codigo_turma}','PainelController@minhas_turmas')->name('turma');
 
-    //Financeiro
+    //Financeiro - Aluno
     Route::get('financeiro_aluno','PainelController@index_financeiro_aluno')->name('index_financeiro_aluno');
     Route::get('financeiro_aluno/{id_aluno}','PainelController@financeiro_aluno')->name('financeiro_aluno');
     Route::get('financeiro_aluno/{id_aluno}/{nome_aluno}','PainelController@mostra_aluno')->name('mostra_aluno');
+    Route::post('financeiro_aluno_salva/{id_parcela}/{mes_parcela}','PainelController@financeiro_aluno_salva')->name('financeiro_aluno_salva');
+
+    //Financeiro - Professor
     Route::get('financeiro_professor','PainelController@index_financeiro_professor')->name('index_financeiro_professor');
     Route::get('financeiro_professor/{id_professor}','PainelController@financeiro_professor')->name('financeiro_professor');
 
