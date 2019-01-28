@@ -39,6 +39,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     Route::get('cadastra_parelas','PainelController@cadastra_parelas')->name('cadastrar_parelas');
     Route::post('cadastra_parelas','PainelController@cadastra_parelas')->name('cadastra_parelas');
 
+    //Administrativo - ACL
     Route::resource('usuarios', 'UsuarioController');
     
     Route::get('usuarios/papel/{id}', 'UsuarioController@papel')->name('usuarios.papel');
