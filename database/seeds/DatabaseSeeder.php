@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+         $this->call(PermissaoSeeder::class);
+         $this->call(PapelSeeder::class);
          $this->call(UsersTableSeeder::class);
          $this->call(DisciplinaTableSeeder::class);
          factory(\App\Aluno::class, 50)->create();         
