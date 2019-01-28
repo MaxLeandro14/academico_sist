@@ -35,6 +35,18 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     //Script de Teste // Adiciona Parcela
     Route::get('cadastra_parelas','PainelController@cadastra_parelas')->name('cadastrar_parelas');
     Route::post('cadastra_parelas','PainelController@cadastra_parelas')->name('cadastra_parelas');
+
+    Route::resource('usuarios', 'UsuarioController');
+    
+    Route::get('usuarios/papel/{id}', 'UsuarioController@papel')->name('usuarios.papel');
+    Route::post('usuarios/papel/{papel}', 'UsuarioController@papelStore')->name('usuarios.papel.store');
+    Route::delete('usuarios/papel/{usuario}/{papel}', 'UsuarioController@papelDestroy')->name('usuarios.papel.destroy');
+
+    Route::resource('papeis', 'PapelController');
+
+    Route::get('papeis/permissao/{id}', 'PapelController@permissoes')->name('papeis.permissao');
+    Route::post('papeis/permissao/{permissao}', 'PapelController@permissoesStore')->name('papeis.permissao.store');
+    Route::delete('papeis/permissao/{papel}/{permissao}', 'PapelController@permissoesDestroy')->name('papeis.permisoes.destroy');
     
 
 });

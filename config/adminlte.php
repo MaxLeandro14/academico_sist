@@ -201,6 +201,21 @@ return [
             'icon'    => 'users',
             'url'  => 'minhas_turmas',
         ],
+          'ADMINISTRADOR',
+        [
+            'text' => 'Acesso ao sistema',
+            'icon'    => 'home',
+            'submenu' => [
+               [
+                    'text' => 'Listar Usuários',
+                    'url'  => 'usuarios',
+               ],
+               [
+                    'text' => 'Criar Papel',
+                    'url'  => 'papeis',
+               ],
+            ], 
+        ],
     ],
 
     /*
