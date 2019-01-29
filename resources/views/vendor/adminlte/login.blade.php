@@ -11,7 +11,9 @@
 @section('body')
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+            <!--<a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>-->
+            <!--<a href="{{ url(config('adminlte.dashboard_url', 'home')) }}"><img class="img-responsive" src="{{asset('img/logo_escola.jpeg')}}"></a>-->
+            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}"><b style="color:#019000;">Exclusivo<span style="color: #010179;">Global</span></b></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">

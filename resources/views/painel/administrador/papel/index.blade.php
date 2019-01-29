@@ -27,12 +27,14 @@
 
         <tbody>
            @foreach($usuarios as $usuario)
-            <tr>
-                <td>as2344</td>
-                <td>{{$usuario->name}}</td>
-                <td>{{$usuario->email}}</td>
-                <td><a href="{{route('usuarios.papel', $usuario->id)}}"><i class="fas fa-sitemap"></i></a></td>
-            </tr>
+              @if($usuario->codigo != 'MASTER')
+                <tr>
+                    <td>{{$usuario->codigo}}</td>
+                    <td>{{$usuario->name}}</td>
+                    <td>{{$usuario->email}}</td>
+                    <td><a href="{{route('usuarios.papel', $usuario->id)}}"><i class="fas fa-sitemap"></i></a></td>
+                </tr>
+              @endif
             @endforeach
           </tbody>
       </table>

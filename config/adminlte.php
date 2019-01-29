@@ -204,7 +204,7 @@ return [
           'ADMINISTRADOR',
         [
             'text' => 'Acesso ao sistema',
-            'icon'    => 'home',
+            'icon'    => 'gears',
             'submenu' => [
                [
                     'text' => 'Listar Usuários',

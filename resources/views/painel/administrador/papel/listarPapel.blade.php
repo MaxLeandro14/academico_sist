@@ -30,7 +30,7 @@
                 <td>{{$registro->descricao}}</td>
                 <td>
                 <form action="{{route('papeis.destroy',$registro->id)}}" method="post">
-                  <a title="Editar" class="btn orange" href="{{ route('papeis.edit',$registro->id) }}"><i class="fa-edit">edit</i></a>
+                  <a title="Editar" class="btn orange" href="{{ route('papeis.edit',$registro->id) }}"><i class="fab fa-500px"></i></a>
                    <a title="Permissões" class="btn blue" href="{{route('papeis.permissao',$registro->id)}}"><i class="material-icons">permissao</i></a>
 
 
