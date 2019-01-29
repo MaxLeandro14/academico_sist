@@ -15,7 +15,7 @@
 
 			{{csrf_field()}}
 			{{ method_field('PUT') }}
-			@include('painel.administrador._form')
+			@include('painel.administrador.papel._form')
 
 			<button class="btn btn-primary">Atualizar</button>
 

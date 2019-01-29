@@ -14,7 +14,7 @@
     <div class="box-header">
         <h3 class="box-title">Adicionar permissão para {{$papel->nome}}</h3>
       </div>
-      <select class="form-control" name="permissao_id">
+      <select class="form-control select2_permissao" multiple="multiple" name="permissao_id[]">
               @foreach($permissao as $valor)
                   <option value="{{$valor->id}}">{{$valor->nome}}</option>
               @endforeach

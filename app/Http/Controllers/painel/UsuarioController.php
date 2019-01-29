@@ -17,31 +17,43 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = User::all();
-        return view('painel.administrador.index', compact('usuarios'));
+        return view('painel.administrador.papel.index', compact('usuarios'));
     }
 
     public function papel($id)
     {
         $usuario = User::find($id);
         $papeis = Papel::all();
-        return view('painel.administrador.papel', compact('usuario','papeis'));
+        return view('painel.administrador.papel.papel', compact('usuario','papeis'));
 
     }
 
      public function papelStore(Request $request, $id_user)
     {
+
         $usuario = User::find($id_user);
-        $dados = $request->all();
-        $papel = Papel::find($dados['papel_id']);
-        $usuario->adicionaPapel($papel);
+        if($usuario['codigo'] != "MASTER"){
+         //// $dados = $request->all();
+          $papeis = $request->input('papel_id');
+          $papeis = Papel::whereIn('id', $papeis)->get();
+          foreach ($papeis as $papel) {
+                $usuario->adicionaPapel($papel);
+                
+          }
+        }
+
+       
         return redirect()->back();
     }
 
      public function papelDestroy($id_user, $id_papel)
     {
         $usuario = User::find($id_user);
-        $papel = Papel::find($id_papel);
-        $usuario->removePapel($papel);
+        if($usuario['codigo'] != "MASTER"){
+          $papel = Papel::find($id_papel);
+          $usuario->removePapel($papel);
+        }
+        
         return redirect()->back();
     }
 

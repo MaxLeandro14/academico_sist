@@ -10,14 +10,13 @@ use App\Permissao;
 class PapelController extends Controller
 {
     /**
-     * na hora de deletar papeis cujo algum usuario está usando ocorre erro
      * posso verificar se não há nomes iguais
      * 
      */
     public function index()
     {
       $registros = Papel::all();
-      return view('painel.administrador.listarPapel',compact('registros'));
+      return view('painel.administrador.papel.listarPapel',compact('registros'));
     }
 
     /**
@@ -27,7 +26,7 @@ class PapelController extends Controller
      */
     public function create()
     {
-        return view('painel.administrador.criarPapel');
+        return view('painel.administrador.papel.criarPapel');
     }
 
     /**
@@ -38,7 +37,14 @@ class PapelController extends Controller
      */
     public function store(Request $request)
     {
-        if($request['nome'] && $request['nome'] != "Admin"){
+        $papel = Papel::where('nome',$request['nome'])->get()->first();
+        if($papel){
+            return redirect()->route('papeis.index');
+        }
+        if($request['nome'] && $request['nome'] != "admin"){
+
+          $request['nome'] = strtolower($request['nome']);
+
           Papel::create($request->all());
 
           return redirect()->route('papeis.index');
@@ -66,13 +72,13 @@ class PapelController extends Controller
      */
     public function edit($id)
     {
-        if(Papel::find($id)->nome == "Admin"){
+        if(Papel::find($id)->nome == "admin"){
           return redirect()->route('papeis.index');
       }
 
       $registro = Papel::find($id);
 
-      return view('painel.administrador.editar',compact('registro'));
+      return view('painel.administrador.papel.editar',compact('registro'));
     }
 
     /**
@@ -83,11 +89,15 @@ class PapelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-         if(Papel::find($id)->nome == "Admin"){
+    {   
+         
+         $request['nome'] = strtolower($request['nome']);
+         
+         if(Papel::find($id)->nome == "admin"){
           return redirect()->route('papeis.index');
          }
-         if($request['nome'] && $request['nome'] != "Admin"){
+         if($request['nome'] && $request['nome'] != "admin"){
+             
              Papel::find($id)->update($request->all());
          }
 
@@ -102,7 +112,7 @@ class PapelController extends Controller
      */
     public function destroy($id)
     {
-      if(Papel::find($id)->nome == "Admin"){
+      if(Papel::find($id)->nome == "admin"){
         return redirect()->route('papeis.index');
       }
 
@@ -122,8 +132,10 @@ class PapelController extends Controller
     {
         $papel = Papel::find($id_papel);
         $dados = $request->all();
-        $permissao = Permissao::find($dados['permissao_id']);
-        $papel->adicionaPermissao($permissao);
+        $permissoes = Permissao::whereIn('id',$dados)->get();
+        foreach ($permissoes as $permissao) {
+            $papel->adicionaPermissao($permissao);
+        }
         return redirect()->back();
     }
 

@@ -14,7 +14,7 @@
 		<div class="box-header">
      	  <h3 class="box-title">Adicionar papel para {{$usuario->name}}</h3>
     	</div>
-			<select class="form-control" name="papel_id">
+			<select class="form-control select2_papeis" multiple="multiple" name="papel_id[]">
 			        @foreach($papeis as $valor)
 			            <option value="{{$valor->id}}">{{$valor->nome}}</option>
 			        @endforeach

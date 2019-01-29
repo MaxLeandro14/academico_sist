@@ -13,17 +13,17 @@ class PapelSeeder extends Seeder
     public function run()
     {
         $p1 = Papel::firstOrCreate([
-            'nome'=>'Geral',
+            'nome'=>'geral',
             'descricao'=> 'Acesso total ao sistema'
         ]);
 
         $p1 = Papel::firstOrCreate([
-            'nome'=>'Professor',
+            'nome'=>'professor',
             'descricao'=> 'Acesso parcial ao sistema'
         ]);
 
         $p1 = Papel::firstOrCreate([
-            'nome'=>'Admin',
+            'nome'=>'admin',
             'descricao'=> 'Acesso total ao sistema'
         ]);
     }

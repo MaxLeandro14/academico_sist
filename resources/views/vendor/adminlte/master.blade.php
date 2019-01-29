@@ -129,6 +129,18 @@
                 placeholder: "Estado Civil",
                 
             });
+
+            $('.select2_papeis').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Adicione Papéis",
+                
+            });
+
+             $('.select2_permissao').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Adicione Permissao",
+                
+            });
         });
     </script>
 @endif
