@@ -68,7 +68,7 @@ class User extends Authenticatable
         return $this->papeis()->detach($papel);
     }
 
-     public function temUmPapelDestes($papeis)
+     public function temPapel($papeis)
     {
       $userPapeis = $this->papeis;
       return $papeis->intersect($userPapeis)->count();

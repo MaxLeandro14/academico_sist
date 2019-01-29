@@ -19,11 +19,11 @@ class PapelSeeder extends Seeder
 
         $p1 = Papel::firstOrCreate([
             'nome'=>'Professor',
-            'descricao'=> 'Acesso total ao sistema'
+            'descricao'=> 'Acesso parcial ao sistema'
         ]);
 
         $p1 = Papel::firstOrCreate([
-            'nome'=>'Administrativo',
+            'nome'=>'Admin',
             'descricao'=> 'Acesso total ao sistema'
         ]);
     }
