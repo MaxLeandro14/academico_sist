@@ -170,7 +170,8 @@ function updateParcela($req, $id_parcela, $mes_parcela)
   $debug = DB::table('parcelas')
     ->where('id', $id_parcela)
     ->where('mes_parcela', $mes_parcela)
-    ->update(['status' => $req->input('status')]);
+    ->update(['status' => $req->input('status'),'data_pagamento' => $req->input('data_pagamento')]);
+
 
     return $debug;
 }

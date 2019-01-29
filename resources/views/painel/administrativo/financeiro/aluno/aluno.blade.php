@@ -135,20 +135,26 @@
         <td>{{ $parcela->mes_parcela }}</td>
         <td>{{ $parcela->valor_parcela }}</td>
         <td>
-          <select required class="form-control" id="status" name="status" onchange="add_require()" onselect="add_require()">
-            <option>@if(isset($parcela->status) && $parcela->status == 'PAGO') PAGO @else PENDENTE @endif</option>
-            <option>@if(isset($parcela->status) && $parcela->status == 'PENDENTE') PENDENTE @else PAGO @endif</option>
+          <select required class="form-control" id="{{$parcela->mes_parcela}}" name="status" onchange="add_require({{$parcela->mes_parcela}})" onselect="add_require({{$parcela->mes_parcela}})">
+            @if($parcela->status == 'PAGO')
+            <option>PAGO</option>
+            <option>PENDENTE</option>
+            @else
+            <option>PENDENTE</option>
+            <option>PAGO</option>
+            @endif
           </select>         
         </td>
         <td> 
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input id="data_pagamento" type="date" class="form-control" placeholder="Data de início" name="data_pagamento" value="@if(!isset($parcela->data_pagamento)){{ $parcela->data_pagamento }}@endif">
+              <input id="data_pagamento-{{ $parcela->mes_parcela }}" type="date" class="form-control" placeholder="Data de início" name="data_pagamento" value="@if(isset($parcela->data_pagamento)){{ $parcela->data_pagamento }}@endif">
             </div>
           </div>
         </td>
         <td>
+          <input type="hidden" name="id_aluno" value="{{ $aluno->id }}">
           <button type="submit" class="btn btn-primary" title="Salvar" ><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
         </td>
         </form>
