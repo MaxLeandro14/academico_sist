@@ -165,7 +165,7 @@ return [
         ],
 
         [
-            'text' => 'Pesquisar',
+            'text' => 'Pesquisa',
             'icon'    => 'search',
             'url'  => '#',
         ],
@@ -201,7 +201,7 @@ return [
             'icon'    => 'users',
             'url'  => 'minhas_turmas',
         ],
-          'ADMINISTRADOR',
+          'GERENCIAMENTO',
         [
             'text' => 'Acesso ao sistema',
             'icon'    => 'gears',
@@ -209,6 +209,10 @@ return [
                [
                     'text' => 'Listar Usuários',
                     'url'  => 'usuarios',
+               ],
+               [
+                    'text' => 'Novo Usuário',
+                    'url'  => '#',
                ],
                [
                     'text' => 'Criar Papel',

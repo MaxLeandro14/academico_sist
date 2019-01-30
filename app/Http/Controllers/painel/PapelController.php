@@ -16,7 +16,7 @@ class PapelController extends Controller
     public function index()
     {
       $registros = Papel::all();
-      return view('painel.administrador.papel.listarPapel',compact('registros'));
+      return view('painel.gerenciamento.papel.listarPapel',compact('registros'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PapelController extends Controller
      */
     public function create()
     {
-        return view('painel.administrador.papel.criarPapel');
+        return view('painel.gerenciamento.papel.criarPapel');
     }
 
     /**
@@ -78,7 +78,7 @@ class PapelController extends Controller
 
       $registro = Papel::find($id);
 
-      return view('painel.administrador.papel.editar',compact('registro'));
+      return view('painel.gerenciamento.papel.editar',compact('registro'));
     }
 
     /**
@@ -124,7 +124,7 @@ class PapelController extends Controller
     {
         $papel = Papel::find($id);
         $permissao = Permissao::all();
-        return view('painel.administrador.papel.permissao', compact('papel','permissao'));
+        return view('painel.gerenciamento.papel.permissao', compact('papel','permissao'));
 
     }
 
