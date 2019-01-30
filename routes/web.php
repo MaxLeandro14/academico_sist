@@ -39,7 +39,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     Route::get('cadastra_parelas','PainelController@cadastra_parelas')->name('cadastrar_parelas');
     Route::post('cadastra_parelas','PainelController@cadastra_parelas')->name('cadastra_parelas');
 
-    //Administrativo - ACL
+    //Gerenciamento - ACL
     Route::resource('usuarios', 'UsuarioController');
     
     Route::get('usuarios/papel/{id}', 'UsuarioController@papel')->name('usuarios.papel');
@@ -52,8 +52,14 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     Route::post('papeis/permissao/{permissao}', 'PapelController@permissoesStore')->name('papeis.permissao.store');
     Route::delete('papeis/permissao/{papel}/{permissao}', 'PapelController@permissoesDestroy')->name('papeis.permisoes.destroy');
     
+    //Declaração
+    Route::get('declaracao', 'PdfController@index');
+
+
+    
 
 });
+
 
 Route::get('/register', function(){
     return view('auth/register');

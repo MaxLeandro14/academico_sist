@@ -201,6 +201,12 @@ return [
             'icon'    => 'users',
             'url'  => 'minhas_turmas',
         ],
+          'DOCUMENTOS',
+        [
+            'text' => 'Declaração de Vínculo',
+            'icon'    => 'sticky-note-o',
+            'url' => 'tex', 
+        ],
           'GERENCIAMENTO',
         [
             'text' => 'Acesso ao sistema',

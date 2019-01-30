@@ -48,5 +48,4 @@
 </div>
 
 <a href="{{ route('papeis.create') }}"><button type="button" class="btn btn-primary btn">Adicionar novo</button></a>
-
 @stop

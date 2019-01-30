@@ -72,13 +72,13 @@ class PapelController extends Controller
      */
     public function edit($id)
     {
-        if(Papel::find($id)->nome == "admin"){
+      if(Papel::find($id)->nome == "admin"){
           return redirect()->route('papeis.index');
       }
 
       $registro = Papel::find($id);
 
-      return view('painel.gerenciamento.papel.editar',compact('registro'));
+      return view('painel.gerenciamento.modal.editarPapel',compact('registro'));
     }
 
     /**
