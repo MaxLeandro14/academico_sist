@@ -136,11 +136,18 @@
                 
             });
 
-             $('.select2_permissao').select2({
+            $('.select2_permissao').select2({
                 //maximumSelectionLength: 2
                 placeholder: "Adicione Permissao",
                 
             });
+
+            $('.select2_cargo').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Selecione um Cargo",
+                
+            });
+             
         });
     </script>
 @endif

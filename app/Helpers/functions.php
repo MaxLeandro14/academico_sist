@@ -5,7 +5,8 @@ function getDisciplinaProfessor()
 	$disciplinas_professores = DB::table('disciplina_professors')
 	  ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
 	  ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
-	  ->select('disciplina_professors.*','disciplinas.nome_disciplina', 'professors.nome_professor','professors.codigo_professor')
+    ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
+	  ->select('disciplina_professors.*','disciplinas.nome_disciplina', 'funcionarios.nome','professors.codigo_professor')
 	  ->get();
 
   	return $disciplinas_professores;
