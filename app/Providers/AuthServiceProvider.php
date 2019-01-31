@@ -34,6 +34,7 @@ class AuthServiceProvider extends ServiceProvider
 
     }
 
+   
     public function listaPermissoes()
     {
         try{
