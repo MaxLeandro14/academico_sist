@@ -26,14 +26,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-          foreach ($this->listaPermissoes() as $permissao) {
+          /*foreach ($this->listaPermissoes() as $permissao) {
           Gate::define($permissao->nome,function($user) use($permissao){
             return $user->temPapel($permissao->papeis) || $user->eAdmin();
           });
-        }
+        }*/
 
     }
 
+   
     public function listaPermissoes()
     {
         try{
