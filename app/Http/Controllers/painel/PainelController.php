@@ -13,7 +13,7 @@ use App\TurmaDisciplina;
 use App\Aluno;
 use App\User;
 use App\Parcela;
-
+use App\Cargo;
 
 class PainelController extends Controller
 {
@@ -59,8 +59,9 @@ class PainelController extends Controller
     public function index_cadastrar_professor()
     {
       $disciplinas = Disciplina::all();
+      $cargos = Cargo::all();
       $disciplinas_professores = getDisciplinaProfessor();  
-      return view('painel/administrativo/cadastrar/professor', compact(['disciplinas','disciplinas_professores']));
+      return view('painel/administrativo/cadastrar/professor', compact(['disciplinas','disciplinas_professores','cargos']));
     }
 
     public function cadastrar_professor(Request $req)

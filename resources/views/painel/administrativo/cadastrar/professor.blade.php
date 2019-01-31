@@ -16,7 +16,7 @@
   <!-- form start -->
   <form action="{{ route('cadastra_professor') }}" method="POST">
     {{csrf_field()}}
-    @include('painel.administrativo.templates.formulario')
+    @include('painel.templates.formulario',['flag' => 'apenas_professor','nome_cargo' => 'Professor(a)'])
     <br>
       <div class="row">
         <div class="col-md-12">
@@ -31,6 +31,7 @@
         </div>
       </div>
     </div>
+    
     <!-- /.box-body -->
 
     <div class="box-footer">

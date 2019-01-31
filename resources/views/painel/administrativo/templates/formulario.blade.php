@@ -25,7 +25,7 @@
   <div class="row">
     <div class="col-md-4">
       <label for="">Telefone</label>
-      <input required type="text" class="form-control telefone" placeholder="Telefone" name="fone">
+      <input required type="text" class="form-control telefone" placeholder="Telefone" name="telefone">
     </div>
     <div class="col-md-4">
       <label for="">Nacionalidade</label>
@@ -156,11 +156,11 @@
   <div class="row">
     <div class="col-md-3" id="pai_estado_civil">
       <label for="">Pai</label>
-      <input required type="text" class="form-control" placeholder="Nome do Pai" name="pai">
+      <input required type="text" class="form-control" placeholder="Nome do Pai" name="nome_pai">
     </div>
     <div class="col-md-3" id="mae_estado_civil">
       <label for="">Mãe</label>
-      <input required type="text" class="form-control" placeholder="Nome da Mãe" name="mae">
+      <input required type="text" class="form-control" placeholder="Nome da Mãe" name="nome_mae">
     </div>
     <div class="col-md-2">
       <div class="form-group">
@@ -179,8 +179,86 @@
         <input type="text" class="form-control" placeholder="Cônjuge" name="conjuge">
       </div>
     </div>
-
   </div>
 
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Nível de escolaridade</label>
+        <select required class="form-control select2_generico" name="escolaridade">
+          <option>Médio</option>
+          <option>Superior</option>
+          <option>Fundamental</option>
+          <option>Pós-Graduação</option>
+          <option>Mestrado</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Grau de conclusão</label>
+        <select required class="form-control select2_generico" name="grau_conclusao">
+          <option>Completo</option>
+          <option>Incompleto/Cursando</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="">Data de Admissão</label>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          <input required type="date" class="form-control" name="data_admissao">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <label for="">Salário</label>
+      <div class="input-group">
+        <span class="input-group-addon">R$</span>
+        <input required type="text" class="form-control dinheiro" placeholder="00,00" name="salario">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Função</label>
+        <select required class="form-control select2_cargo" name="id_cargo">
+          @foreach ($cargos as $cargo)
+          <option @if(isset($flag) && isset($nome_cargo) && $cargo->nome_cargo == $nome_cargo) selected @else disabled  @endif value="{{ $cargo->id }}">{{ $cargo->nome_cargo }}</option>
+          @endforeach
+        </select>
+      </div>
+    </div>
+  </div>
 
-
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+        <label for="">Carga horária Mensal</label>
+        <input required type="text" class="form-control carga_horaria_m" placeholder="Carga Horária Mensal" name="carga_horaria_mensal">
+    </div>
+    <div class="col-md-3">
+        <label for="">Carga horária Semanal</label>
+        <input required type="text" class="form-control carga_horaria_s" placeholder="Carga Horária Mensal" name="carga_horaria_semanal">
+    </div>
+    <div class="col-md-3">
+        <label for="">Contrato de Experiência de </label>
+        <input required type="text" class="form-control" placeholder="Dias" name="dias_contrato">
+    </div>
+    <div class="col-md-3">
+        <label for="">Prorrogado por mais </label>
+        <input required type="text" class="form-control" placeholder="Dias de prorrogação" name="dias_prorrogacao">
+    </div>
+  </div>
+  
+  <br>
+<div class="row" style="text-align: center;">
+  <div class="col-md-12">
+    <label>A EMPRESA E O CANDIDATO SE RESPONSABILIZAM PELAS INFORMAÇÕES ACIMA PRESTADAS</label>
+  </div>
+</div>
