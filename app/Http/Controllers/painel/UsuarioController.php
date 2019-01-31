@@ -17,14 +17,14 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = User::all();
-        return view('painel.administrador.papel.index', compact('usuarios'));
+        return view('painel.gerenciamento.papel.index', compact('usuarios'));
     }
 
     public function papel($id)
     {
         $usuario = User::find($id);
         $papeis = Papel::all();
-        return view('painel.administrador.papel.papel', compact('usuario','papeis'));
+        return view('painel.gerenciamento.papel.papel', compact('usuario','papeis'));
 
     }
 

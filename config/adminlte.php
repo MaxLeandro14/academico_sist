@@ -165,7 +165,7 @@ return [
         ],
 
         [
-            'text' => 'Pesquisar',
+            'text' => 'Pesquisa',
             'icon'    => 'search',
             'url'  => '#',
         ],
@@ -201,7 +201,13 @@ return [
             'icon'    => 'users',
             'url'  => 'minhas_turmas',
         ],
-          'ADMINISTRADOR',
+          'DOCUMENTOS',
+        [
+            'text' => 'Declaração de Vínculo',
+            'icon'    => 'sticky-note-o',
+            'url' => 'tex', 
+        ],
+          'GERENCIAMENTO',
         [
             'text' => 'Acesso ao sistema',
             'icon'    => 'gears',
@@ -209,6 +215,10 @@ return [
                [
                     'text' => 'Listar Usuários',
                     'url'  => 'usuarios',
+               ],
+               [
+                    'text' => 'Novo Usuário',
+                    'url'  => '#',
                ],
                [
                     'text' => 'Criar Papel',

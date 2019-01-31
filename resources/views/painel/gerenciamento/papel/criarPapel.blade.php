@@ -14,7 +14,7 @@
 			<form action="{{ route('papeis.store') }}" method="post">
 
 			{{csrf_field()}}
-			@include('painel.administrador.papel._form')
+			@include('painel.gerenciamento.papel._form')
 
 			<button class="btn btn-primary">Adicionar</button>
 
