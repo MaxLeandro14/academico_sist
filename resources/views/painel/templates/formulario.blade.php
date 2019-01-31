@@ -244,7 +244,7 @@
     </div>
     <div class="col-md-3">
         <label for="">Carga horária Semanal</label>
-        <input required type="text" class="form-control carga_horaria_s" placeholder="Carga Horária Mensal" name="carga_horaria_semanal">
+        <input required type="text" class="form-control carga_horaria_s" placeholder="Carga Horária Semanal" name="carga_horaria_semanal">
     </div>
     <div class="col-md-3">
         <label for="">Contrato de Experiência de </label>

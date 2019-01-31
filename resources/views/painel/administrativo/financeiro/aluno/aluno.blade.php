@@ -169,5 +169,5 @@
     <a type="button" href="{{ route('index_financeiro_aluno') }}" class="btn btn-default">Voltar</a>
   </div>
 </div>
-@include('painel.administrativo.templates.modal')
+@include('painel.templates.modal')
 @stop

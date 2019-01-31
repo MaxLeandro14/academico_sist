@@ -172,7 +172,7 @@ class PainelController extends Controller
     {
       $aluno = Aluno::find($id_aluno);
       $mostra_footer_header = 'sim';
-      return view('painel.administrativo.templates.aluno', compact(['aluno','mostra_footer_header']));
+      return view('painel.templates.aluno', compact(['aluno','mostra_footer_header']));
     }
 
     public function financeiro_aluno_salva(Request $req, $id_parcela, $mes_parcela )

@@ -17,7 +17,7 @@
   <form action="{{ route('cadastra_aluno') }}" method="POST">
     {{csrf_field()}}
     
-    @include('painel.administrativo.templates.aluno')
+    @include('painel.templates.aluno')
     <!-- /.box-body -->
 
     <div class="box-footer">
