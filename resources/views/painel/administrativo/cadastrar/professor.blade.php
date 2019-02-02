@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-
+@include('painel.templates.mensagens')
 <div class="box box-primary">
   <div class="box-header with-border">
     <h3 class="box-title">Novo Professor</h3>
@@ -38,32 +38,6 @@
       <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
   </form>
-  <br><br>
-  <div class="box-header with-border">
-    <h3 class="box-title">Professores cadastrados</h3>
-  </div>  
-  <div style=" margin:auto; width: 90%" >
-    <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Nome</th>
-        <th>Disciplina</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      @foreach($disciplinas_professores as $disciplina_professor)
-      <tr>
-        <td>{{ $disciplina_professor->codigo_professor }}</td>
-        <td>{{ $disciplina_professor->nome_professor }}</td>
-        <td>{{ $disciplina_professor->nome_disciplina }}</td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-</div>
-<br>
 </div>
 
 @stop
