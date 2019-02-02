@@ -205,7 +205,7 @@ return [
         [
             'text' => 'Declaração de Vínculo',
             'icon'    => 'sticky-note-o',
-            'url' => 'tex', 
+            'url' => 'declaracao', 
         ],
           'GERENCIAMENTO',
         [

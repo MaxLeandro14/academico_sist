@@ -147,6 +147,10 @@
                 placeholder: "Selecione um Cargo",
                 
             });
+
+            $(document).ready(function() {
+                $('#example').DataTable();
+            } );
              
         });
     </script>
