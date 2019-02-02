@@ -141,7 +141,6 @@
 
             $('.select2_generico').select2({});
 
-<<<<<<< HEAD
             $('.select2_cargo').select2({
                 //maximumSelectionLength: 2
                 placeholder: "Selecione um Cargo",
@@ -152,8 +151,6 @@
                 $('#example').DataTable();
             } );
              
-=======
->>>>>>> 0470f6affcc8724434e1c0cd94e9f054bab3240f
         });
     </script>
 @endif
