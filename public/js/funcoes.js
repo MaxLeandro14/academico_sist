@@ -32,7 +32,7 @@ function ano_serie()
   var master_estado_civil = $("#master_estado_civil");
   
   if (estado_civil!= 'Casado(a)') {
-    $("#conjuge").remove();
+    $("#conjuge").hide();
     $("#pai_estado_civil").removeClass("col-md-3");
     $("#mae_estado_civil").removeClass("col-md-3");
     $("#pai_estado_civil").addClass("col-md-5");
@@ -45,7 +45,7 @@ function ano_serie()
     $("#mae_estado_civil").removeClass("col-md-5");
     $("#pai_estado_civil").addClass("col-md-3");
     $("#mae_estado_civil").addClass("col-md-3");
-    master_estado_civil.html('<div class="col-md-4" id="conjuge"><label for="">Cônjuge</label><input type="text" class="form-control" placeholder="Cônjuge" name="conjuge"></div>');
+    $("#conjuge").show();
   }
 
   };

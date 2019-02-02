@@ -40,6 +40,7 @@
 
     <!-- Minhas funcoes JS -->
     <script src="{{ asset('js/funcoes.js') }}"></script>
+    
 </head>
 <body class="hold-transition @yield('body_class')">
 
@@ -55,6 +56,8 @@
     $('.cep').mask('00000-000', {reverse: false});
     $('.dinheiro').mask('000.000.000.000.000,00', {reverse: true});
     $('.identidade').mask("#.##0-0", {reverse: true});
+    $('.carga_horaria_m').mask("000h", {reverse: true});
+    $('.carga_horaria_s').mask("00h", {reverse: true});
 </script>
 <script type="text/javascript">
     function upper(nome){
@@ -130,24 +133,14 @@
                 
             });
 
-            $('.select2_papeis').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Adicione Papéis",
-                
-            });
-
-            $('.select2_permissao').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Adicione Permissao",
-                
-            });
-
             $('.select2_cargo').select2({
                 //maximumSelectionLength: 2
-                placeholder: "Selecione um Cargo",
+                placeholder: "Escolha um Cargo",
                 
             });
-             
+
+            $('.select2_generico').select2({});
+
         });
     </script>
 @endif

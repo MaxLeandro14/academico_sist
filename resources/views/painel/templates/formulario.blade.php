@@ -29,7 +29,7 @@
     </div>
     <div class="col-md-4">
       <label for="">Nacionalidade</label>
-      <input required type="text" class="form-control telefone" placeholder="Nacionalidade" name="nacionalidade">
+      <input required type="text" class="form-control" placeholder="Nacionalidade" name="nacionalidade">
     </div>
     <div class="col-md-4">
       <label for="">Cidade</label>
@@ -173,11 +173,9 @@
         </select>
       </div>
     </div>
-    <div id="master_estado_civil">
-      <div class="col-md-4" id="conjuge">
-        <label for="">Cônjuge</label>
-        <input type="text" class="form-control" placeholder="Cônjuge" name="conjuge">
-      </div>
+    <div class="col-md-4" id="conjuge">
+      <label for="">Cônjuge</label>
+      <input type="text" class="form-control" placeholder="Cônjuge" name="conjuge">
     </div>
   </div>
 
@@ -252,7 +250,7 @@
     </div>
     <div class="col-md-3">
         <label for="">Prorrogado por mais </label>
-        <input required type="text" class="form-control" placeholder="Dias de prorrogação" name="dias_prorrogacao">
+        <input type="text" class="form-control" placeholder="Dias de prorrogação" name="dias_prorrogacao">
     </div>
   </div>
   

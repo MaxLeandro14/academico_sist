@@ -14,6 +14,7 @@ use App\Aluno;
 use App\User;
 use App\Parcela;
 use App\Cargo;
+use App\Funcionario;
 
 class PainelController extends Controller
 {
@@ -44,7 +45,7 @@ class PainelController extends Controller
         $input = formataDadosTurmaDisciplina($professor_disciplina,$form);
         TurmaDisciplina::create($input);   
       }
-      return redirect()->route('cadastrar_turma')->with('message', 'Turma Inserida!');   
+      return redirect()->route('cadastrar_turma')->with('mensagem_sucesso', 'Turma Inserida!');   
     }
 
     public function mostra_turma($codigo_turma)
@@ -66,20 +67,25 @@ class PainelController extends Controller
 
     public function cadastrar_professor(Request $req)
     {
+
+      $dados = $req->all();
       //Gera codigo para professor
       $codigo_professor = geraCodigoProfessor();
-      //Insere professor
+      //Insere Funcionario
       $id_disciplina = $req->input('id_disciplina');
-      $input = formataDadosProfessor($req,$id_disciplina,$codigo_professor);
-      $form = Professor::create($input);
+      $formFuncionario = Funcionario::create($dados);
+      //Insere Professor
+      $dados['codigo_professor'] = $codigo_professor;
+      $dados['id_funcionario'] = $formFuncionario->id;
+      $formProfessor = Professor::create($dados);
       
       //Relaciona professor e disciplina(s)
       foreach ($id_disciplina as $disciplina) {
-        $input = formataDadosDisciplinaProfessor($req,$disciplina,$form);
+        $input = formataDadosDisciplinaProfessor($req,$disciplina,$formProfessor);
         DisciplinaProfessor::create($input);        
       }
       // retorna pra view anterior
-      return redirect()->route('cadastrar_professor')->with('message', 'Professor Inserido!');
+      return redirect()->route('cadastrar_professor')->with('mensagem_sucesso', 'Professor Inserido!');
     }
 
 
@@ -107,7 +113,7 @@ class PainelController extends Controller
         print_r($dados); 
         TurmaAluno::create($dados);
       }
-
+      return view('painel/administrativo/matricular/turma_aluno')->with('mensagem_sucesso', 'Aluno(s) Matriculado(s)!');
     }
 
 
@@ -129,7 +135,7 @@ class PainelController extends Controller
         Parcela::create($dados);
       }
       
-      return redirect()->route('cadastrar_aluno')->with('message', 'Professor Inserido!');
+      return redirect()->route('cadastrar_aluno')->with('mensagem_sucesso', 'Aluno Inserido!');
       
     }
 
