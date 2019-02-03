@@ -18,15 +18,17 @@
     <thead>
       <tr>
         <th>Nome</th>
-        
+        <th>Código</th>
+        <th>CPF</th>
       </tr>
     </thead>
 
     <tbody>
       @foreach($professores as $professor)
       <tr>
-        <td><a href="{{ route('financeiro',$professor->id) }}">{{ $professor->nome_aluno }}</a></td>
-        <td>{{ $professor->nome_professor }}</td>
+        <td><a href="{{ route('financeiro_professor',$professor->id) }}">{{ $professor->nome }}</a></td>
+        <td>{{ $professor->codigo_professor }}</td>
+        <td>{{ $professor->cpf }}</td>
         
       </tr>
       @endforeach

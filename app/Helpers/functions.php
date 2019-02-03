@@ -117,6 +117,22 @@ function getAlunos()
 
 
 
+if (! function_exists('getProfessores')) {
+function getProfessores()
+{
+  
+  $professores = DB::table('professors')
+  ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
+  ->select('funcionarios.*','professors.codigo_professor')
+  ->get();
+
+    return $professores;
+}
+
+}
+
+
+
 if (! function_exists('getTurmaDisciplinaWhereID')) {
 function getTurmaDisciplinaWhereID($codigo_professor)
 {

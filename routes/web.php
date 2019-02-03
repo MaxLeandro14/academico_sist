@@ -1,39 +1,40 @@
 <?php
 $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     //Home
-    Route::get('/', 'PainelController@index')->name('painel.home');
+    Route::get('/', function(){return view('painel.home.index');});
     
-    //Turma
-    Route::get('cadastrar_turma', 'PainelController@index_cadastrar_turma')->name('cadastrar_turma');
-    Route::post('cadastrar_turma', 'PainelController@cadastrar_turma')->name('cadastra_turma');
-    Route::get('cadastrar_turma/{codigo_turma}','PainelController@mostra_turma')->name('mostra_turma');
+    //CADASTRO - Turma
+    Route::get('cadastrar_turma', 'CadastroController@index_cadastrar_turma')->name('cadastrar_turma');
+    Route::post('cadastrar_turma', 'CadastroController@cadastrar_turma')->name('cadastra_turma');
+    Route::get('cadastrar_turma/{codigo_turma}','CadastroController@mostra_turma')->name('mostra_turma');
 
-    //Professor
-    Route::get('cadastrar_professor','PainelController@index_cadastrar_professor')->name('cadastrar_professor');
-    Route::post('cadastrar_professor','PainelController@cadastrar_professor')->name('cadastra_professor');
+    //CADASTRO - Professor
+    Route::get('cadastrar_professor','CadastroController@index_cadastrar_professor')->name('cadastrar_professor');
+    Route::post('cadastrar_professor','CadastroController@cadastrar_professor')->name('cadastra_professor');
 
-    //Matricula
-    Route::get('matricular_aluno','PainelController@index_matricular_aluno')->name('matricular_aluno');
-    Route::get('matricular_aluno/{codigo_turma}', 'PainelController@matricular_aluno')->name('matricula_aluno');
-    Route::post('matricular_aluno/{codigo_turma}', 'PainelController@matricular_aluno')->name('matricula_aluno');
+    //CADASTRO - Aluno
+    Route::get('cadastrar_aluno','CadastroController@index_cadastrar_aluno')->name('cadastrar_aluno');
+    Route::post('cadastrar_aluno','CadastroController@cadastrar_aluno')->name('cadastra_aluno');
 
-    //Aluno
-    Route::get('cadastrar_aluno','PainelController@index_cadastrar_aluno')->name('cadastrar_aluno');
-    Route::post('cadastrar_aluno','PainelController@cadastrar_aluno')->name('cadastra_aluno');
+    //MATRICULA
+    Route::get('matricular_aluno','MatriculaController@index_matricular_aluno')->name('matricular_aluno');
+    Route::get('matricular_aluno/{codigo_turma}', 'MatriculaController@matricular_aluno')->name('matricula_aluno');
+    Route::post('matricular_aluno/{codigo_turma}', 'MatriculaController@matricular_aluno')->name('matricula_aluno');
+
+    //FINANCEIRO - Aluno
+    Route::get('financeiro_aluno','FinanceiroController@index_financeiro_aluno')->name('index_financeiro_aluno');
+    Route::get('financeiro_aluno/{id_aluno}','FinanceiroController@financeiro_aluno')->name('financeiro_aluno');
+    Route::get('financeiro_aluno/{id_aluno}/{nome_aluno}','FinanceiroController@mostra_aluno')->name('mostra_aluno');
+    Route::post('financeiro_aluno_salva/{id_parcela}/{mes_parcela}','FinanceiroController@financeiro_aluno_salva')->name('financeiro_aluno_salva');
+
+    //FINANCEIRO - Professor
+    Route::get('financeiro_professor','FinanceiroController@index_financeiro_professor')->name('index_financeiro_professor');
+    Route::get('financeiro_professor/{id_professor}','FinanceiroController@financeiro_professor')->name('financeiro_professor');
 
     //Minhas Turmas
     Route::get('minhas_turmas','PainelController@index_minhas_turmas')->name('minhas_turmas');
     Route::get('minhas_turmas/{codigo_turma}','PainelController@minhas_turmas')->name('turma');
-
-    //Financeiro - Aluno
-    Route::get('financeiro_aluno','PainelController@index_financeiro_aluno')->name('index_financeiro_aluno');
-    Route::get('financeiro_aluno/{id_aluno}','PainelController@financeiro_aluno')->name('financeiro_aluno');
-    Route::get('financeiro_aluno/{id_aluno}/{nome_aluno}','PainelController@mostra_aluno')->name('mostra_aluno');
-    Route::post('financeiro_aluno_salva/{id_parcela}/{mes_parcela}','PainelController@financeiro_aluno_salva')->name('financeiro_aluno_salva');
-
-    //Financeiro - Professor
-    Route::get('financeiro_professor','PainelController@index_financeiro_professor')->name('index_financeiro_professor');
-    Route::get('financeiro_professor/{id_professor}','PainelController@financeiro_professor')->name('financeiro_professor');
+    
 
     //Script de Teste // Adiciona Parcela
     Route::get('cadastra_parelas','PainelController@cadastra_parelas')->name('cadastrar_parelas');
