@@ -52,9 +52,10 @@ class PainelController extends Controller
     public function mostra_turma($codigo_turma)
     {
       $turma_info = getTurmaWhereID($codigo_turma);
+      $professores_turma = getProfessoresTurma($codigo_turma);
       $mostra_footer_header = 'sim';
       $mostra_professores_turma = 'sim';
-      return view('painel/templates/turma', compact(['turma_info','mostra_footer_header','mostra_professores_turma']));
+      return view('painel/templates/turma', compact(['turma_info','mostra_footer_header','mostra_professores_turma','professores_turma']));
     }    
 
 
@@ -103,19 +104,20 @@ class PainelController extends Controller
     public function matricular_aluno(Request $req, $codigo_turma)
     {
       $turma_info = getTurmaWhereID($codigo_turma);
-      $alunos_turma = getAlunosTurmaWhereID($codigo_turma);
+      $professores_turma = getProfessoresTurma($codigo_turma);
+      $alunos_turma = getAlunosTurma($codigo_turma);
       $todos_alunos = getAlunos();
       $dados = $req->all();
-      
+      //dd($professores_turma);
       if(!$dados)
-      return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma']));
+      return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma','professores_turma']));
 
       $id_alunos = $req->input('id_alunos');
       foreach ($id_alunos as $id_aluno) {
         $dados['id_aluno']  = $id_aluno;
         TurmaAluno::create($dados);
       }
-      return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma']))->with('mensagem_sucesso', 'Aluno(s) Matriculado(s)!');
+      return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma','professores_turma']))->with('mensagem_sucesso', 'Aluno(s) Matriculado(s)!');
     }
 
 

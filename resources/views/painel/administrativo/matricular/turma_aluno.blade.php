@@ -10,13 +10,13 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Turma - {{ $turma_info[0]->descricao }} - {{ $turma_info[0]->codigo_turma }}  </h3>
+    <h3 class="box-title">Turma - {{ $turma_info->descricao }} - {{ $turma_info->codigo_turma }}  </h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form action="{{ route('matricula_aluno',$turma_info[0]->id) }}" method="POST" >
+  <form action="{{ route('matricula_aluno',$turma_info->id) }}" method="POST" >
     {{csrf_field()}}
-    <input type="hidden" name="id_turma" value="{{$turma_info[0]->id}}">
+    <input type="hidden" name="id_turma" value="{{$turma_info->id}}">
     @include('painel.templates.turma')
     <div class="row">
         <div class="col-md-12">
@@ -84,11 +84,11 @@
                 </thead>
 
                 <tbody>
-                  @foreach($turma_info as $turma)
+                  @foreach($professores_turma as $professor)
                   <tr>
-                    <td> {{ $turma->codigo_professor }} </td>
-                    <td> {{ $turma->nome }} </td>
-                    <td> {{ $turma->nome_disciplina }} </td>
+                    <td> {{ $professor->codigo_professor }} </td>
+                    <td> {{ $professor->nome }} </td>
+                    <td> {{ $professor->nome_disciplina }} </td>
                   </tr>
                   @endforeach
                 </tbody>
