@@ -141,6 +141,16 @@
 
             $('.select2_generico').select2({});
 
+            $('.select2_cargo').select2({
+                //maximumSelectionLength: 2
+                placeholder: "Selecione um Cargo",
+                
+            });
+
+            $(document).ready(function() {
+                $('#example').DataTable();
+            } );
+             
         });
     </script>
 @endif

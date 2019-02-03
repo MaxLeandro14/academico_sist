@@ -53,7 +53,8 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     Route::delete('papeis/permissao/{papel}/{permissao}', 'PapelController@permissoesDestroy')->name('papeis.permisoes.destroy');
     
     //Declaração
-    Route::get('declaracao', 'PdfController@index');
+    Route::get('declaracao', 'AlunoController@listarAlunos');
+    Route::get('declaracao/imprimir/{id}', 'PdfController@imprimirDeclaracao')->name('declaracao.imprimir');;
 
 
     
