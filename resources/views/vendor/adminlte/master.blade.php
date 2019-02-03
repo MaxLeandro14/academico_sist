@@ -79,7 +79,7 @@
                 
             });
 
-            $('.select2_serie').select2({
+            $('.select2_ano').select2({
                 
                 placeholder: "Selecione um Ano",
                 

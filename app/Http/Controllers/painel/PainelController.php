@@ -15,6 +15,7 @@ use App\User;
 use App\Parcela;
 use App\Cargo;
 use App\Funcionario;
+use App\TurmaAluno;
 
 class PainelController extends Controller
 {
@@ -45,13 +46,15 @@ class PainelController extends Controller
         $input = formataDadosTurmaDisciplina($professor_disciplina,$form);
         TurmaDisciplina::create($input);   
       }
-      return redirect()->route('cadastrar_turma')->with('mensagem_sucesso', 'Turma Inserida!');   
+      return redirect()->route('cadastrar_turma');   
     }
 
     public function mostra_turma($codigo_turma)
     {
       $turma_info = getTurmaWhereID($codigo_turma);
-      return view('painel/administrativo/templates/turma', compact('turma_info'));
+      $mostra_footer_header = 'sim';
+      $mostra_professores_turma = 'sim';
+      return view('painel/templates/turma', compact(['turma_info','mostra_footer_header','mostra_professores_turma']));
     }    
 
 
@@ -85,7 +88,7 @@ class PainelController extends Controller
         DisciplinaProfessor::create($input);        
       }
       // retorna pra view anterior
-      return redirect()->route('cadastrar_professor')->with('mensagem_sucesso', 'Professor Inserido!');
+      return redirect()->route('cadastrar_professor');
     }
 
 
@@ -100,20 +103,19 @@ class PainelController extends Controller
     public function matricular_aluno(Request $req, $codigo_turma)
     {
       $turma_info = getTurmaWhereID($codigo_turma);
-      $todos_alunos = Aluno::all();
-      $alunos_turma = getAlunoWhereID($codigo_turma);
+      $alunos_turma = getAlunosTurmaWhereID($codigo_turma);
+      $todos_alunos = getAlunos();
       $dados = $req->all();
-
+      
       if(!$dados)
       return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma']));
 
       $id_alunos = $req->input('id_alunos');
       foreach ($id_alunos as $id_aluno) {
         $dados['id_aluno']  = $id_aluno;
-        print_r($dados); 
         TurmaAluno::create($dados);
       }
-      return view('painel/administrativo/matricular/turma_aluno')->with('mensagem_sucesso', 'Aluno(s) Matriculado(s)!');
+      return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma']))->with('mensagem_sucesso', 'Aluno(s) Matriculado(s)!');
     }
 
 
@@ -127,7 +129,6 @@ class PainelController extends Controller
     public function cadastrar_aluno(Request $req)
     {
       $dados = $req->all();
-      //dd($dados);
       $form = Aluno::create($dados);
       $dados['id_aluno'] = $form->id;
       for ($mes=1; $mes <=12; $mes++) { 
@@ -135,7 +136,7 @@ class PainelController extends Controller
         Parcela::create($dados);
       }
       
-      return redirect()->route('cadastrar_aluno')->with('mensagem_sucesso', 'Aluno Inserido!');
+      return redirect()->route('cadastrar_aluno');
       
     }
 
@@ -169,14 +170,14 @@ class PainelController extends Controller
 
     public function financeiro_aluno($id)
     {
-      $aluno = Aluno::find($id);
+      $aluno = getAlunoWhereID($id);
       $parcelas = DB::table('parcelas')->select('parcelas.*')->where('id_aluno','=',$id)->orderByRaw('mes_parcela ASC')->get();
       return view('painel/administrativo/financeiro/aluno/aluno',compact(['aluno','parcelas']));
     }
 
     public function mostra_aluno($id_aluno)
     {
-      $aluno = Aluno::find($id_aluno);
+      $aluno = getAlunoWhereID($id_aluno);
       $mostra_footer_header = 'sim';
       return view('painel.templates.aluno', compact(['aluno','mostra_footer_header']));
     }

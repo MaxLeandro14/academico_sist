@@ -47,8 +47,24 @@ function getTurmaWhereID($codigo_turma)
 }
 
 
+
 if (! function_exists('getAlunoWhereID')) {
-function getAlunoWhereID($codigo_turma)
+function getAlunoWhereID($id_aluno)
+{
+  $aluno_parcela = DB::table('alunos')
+  ->join('parcelas', 'alunos.id', '=', 'parcelas.id_aluno')
+  ->select('alunos.*','parcelas.valor_parcela')->where('alunos.id', '=', $id_aluno)
+  ->first();
+
+    return $aluno_parcela;
+}
+
+}
+
+
+
+if (! function_exists('getAlunosTurmaWhereID')) {
+function getAlunosTurmaWhereID($codigo_turma)
 {
 	$alunos_turma = DB::table('turma_alunos')
       ->join('turmas', 'turma_alunos.id_turma', '=', 'turmas.id')
@@ -57,6 +73,26 @@ function getAlunoWhereID($codigo_turma)
       ->get();
 
   	return $alunos_turma;
+}
+
+}
+
+
+
+if (! function_exists('getAlunos')) {
+function getAlunos()
+{
+  
+  $todos_alunos = DB::table('alunos')
+  ->whereNotIn('id',
+    function ($query) 
+    {
+    $query->select('id_aluno')
+    ->from('turma_alunos');
+    })
+    ->get();
+
+    return $todos_alunos;
 }
 
 }

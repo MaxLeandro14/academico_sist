@@ -66,7 +66,7 @@
     </div>
     <div class="col-md-4">
       <label for="">UF</label>
-      <input required type="text" maxlength="2" class="form-control" placeholder="UF Local de Nascimento" name="uf_local_nascimento" id="uf_local_nascimento" onkeypress="upper('uf_local_nascimento')" onkeyup="upper('uf_local_nascimento')">
+      <input required type="text" maxlength="2" class="form-control uf" placeholder="UF Local de Nascimento" name="uf_local_nascimento" id="uf_local_nascimento" onkeypress="upper('uf_local_nascimento')" onkeyup="upper('uf_local_nascimento')">
     </div>
   </div>
 
@@ -173,10 +173,12 @@
         </select>
       </div>
     </div>
+    <div id="master_estado_civil">
     <div class="col-md-4" id="conjuge">
       <label for="">Cônjuge</label>
       <input type="text" class="form-control" placeholder="Cônjuge" name="conjuge">
     </div>
+  </div>
   </div>
 
   <br>

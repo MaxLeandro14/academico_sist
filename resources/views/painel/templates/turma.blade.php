@@ -1,13 +1,12 @@
 @include('painel.templates.layouts.header')
-
+@if(isset($mostra_footer_header))
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Turma - {{ $turma_info[0]->codigo_turma }}  </h3>
+    <h3 class="box-title">Turma - @if(isset($turma_info)){{ $turma_info[0]->codigo_turma }} @endif </h3>
   </div>
+@endif
   <!-- /.box-header -->
   <!-- form start -->
-  <form action="{{ route('cadastra_turma') }}" method="POST" >
-    {{csrf_field()}}
     <div class="box-body">
       <div class="row">
         <div class="col-md-6">
@@ -15,7 +14,7 @@
             <label for="">Data de Início</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input value="{{ $turma_info[0]->data_inicial }}" required type="date" class="form-control" placeholder="Data de início" name="data_inicial">
+              <input @if(isset($turma_info)) value="{{ $turma_info[0]->data_inicial }}" disabled @endif required type="date" class="form-control" placeholder="Data de início" name="data_inicial">
             </div>
           </div>
         </div>
@@ -25,7 +24,7 @@
             <label for="">Data Final</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input value="{{ $turma_info[0]->data_final }}" required type="date" class="form-control" placeholder="Data de início" name="data_final">
+              <input @if(isset($turma_info)) value="{{ $turma_info[0]->data_final }}" disabled @endif required type="date" class="form-control" placeholder="Data de início" name="data_final">
             </div>
           </div>
         </div>
@@ -35,8 +34,8 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select class="form-control select2_nivel_modal" required name="nivel">
-              <option>{{ $turma_info[0]->nivel }}</option>
+            <select @if(isset($turma_info)) disabled @endif class="form-control select2_nivel" required name="nivel" id="nivel" onselect="ano_nivel();" onchange="ano_nivel();">
+              <option>@if(isset($turma_info)){{ $turma_info[0]->nivel }}@endif</option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
               <option>Médio</option>
@@ -47,8 +46,8 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Ano</label>
-            <select class="form-control select2_ano_modal" required name="ano">
-              <option>{{ $turma_info[0]->ano }}</option>
+            <select @if(isset($turma_info)) disabled @endif class="form-control select2_ano" required name="ano" id="ano">
+              <option>@if(isset($turma_info)){{ $turma_info[0]->ano }}@endif</option>
               <option>1° ano</option>
               <option>2° ano</option>
               <option>3° ano</option>
@@ -65,23 +64,20 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Turno</label>
-            <select class="form-control select2_turno_modal" required name="turno">
-              <option>{{ $turma_info[0]->turno }}</option>
+            <select @if(isset($turma_info)) disabled @endif class="form-control select2_turno" required name="turno">
               <option>Matutino</option>
-              <option>Vespertino</option>
-              <option>Noturno</option>
             </select>
           </div>
         </div>
 
         <div class="col-md-5">
-          <label for="">Descrição</label>
-          <div class="input-group">
-            <textarea required rows="5" cols="180" class="form-control" placeholder="Descrição da Turma"  name="descricao">{{ $turma_info[0]->descricao }}</textarea>
+          <div class="form-group">
+            <label>Turno</label>
+            <input type="text" required class="form-control" placeholder="Descrição da Turma"  name="descricao" @if(isset($turma_info)) disabled  value="{{ $turma_info[0]->descricao }}"@endif>
           </div>    
         </div>
       </div>
-
+      @if(isset($mostra_professores_turma))
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
@@ -103,7 +99,7 @@
                   @foreach($turma_info as $turma)
                   <tr>
                     <td> {{ $turma->codigo_professor }} </td>
-                    <td> {{ $turma->nome_professor }} </td>
+                    <td> {{ $turma->nome }} </td>
                     <td> {{ $turma->nome_disciplina }} </td>
                   </tr>
                   @endforeach
@@ -114,14 +110,15 @@
           </div>
         </div>
       </div>
+      @include('painel.templates.layouts.footer')
+      @endif
 
+@if(isset($mostra_footer_header))
     </div>
     <!-- /.box-body -->
-
     <div class="box-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
     </div>
-  </form>
 </div>
+@endif
 
-@include('painel.templates.layouts.footer')
