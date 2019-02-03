@@ -159,17 +159,25 @@
     <!-- DataTables with bootstrap 3 renderer -->
     <script src="//cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script type="text/javascript">
-        var value = document.getElementById("tabela").getAttribute("pageLength");
-        pageLength = value*1;
+        var value = $("#tabela").attr("pageLength");
+        var pageLength,aaSorting;
+        if (typeof value !== 'undefined') {
+          pageLength = value*1;
+        }
         
-        var value = document.getElementById("tabela").getAttribute("aaSorting");
-        aaSorting = value[0]*1;
+        var value = $("#tabela").attr("aaSorting");
+        if (typeof value !== 'undefined') {
+            aaSorting = value[0]*1;
+        }
+
         var i;
         var order = "";
-
-        for(i=2; i<value.length; i++){
+        if (typeof value !== 'undefined') {
+            for(i=2; i<value.length; i++){
             order = order.concat(value[i]);
+            }
         }
+        
       $(document).ready(function() {
         $('table.tabela').DataTable({
             "bJQueryUI": true,

@@ -149,6 +149,23 @@ function geraCodigoProfessor()
 
 
 
+if (! function_exists('geraCodigoAluno')) {
+function geraCodigoAluno()
+{
+
+  $codigo_aluno = date('Y').strtoupper(bin2hex(random_bytes(2)));
+
+    while (DB::table('alunos')->where('codigo_aluno', '=', $codigo_aluno)->count() > 0) {
+      $codigo_aluno = date('Y').strtoupper(bin2hex(random_bytes(2)));
+    }
+
+    return $codigo_aluno;
+}
+
+}
+
+
+
 if (! function_exists('geraCodigoTurma')) {
 function geraCodigoTurma()
 {

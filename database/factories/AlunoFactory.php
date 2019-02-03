@@ -7,6 +7,7 @@ $factory->define(App\Aluno::class, function (Faker $faker) {
     return [
         'nome_aluno' => addslashes($faker->name),
         'sexo'	=>	addslashes($faker->randomElements($array = array ('M','F'), $count = 1)[0]),
+        'codigo_aluno' => geraCodigoAluno(),
         'data_nascimento'	=>	$faker->date($format = 'Y-m-d', $max = 'now'),
         'cpf'	=>	addslashes($faker->unique()->cpf),
         'fone'	=>	addslashes($faker->cellphoneNumber),

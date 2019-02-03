@@ -17,6 +17,7 @@ class CreateAlunosTable extends Migration
             $table->increments('id');
             $table->string('nome_aluno');
             $table->string('sexo');
+            $table->string('codigo_aluno');
             $table->date('data_nascimento');
             $table->string('cpf');
             $table->string('fone');

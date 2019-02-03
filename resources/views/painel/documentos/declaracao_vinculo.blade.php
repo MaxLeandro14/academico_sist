@@ -28,7 +28,7 @@
 
               @foreach($todos_alunos as $aluno)
                 <tr>
-                  <td>{{$aluno->codigo}}</td>
+                  <td>{{$aluno->codigo_aluno}}</td>
                   <td>{{$aluno->nome_aluno}}</td>
                   <td>{{$aluno->nome_mae}}</td>
                   <td>{{$aluno->data_nascimento}}</td>

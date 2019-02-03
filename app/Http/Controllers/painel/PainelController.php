@@ -131,6 +131,7 @@ class PainelController extends Controller
     public function cadastrar_aluno(Request $req)
     {
       $dados = $req->all();
+      $dados['codigo_aluno'] = geraCodigoAluno();
       $form = Aluno::create($dados);
       $dados['id_aluno'] = $form->id;
       for ($mes=1; $mes <=12; $mes++) { 
@@ -173,7 +174,7 @@ class PainelController extends Controller
     public function financeiro_aluno($id)
     {
       $aluno = getAlunoWhereID($id);
-      $parcelas = DB::table('parcelas')->select('parcelas.*')->where('id_aluno','=',$id)->orderByRaw('mes_parcela ASC')->get();
+      $parcelas = DB::table('parcelas')->select('parcelas.*')->where('id_aluno','=',$id)->get();
       return view('painel/administrativo/financeiro/aluno/aluno',compact(['aluno','parcelas']));
     }
 
