@@ -10,7 +10,7 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Informações de {{ $aluno->nome_aluno }} - <a  class="" data-toggle="modal" data-target="#modal_template" title="Mais Detalhes" href="{{ route('mostra_aluno',[$aluno->id,$aluno->nome_aluno]) }}">Mais detalhes</a></h3>
+    <h3 class="box-title">Informações de {{ $aluno->nome_aluno }} - <a  class="" data-toggle="modal" data-target="#modal_template" title="Mais Detalhes" href="{{ route('mostra_aluno',[$aluno->codigo_aluno,$aluno->nome_aluno]) }}">Mais detalhes</a></h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body">
@@ -154,7 +154,7 @@
           </div>
         </td>
         <td>
-          <input type="hidden" name="id_aluno" value="{{ $aluno->id }}">
+          <input type="hidden" name="codigo_aluno" value="{{ $aluno->codigo_aluno }}">
           <button type="submit" class="btn btn-primary" title="Salvar" ><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
         </td>
         </form>

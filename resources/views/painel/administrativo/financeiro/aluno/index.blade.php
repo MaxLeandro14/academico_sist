@@ -28,7 +28,7 @@
     <tbody>
       @foreach($alunos as $aluno)
       <tr>
-        <td><a href="{{ route('financeiro_aluno',$aluno->id) }}">{{ $aluno->nome_aluno }}</a></td>
+        <td><a href="{{ route('financeiro_aluno',$aluno->codigo_aluno) }}">{{ $aluno->nome_aluno }}</a></td>
         <td>{{ $aluno->sexo }}</td>
         <td>{{ $aluno->cpf }}</td>
         <td>{{ $aluno->fone }}</td>

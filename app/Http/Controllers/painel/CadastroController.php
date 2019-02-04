@@ -12,6 +12,7 @@ use App\Cargo;
 use App\Funcionario;
 use App\Disciplina;
 use App\DisciplinaProfessor;
+use App\DiarioProfessor;
 
 class CadastroController extends Controller
 {
@@ -30,9 +31,10 @@ class CadastroController extends Controller
       $codigo_turma = geraCodigoTurma();
       $professor_disciplina = $req->input('professores');
       $input = formataDadosTurma($professor_disciplina,$req,$codigo_turma);
-      $form = Turma::create($input);
+      $formTurma = Turma::create($input);
+      
       foreach ($professor_disciplina as $professor_disciplina) { 
-        $input = formataDadosTurmaDisciplina($professor_disciplina,$form);
+        $input = formataDadosTurmaDisciplina($professor_disciplina,$formTurma);
         TurmaDisciplina::create($input);   
       }
       return redirect()->route('cadastrar_turma');   

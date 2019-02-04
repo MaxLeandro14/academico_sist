@@ -26,7 +26,7 @@
     <tbody>
       @foreach($professores as $professor)
       <tr>
-        <td><a href="{{ route('financeiro_professor',$professor->id) }}">{{ $professor->nome }}</a></td>
+        <td><a href="{{ route('financeiro_professor',$professor->codigo_professor) }}">{{ $professor->nome }}</a></td>
         <td>{{ $professor->codigo_professor }}</td>
         <td>{{ $professor->cpf }}</td>
         

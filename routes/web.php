@@ -23,7 +23,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
 
     //FINANCEIRO - Aluno
     Route::get('financeiro_aluno','FinanceiroController@index_financeiro_aluno')->name('index_financeiro_aluno');
-    Route::get('financeiro_aluno/{id_aluno}','FinanceiroController@financeiro_aluno')->name('financeiro_aluno');
+    Route::get('financeiro_aluno/{codigo_aluno}','FinanceiroController@financeiro_aluno')->name('financeiro_aluno');
     Route::get('financeiro_aluno/{id_aluno}/{nome_aluno}','FinanceiroController@mostra_aluno')->name('mostra_aluno');
     Route::post('financeiro_aluno_salva/{id_parcela}/{mes_parcela}','FinanceiroController@financeiro_aluno_salva')->name('financeiro_aluno_salva');
 
@@ -32,13 +32,13 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     Route::get('financeiro_professor/{id_professor}','FinanceiroController@financeiro_professor')->name('financeiro_professor');
 
     //Minhas Turmas
-    Route::get('minhas_turmas','PainelController@index_minhas_turmas')->name('minhas_turmas');
-    Route::get('minhas_turmas/{codigo_turma}','PainelController@minhas_turmas')->name('turma');
+    Route::get('minhas_turmas','MinhasTurmasController@index_minhas_turmas')->name('minhas_turmas');
+    Route::get('minhas_turmas/{codigo_turma}','MinhasTurmasController@minhas_turmas')->name('turma');
     
 
     //Script de Teste // Adiciona Parcela
-    Route::get('cadastra_parelas','PainelController@cadastra_parelas')->name('cadastrar_parelas');
-    Route::post('cadastra_parelas','PainelController@cadastra_parelas')->name('cadastra_parelas');
+    Route::get('cadastra_parelas','FinanceiroController@cadastra_parelas')->name('cadastrar_parelas');
+    Route::post('cadastra_parelas','FinanceiroController@cadastra_parelas')->name('cadastra_parelas');
 
     //Gerenciamento - ACL
     Route::resource('usuarios', 'UsuarioController');

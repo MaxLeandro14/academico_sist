@@ -4,8 +4,10 @@ namespace App\Http\Controllers\painel;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Aluno;
 use App\Professor;
+use App\Parcela;
 
 class FinanceiroController extends Controller
 {
@@ -13,20 +15,19 @@ class FinanceiroController extends Controller
     public function index_financeiro_aluno()
     {
       $alunos = Aluno::all();
-      $mostra_footer_header = NULL;
-      return view('painel/administrativo/financeiro/aluno/index',compact(['alunos','mostra_footer_header']));
+      return view('painel/administrativo/financeiro/aluno/index',compact('alunos'));
     }
 
-    public function financeiro_aluno($id)
+    public function financeiro_aluno($codigo_aluno)
     {
-      $aluno = getAlunoWhereID($id);
-      $parcelas = DB::table('parcelas')->select('parcelas.*')->where('id_aluno','=',$id)->get();
+      $aluno = getAlunoWhereCodigo($codigo_aluno);
+      $parcelas = getParcelasWhereCodigo($codigo_aluno);
       return view('painel/administrativo/financeiro/aluno/aluno',compact(['aluno','parcelas']));
     }
 
-    public function mostra_aluno($id_aluno)
+    public function mostra_aluno($codigo_aluno)
     {
-      $aluno = getAlunoWhereID($id_aluno);
+      $aluno = getAlunoWhereCodigo($codigo_aluno);
       $mostra_footer_header = 'sim';
       return view('painel.templates.aluno', compact(['aluno','mostra_footer_header']));
     }
@@ -35,7 +36,7 @@ class FinanceiroController extends Controller
     {
 
       $debug = updateParcela($req,$id_parcela,$mes_parcela);
-      return redirect()->route('financeiro_aluno',$req->input('id_aluno'));
+      return redirect()->route('financeiro_aluno',$req->input('codigo_aluno'));
       
     }
 
@@ -47,23 +48,14 @@ class FinanceiroController extends Controller
       return view('painel/administrativo/financeiro/professor/index',compact('professores'));
     }
 
-
-
-    //PROFESSOR
-    public function index_minhas_turmas()
+    public function financeiro_professor($codigo_professor)
     {
-      $codigo_professor = auth()->user()->codigo;
-      $minhas_turmas = getTurmaDisciplinaWhereID($codigo_professor);
-      return view('painel/professor/index',compact('minhas_turmas'));
-        
+      $professor = getProfessorWhereCodigo($codigo_professor);
+      $parcelas = DB::table('parcelas')->select('parcelas.*')->where('id_aluno','=',$id)->get();
+      return view('painel/administrativo/financeiro/aluno/aluno',compact(['aluno','parcelas']));
     }
 
-    public function minhas_turmas()
-    {
-      
-      return view('painel/professor/turma');
-        
-    }
+
 
     public function cadastra_parelas(Request $req)
     {

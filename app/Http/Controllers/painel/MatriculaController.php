@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Aluno;
 use App\Parcela;
 use App\TurmaAluno;
+use App\DiarioProfessor;
 
 class MatriculaController extends Controller
 {
@@ -34,6 +35,15 @@ class MatriculaController extends Controller
       foreach ($id_alunos as $id_aluno) {
         $dados['id_aluno']  = $id_aluno;
         TurmaAluno::create($dados);
+        foreach ($professores_turma as $info) {
+          $input = formataDadosDiarioProfessor($req,$info);
+          $input['id_aluno']  = $id_aluno;
+          for ($i=1; $i <= 4; $i++) { 
+            $input['nome_bimestre'] = $i;
+            DiarioProfessor::create($input);  
+          }  
+        }
+        
       }
       return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma','professores_turma']))->with('mensagem_sucesso', 'Aluno(s) Matriculado(s)!');
     }

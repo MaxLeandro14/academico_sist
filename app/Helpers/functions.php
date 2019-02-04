@@ -48,13 +48,28 @@ function getTurmaWhereID($codigo_turma)
 
 
 
-if (! function_exists('getAlunoWhereID')) {
-function getAlunoWhereID($id_aluno)
+if (! function_exists('getAlunoWhereCodigo')) {
+function getAlunoWhereCodigo($codigo_aluno)
 {
   $aluno_parcela = DB::table('alunos')
   ->join('parcelas', 'alunos.id', '=', 'parcelas.id_aluno')
-  ->select('alunos.*','parcelas.valor_parcela')->where('alunos.id', '=', $id_aluno)
+  ->select('alunos.*','parcelas.valor_parcela')->where('alunos.codigo_aluno', '=', $codigo_aluno)
   ->first();
+
+    return $aluno_parcela;
+}
+
+}
+
+
+
+if (! function_exists('getParcelasWhereCodigo')) {
+function getParcelasWhereCodigo($codigo_aluno)
+{
+  $aluno_parcela = DB::table('alunos')
+  ->join('parcelas', 'alunos.id', '=', 'parcelas.id_aluno')
+  ->select('parcelas.*')->where('alunos.codigo_aluno', '=', $codigo_aluno)
+  ->get();
 
     return $aluno_parcela;
 }
@@ -88,7 +103,7 @@ function getProfessoresTurma($codigo_turma)
   ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
   ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
   ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
-  ->select('funcionarios.nome','professors.codigo_professor','disciplinas.nome_disciplina')->where('turmas.codigo_turma', '=', $codigo_turma)
+  ->select('turma_disciplinas.id as id_turma_disciplina','turmas.id as id_turma','funcionarios.nome','professors.codigo_professor','professors.id as id_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')->where('turmas.codigo_turma', '=', $codigo_turma)
   ->get();
 
     return $professores_turma;
@@ -141,7 +156,8 @@ function getTurmaDisciplinaWhereID($codigo_professor)
   ->join('disciplina_professors', 'turma_disciplinas.id_disciplina_professor', '=', 'disciplina_professors.id')
   ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
   ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
-  ->select('turmas.*','professors.nome_professor','professors.codigo_professor','disciplinas.nome_disciplina')->where('professors.codigo_professor', '=', $codigo_professor)
+  ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
+  ->select('turmas.*','funcionarios.nome','professors.codigo_professor','disciplinas.nome_disciplina')->where('professors.codigo_professor', '=', $codigo_professor)
   ->get();
 
     return $turma_disciplina_professor;
@@ -237,6 +253,22 @@ function formataDadosDisciplinaProfessor($req,$disciplina,$formProfessor)
     $input['id_disciplina'] = $disciplina;
     $input['id_professor'] = $formProfessor->id;
   	return $input;
+}
+
+}
+
+
+
+if (! function_exists('formataDadosDiarioProfessor')) {
+function formataDadosDiarioProfessor($req,$info)
+{
+    $input = $req->except('id_alunos');
+    $input['id_turma_disciplina'] = $info->id_turma_disciplina;
+    $input['id_professor']        = $info->id_professor;
+    $input['id_disciplina']       = $info->id_disciplina;
+    $input['id_turma']            = $info->id_turma;
+    
+    return $input;
 }
 
 }
