@@ -34,6 +34,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     //Minhas Turmas
     Route::get('minhas_turmas','MinhasTurmasController@index_minhas_turmas')->name('minhas_turmas');
     Route::get('minhas_turmas/{codigo_turma}','MinhasTurmasController@minhas_turmas')->name('turma');
+    Route::post('minhas_turmas','MinhasTurmasController@minhas_turmas')->name('muda_bimestre');
     
 
     //Script de Teste // Adiciona Parcela

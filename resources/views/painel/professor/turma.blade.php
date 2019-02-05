@@ -10,7 +10,29 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Diário do professor: <strong>1° Bimestre</strong></h3>
+    <h3 class="box-title">Diário do professor:
+    <form method="POST" action="{{ route('muda_bimestre') }}" >
+      <select required class="form-control " id="bimestre" name="bimestre">
+        <option><strong>1° Bimestre</strong></option>
+        <option><strong>2° Bimestre</strong></option>
+        <option><strong>3° Bimestre</strong></option>
+        <option><strong>4° Bimestre</strong></option>
+      </select>
+      <div id="div_bimestre"></div>
+      <script type="text/javascript">
+        document.getElementById('bimestre').addEventListener('change', function() {
+          var bimestre = $('#bimestre').val();
+          alert(bimestre);
+          var div = $("#div_bimestre");
+          var html = '<input type="hidden" name="bimestre" value="';
+          html = html.concat(bimestre);
+          html = html.concat('">');
+          div.html(html);
+          this.form.submit();
+        }); 
+      </script>
+    </form>
+   </h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
@@ -21,31 +43,31 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="">Professor</label>
-            <input type="text" class="form-control" placeholder="Nome do aluno" name="nome_aluno">
+            <input disabled type="text" class="form-control" value="{{ $turma_info->nome_professor }}" >
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="form-group">
             <label for="">Disciplina</label>
-            <input type="text" class="form-control" placeholder="Nome do aluno" name="nome_aluno">
+            <input disabled type="text" class="form-control" value="{{ $turma_info->nome_disciplina }}">
           </div>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
           <div class="form-group">
-            <label for="">Série</label>
-            <input type="text" class="form-control" placeholder="Nome do aluno" name="nome_aluno">
+            <label for="">Nível</label>
+            <input disabled type="text" class="form-control" value="{{ $turma_info->nivel }}">
           </div>
         </div>
         <div class="col-md-2">
           <div class="form-group">
             <label for="">Turno</label>
-            <input type="text" class="form-control" placeholder="Nome do aluno" name="nome_aluno">
+            <input disabled type="text" class="form-control" value="{{ $turma_info->turno }}">
           </div>
         </div>
         <div class="col-md-1">
           <div class="form-group">
             <label for="">Ano</label>
-            <input type="text" class="form-control" placeholder="Nome do aluno" name="nome_aluno">
+            <input disabled type="text" class="form-control" value="{{ $turma_info->ano }}">
           </div>
         </div>
       </div>
@@ -56,7 +78,7 @@
             <label for="">Data de início</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" class="form-control" placeholder="Data de início" name="data_nascimento">
+              <input disabled type="date" class="form-control" placeholder="Data de início" name="data_nascimento" value="{{$turma_info->data_inicial}}">
             </div>
           </div>
         </div>
@@ -65,108 +87,50 @@
             <label for="">Data de Término</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-              <input type="date" class="form-control" placeholder="Data de início" name="data_nascimento">
+              <input disabled type="date" class="form-control" placeholder="Data de início" name="data_nascimento" value="{{$turma_info->data_final}}">
             </div>
           </div>
         </div>
         <div class="col-md-6">
-          <label for="">Descrição</label>
-          <div class="input-group">
-            <textarea rows="5" cols="180" class="form-control" required name=""></textarea>
-          </div>
+          <div class="form-group">
+            <label>Descrição</label>
+            <input type="text" required class="form-control" placeholder="Descrição da Turma"  name="descricao" disabled value="{{ $turma_info->descricao }}">
+          </div>    
         </div>
       </div>
       <hr>
-      <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
+      <table id="tabela" class="table tabela" pageLength='10' aaSorting='1 asc'>
         <thead>
           <tr>
-          <th>ID</th>
+          <th>Código</th>
           <th>Nome</th>
-          <th>Nota 1</th>
+          <th>Notas</th><!--
           <th>Nota 2</th>
           <th>Nota 3</th>
-          <th>Nota 4</th>
+          <th>Nota 4</th>-->
           </tr>
         </thead>
 
         <tbody>
+          @foreach($alunos_turma as $aluno)
             <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
+              <td>{{ $aluno->codigo_aluno }}</td>
+              <td>{{ $aluno->nome_aluno }}</td>
+              <td>
+              @foreach($notas_alunos as $nota_aluno)
+              @if($aluno->id_aluno == $nota_aluno->id_aluno && $turma_info->id_disciplina == $nota_aluno->id_disciplina)
+              <input type="" style="width: 10%" value="{{ $nota_aluno->avaliacao_etapa1 }}"  name="">
+              <!--<input type="" value="{{ $nota_aluno->atividade_etapa1 }}" name="">
+              <input type="" value="{{ $nota_aluno->trabalhos_etapa1 }}" name="">-->
+              @endif
+              @endforeach
+              </td>
             </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-                <td>$86,000</td>
-            </tr>
-            <tr>
-                <td>Cedric Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td>2012/03/29</td>
-                <td>$433,060</td>
-            </tr>
-            <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td>2008/11/28</td>
-                <td>$162,700</td>
-            </tr>
-            <tr>
-                <td>Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2012/12/02</td>
-                <td>$372,000</td>
-            </tr>
-            <tr>
-                <td>Herrod Chandler</td>
-                <td>Sales Assistant</td>
-                <td>San Francisco</td>
-                <td>59</td>
-                <td>2012/08/06</td>
-                <td>$137,500</td>
-            </tr>
-            <tr>
-                <td>Rhona Davidson</td>
-                <td>Integration Specialist</td>
-                <td>Tokyo</td>
-                <td>55</td>
-                <td>2010/10/14</td>
-                <td>$327,900</td>
-            </tr>
-            <tr>
-                <td>Colleen Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td>2009/09/15</td>
-                <td>$205,500</td>
-            </tr>
+            @endforeach
           </tbody>
       </table>
     </div>
   </form>
 
 </div>
-
 @stop

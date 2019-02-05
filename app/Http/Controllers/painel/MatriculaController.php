@@ -45,6 +45,9 @@ class MatriculaController extends Controller
         }
         
       }
+      $professores_turma = getProfessoresTurma($codigo_turma);
+      $alunos_turma = getAlunosTurma($codigo_turma);
+      $todos_alunos = getAlunos();
       return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma','professores_turma']))->with('mensagem_sucesso', 'Aluno(s) Matriculado(s)!');
     }
 

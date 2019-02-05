@@ -38,7 +38,7 @@ function getTurmaWhereID($codigo_turma)
 	->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
 	->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
   ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
-	->select('turmas.*','funcionarios.nome','professors.codigo_professor','disciplinas.nome_disciplina')->where('turmas.codigo_turma', '=', $codigo_turma)
+	->select('turmas.*','funcionarios.nome as nome_professor','professors.codigo_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')->where('turmas.codigo_turma', '=', $codigo_turma)
 	->first();
 
   	return $turma_info;
@@ -84,10 +84,26 @@ function getAlunosTurma($codigo_turma)
 	$alunos_turma = DB::table('turma_alunos')
       ->join('turmas', 'turma_alunos.id_turma', '=', 'turmas.id')
       ->join('alunos', 'turma_alunos.id_aluno', '=', 'alunos.id')
-      ->select('turma_alunos.*','alunos.nome_aluno','alunos.cpf','alunos.situacao_procedencia')->where('turmas.codigo_turma', '=', $codigo_turma)
+      ->select('turma_alunos.*','alunos.codigo_aluno','alunos.nome_aluno','alunos.cpf','alunos.situacao_procedencia')->where('turmas.codigo_turma', '=', $codigo_turma)
       ->get();
 
   	return $alunos_turma;
+}
+
+}
+
+
+
+if (! function_exists('getNotaAlunos')) {
+function getNotaAlunos($codigo_turma,$nome_bimestre)
+{
+  $notas_alunos = DB::table('diario_professors')
+  ->join('alunos', 'diario_professors.id_aluno', '=', 'alunos.id')
+  ->join('turmas', 'diario_professors.id_turma', '=', 'turmas.id')
+  ->select('diario_professors.*')->where([['turmas.codigo_turma', '=', $codigo_turma],['diario_professors.nome_bimestre','=',$nome_bimestre]])
+  ->get();
+
+    return $notas_alunos;
 }
 
 }
@@ -266,7 +282,6 @@ function formataDadosDiarioProfessor($req,$info)
     $input['id_turma_disciplina'] = $info->id_turma_disciplina;
     $input['id_professor']        = $info->id_professor;
     $input['id_disciplina']       = $info->id_disciplina;
-    $input['id_turma']            = $info->id_turma;
     
     return $input;
 }

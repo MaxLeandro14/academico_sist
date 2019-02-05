@@ -14,7 +14,7 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form action="{{ route('matricula_aluno',$turma_info->id) }}" method="POST" >
+  <form action="{{ route('matricula_aluno',$turma_info->codigo_turma) }}" method="POST" >
     {{csrf_field()}}
     <input type="hidden" name="id_turma" value="{{$turma_info->id}}">
     @include('painel.templates.turma')
