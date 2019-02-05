@@ -95,15 +95,31 @@ function getAlunosTurma($codigo_turma)
 
 
 if (! function_exists('getNotaAlunos')) {
-function getNotaAlunos($codigo_turma,$nome_bimestre)
+function getNotaAlunos($codigo_turma,$nome_bimestre,$id_disciplina)
 {
   $notas_alunos = DB::table('diario_professors')
   ->join('alunos', 'diario_professors.id_aluno', '=', 'alunos.id')
   ->join('turmas', 'diario_professors.id_turma', '=', 'turmas.id')
-  ->select('diario_professors.*')->where([['turmas.codigo_turma', '=', $codigo_turma],['diario_professors.nome_bimestre','=',$nome_bimestre]])
+  ->select('diario_professors.*')->where([['turmas.codigo_turma', '=', $codigo_turma],['diario_professors.nome_bimestre','=',$nome_bimestre],['diario_professors.id_disciplina', '=', $id_disciplina]])
   ->get();
 
     return $notas_alunos;
+}
+
+}
+
+
+
+if (! function_exists('getCodigoAlunos')) {
+function getCodigoAlunos($codigo_turma,$nome_bimestre,$id_disciplina)
+{
+  $codigo_alunos = DB::table('diario_professors')
+  ->join('alunos', 'diario_professors.id_aluno', '=', 'alunos.id')
+  ->join('turmas', 'diario_professors.id_turma', '=', 'turmas.id')
+  ->select('alunos.codigo_aluno')->where([['turmas.codigo_turma', '=', $codigo_turma],['diario_professors.nome_bimestre','=',$nome_bimestre],['diario_professors.id_disciplina', '=', $id_disciplina]])
+  ->get();
+
+    return $codigo_alunos;
 }
 
 }
@@ -173,7 +189,7 @@ function getTurmaDisciplinaWhereID($codigo_professor)
   ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
   ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
   ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
-  ->select('turmas.*','funcionarios.nome','professors.codigo_professor','disciplinas.nome_disciplina')->where('professors.codigo_professor', '=', $codigo_professor)
+  ->select('turmas.*','funcionarios.nome','professors.codigo_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')->where('professors.codigo_professor', '=', $codigo_professor)
   ->get();
 
     return $turma_disciplina_professor;

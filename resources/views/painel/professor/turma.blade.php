@@ -10,34 +10,25 @@
 
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Diário do professor:
-    <form method="POST" action="{{ route('muda_bimestre') }}" >
-      <select required class="form-control " id="bimestre" name="bimestre">
-        <option><strong>1° Bimestre</strong></option>
-        <option><strong>2° Bimestre</strong></option>
-        <option><strong>3° Bimestre</strong></option>
-        <option><strong>4° Bimestre</strong></option>
+    <h3 class="box-title">Diário do professor
+    <form method="POST" action="{{ route('muda_bimestre',[$turma_info->codigo_turma,$turma_info->id_disciplina]) }}" >
+      {{csrf_field()}}
+      <select required class="form-control select2_generico" id="bimestre">
+        @foreach($bimestres as $bimestre)
+        <option @if(session('bimestre_selecionado') == $bimestre ) selected @endif  value="{{$bimestre}}" >
+          <strong>{{$bimestre}}° Bimestre</strong>
+        </option>
+        @endforeach
       </select>
-      <div id="div_bimestre"></div>
-      <script type="text/javascript">
-        document.getElementById('bimestre').addEventListener('change', function() {
-          var bimestre = $('#bimestre').val();
-          alert(bimestre);
-          var div = $("#div_bimestre");
-          var html = '<input type="hidden" name="bimestre" value="';
-          html = html.concat(bimestre);
-          html = html.concat('">');
-          div.html(html);
-          this.form.submit();
-        }); 
-      </script>
+      <div id="div_bimestre"><input type="hidden" name="codigo_turma" value="{{$turma_info->codigo_turma}}"></div>
     </form>
    </h3>
+   <div class="pull-right"><a class="btn btn-default" href=""><i class="fa fa-refresh"></i> Atualizar</a></div>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
   
-  <form role="form">
+  <form role="form" method="POST" action="">
     <div class="box-body">
       <div class="row">
         <div class="col-md-4">
@@ -104,13 +95,9 @@
           <tr>
           <th>Código</th>
           <th>Nome</th>
-          <th>Notas</th><!--
-          <th>Nota 2</th>
-          <th>Nota 3</th>
-          <th>Nota 4</th>-->
+          <th>Notas</th>
           </tr>
         </thead>
-
         <tbody>
           @foreach($alunos_turma as $aluno)
             <tr>
@@ -118,10 +105,13 @@
               <td>{{ $aluno->nome_aluno }}</td>
               <td>
               @foreach($notas_alunos as $nota_aluno)
-              @if($aluno->id_aluno == $nota_aluno->id_aluno && $turma_info->id_disciplina == $nota_aluno->id_disciplina)
-              <input type="" style="width: 10%" value="{{ $nota_aluno->avaliacao_etapa1 }}"  name="">
-              <!--<input type="" value="{{ $nota_aluno->atividade_etapa1 }}" name="">
-              <input type="" value="{{ $nota_aluno->trabalhos_etapa1 }}" name="">-->
+              @if($aluno->id_aluno == $nota_aluno->id_aluno)
+              <input type="" class="form-control nota" placeholder="Avaliação E1" value="{{ $nota_aluno->avaliacao_etapa1 }}"  name="">
+              <input type="" class="form-control nota" placeholder="Atividade E1" value="{{ $nota_aluno->atividade_etapa1 }}" name="">
+              <input type="" class="form-control nota" placeholder="Trabalhos E1" value="{{ $nota_aluno->trabalhos_etapa1 }}" name="">
+              <input type="" class="form-control nota" placeholder="Avaliação E2" value="{{ $nota_aluno->avaliacao_etapa2 }}"  name="">
+              <input type="" class="form-control nota" placeholder="Atividade E2" value="{{ $nota_aluno->atividade_etapa2 }}" name="">
+              <input type="" class="form-control nota" placeholder="Trabalhos E2" value="{{ $nota_aluno->trabalhos_etapa2 }}" name="">
               @endif
               @endforeach
               </td>
@@ -130,7 +120,11 @@
           </tbody>
       </table>
     </div>
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
   </form>
 
 </div>
+
 @stop

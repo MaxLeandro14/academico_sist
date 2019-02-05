@@ -37,6 +37,7 @@ class CadastroController extends Controller
         $input = formataDadosTurmaDisciplina($professor_disciplina,$formTurma);
         TurmaDisciplina::create($input);   
       }
+      $req->session()->flash('mensagem_sucesso', 'Turma Cadastrada!');
       return redirect()->route('cadastrar_turma');   
     }
 
@@ -75,6 +76,7 @@ class CadastroController extends Controller
         $input = formataDadosDisciplinaProfessor($req,$disciplina,$formProfessor);
         DisciplinaProfessor::create($input);        
       }
+      $req->session()->flash('mensagem_sucesso', 'Professor(a) Cadastrado(a)!');
       return redirect()->route('cadastrar_professor');
     }
 
@@ -95,7 +97,7 @@ class CadastroController extends Controller
         $dados['mes_parcela'] = $mes;
         Parcela::create($dados);
       }
-      
+      $req->session()->flash('mensagem_sucesso', 'Aluno(a) Cadastrado(a)!');
       return redirect()->route('cadastrar_aluno');
       
     }

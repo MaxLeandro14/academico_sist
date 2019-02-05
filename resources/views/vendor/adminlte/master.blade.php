@@ -40,6 +40,9 @@
 
     <!-- Minhas funcoes JS -->
     <script src="{{ asset('js/funcoes.js') }}"></script>
+    <style type="text/css">
+    .nota{width: 15%!important}
+    </style>
     
 </head>
 <body class="hold-transition @yield('body_class')">
@@ -50,6 +53,18 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<!--  -->
+<script type="text/javascript">
+$('#bimestre').on('select2:select', function (e) {
+    var bimestre = $('#bimestre').val();
+    var div = $("#div_bimestre");
+    var html = '<input type="hidden" name="bimestre" value="';
+    html = html.concat(bimestre);
+    html = html.concat('">');
+    div.html(html);
+    this.form.submit();
+});
+</script>
 <script type="text/javascript">
     $('.cpf').mask('000.000.000-00', {reverse: true});
     $('.telefone').mask('(00) 0 0000-0000', {reverse: false});

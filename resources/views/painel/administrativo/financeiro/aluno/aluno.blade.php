@@ -109,7 +109,7 @@
       <label for="">Valor da Mensalidade</label>
       <div class="input-group">
             <span class="input-group-addon">R$</span>
-            <input disabled type="text" class="form-control dinheiro" placeholder="00,00" value="{{ $aluno->valor_parcela }}">
+            <input disabled type="text" class="form-control" placeholder="00,00" value="{{ $aluno->valor_parcela }}">
           </div>
     </div>
   </div>

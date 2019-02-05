@@ -11,6 +11,7 @@
 <div class="box box-primary">
   <div class="box-header with-border">
     <h3 class="box-title">Turma - {{ $turma_info->descricao }} - {{ $turma_info->codigo_turma }}  </h3>
+    <div class="pull-right"><a class="btn btn-default" href=""><i class="fa fa-refresh"></i> Atualizar</a></div>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
