@@ -35,7 +35,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     Route::get('minhas_turmas','MinhasTurmasController@index_minhas_turmas')->name('minhas_turmas');
     Route::get('minhas_turmas/{codigo_turma}/{id_disciplina}','MinhasTurmasController@minhas_turmas')->name('turma');
     Route::post('minhas_turmas/{codigo_turma}/{id_disciplina}','MinhasTurmasController@minhas_turmas')->name('muda_bimestre');
-    Route::post('minhas_turmas/{codigo_turma}/{id_disciplina}/{codigo_alunos[]}','MinhasTurmasController@salva_notas')->name('salva_notas');
+    Route::post('salva_notas/{codigo_turma}/{id_disciplina}','MinhasTurmasController@salva_notas')->name('salva_notas');
     
 
     //Script de Teste // Adiciona Parcela

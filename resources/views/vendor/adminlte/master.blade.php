@@ -41,7 +41,8 @@
     <!-- Minhas funcoes JS -->
     <script src="{{ asset('js/funcoes.js') }}"></script>
     <style type="text/css">
-    .nota{width: 15%!important}
+    .nota{width: 30%!important}
+    .nome_aluno{width: 20%!important}
     </style>
     
 </head>
@@ -57,11 +58,23 @@
 <script type="text/javascript">
 $('#bimestre').on('select2:select', function (e) {
     var bimestre = $('#bimestre').val();
-    var div = $("#div_bimestre");
+    var div_form1 = $("#div_bimestre_form1");
+    var div_form2 = $("#div_bimestre_form2");
     var html = '<input type="hidden" name="bimestre" value="';
     html = html.concat(bimestre);
     html = html.concat('">');
-    div.html(html);
+    div_form1.html(html);
+    div_form2.html(html);
+    this.form.submit();
+});
+
+$('#salva').on('click', function (e) {
+    var bimestre = $('#bimestre').val();
+    var div_form2 = $("#div_bimestre_form2");
+    var html = '<input type="hidden" name="bimestre" value="';
+    html = html.concat(bimestre);
+    html = html.concat('">');
+    div_form2.html(html);
     this.form.submit();
 });
 </script>

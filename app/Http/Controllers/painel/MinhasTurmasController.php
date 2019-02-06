@@ -10,7 +10,7 @@ class MinhasTurmasController extends Controller
     //MINHAS TURMAS
     public function index_minhas_turmas()
     {
-      $codigo_professor = '6478';//auth()->user()->codigo;
+      $codigo_professor = '5EF9';//auth()->user()->codigo;
       $minhas_turmas = getTurmaDisciplinaWhereID($codigo_professor);
       return view('painel/professor/index',compact('minhas_turmas'));
         
@@ -32,8 +32,21 @@ class MinhasTurmasController extends Controller
         
     }
 
-    public function salva_notas(Request $req){
+    public function salva_notas(Request $req, $codigo_turma, $id_disciplina){
 
+      $bimestre = $req->input('bimestre');
+      $codigo_alunos = getCodigoAlunos($codigo_turma,$bimestre,$id_disciplina);
+      $dados = $req->all();
+      $notas_alunos = array();
+      $nome_campo = 'avaliacao_etapa1,';
+      foreach ($dados as $notas) {
+        foreach ($codigo_alunos as $aluno) {
+        echo($dados[$nome_campo.$aluno->codigo_aluno]); 
+        }
+      }
+      
+      dd($dados);
+      
     }
 
 }

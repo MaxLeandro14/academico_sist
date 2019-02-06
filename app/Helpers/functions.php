@@ -154,7 +154,7 @@ function getAlunos()
     {
     $query->select('id_aluno')
     ->from('turma_alunos');
-    })
+    })->orderByRaw('nome_aluno','ASC')
     ->get();
 
     return $todos_alunos;
@@ -248,14 +248,9 @@ if (! function_exists('formataDadosTurma')) {
 function formataDadosTurma($professor_disciplina,$req,$codigo_turma)
 {
 	$dados = explode(',', $professor_disciplina[0]);
-    
     $input = $req->except('professores');
     $input['codigo_turma'] = $codigo_turma;
- 	  $input['id_disciplina_professor'] = $dados[0];
-  	$input['id_disciplina'] = $dados[1];
-  	$input['id_professor'] = $dados[2];
-	  
-  	$ano_letivo = explode('/',date( 'd/m/Y' , strtotime($input['data_inicial'])));
+ 	  $ano_letivo = explode('/',date( 'd/m/Y' , strtotime($input['data_inicial'])));
   	$ano_letivo = $ano_letivo[2];
   	$input['ano_letivo'] = $ano_letivo;
   	return $input;
