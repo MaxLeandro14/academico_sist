@@ -11,7 +11,7 @@
 <div class="box box-primary">
   <div class="box-header with-border">
     <h3 class="box-title">Diário do professor
-    <form method="POST" action="{{ route('muda_bimestre',[$turma_info->codigo_turma,$turma_info->id_disciplina]) }}" >
+    <form method="POST" action="{{ route('muda_bimestre',[$turma_info->id,$turma_info->id_disciplina]) }}" >
       {{csrf_field()}}
       <select required class="form-control select2_generico" id="bimestre">
         @foreach($bimestres as $bimestre)
@@ -20,7 +20,7 @@
         </option>
         @endforeach
       </select>
-      <div id="div_bimestre_form1"><input type="hidden" name="codigo_turma" value="{{$turma_info->codigo_turma}}"></div>
+      <div id="div_bimestre_form1"></div>
     </form>
    </h3>
    <div class="pull-right"><a class="btn btn-default" href=""><i class="fa fa-refresh"></i> Atualizar</a></div>
@@ -28,7 +28,7 @@
   <!-- /.box-header -->
   <!-- form start -->
   
-  <form role="form" method="POST" action="{{ route('salva_notas',[$turma_info->codigo_turma,$turma_info->id_disciplina]) }}">
+  <form role="form" method="POST" action="{{ route('salva_notas',[$turma_info->id,$turma_info->id_disciplina]) }}">
     {{csrf_field()}}
     <div class="box-body">
       <div class="row">
@@ -108,14 +108,14 @@
               @foreach($notas_alunos as $nota_aluno)
               @if($aluno->id_aluno == $nota_aluno->id_aluno)
               <td>
-              <input type="" class="form-control nota" placeholder="Avaliação" value="{{ $nota_aluno->avaliacao_etapa1 }}"  name="avaliacao_etapa1,{{$aluno->codigo_aluno}}">
-              <input type="" class="form-control nota" placeholder="Atividade" value="{{ $nota_aluno->atividade_etapa1 }}" name="atividade_etapa1,{{$aluno->codigo_aluno}}">
-              <input type="" class="form-control nota" placeholder="Trabalhos" value="{{ $nota_aluno->trabalhos_etapa1 }}" name="trabalhos_etapa1,{{$aluno->codigo_aluno}}">
+              <input type="" class="form-control nota" placeholder="Avaliação" value="{{ $nota_aluno->avaliacao_etapa1 }}"  name="avaliacao_etapa1,{{$aluno->id_aluno}}">
+              <input type="" class="form-control nota" placeholder="Atividade" value="{{ $nota_aluno->atividade_etapa1 }}" name="atividade_etapa1,{{$aluno->id_aluno}}">
+              <input type="" class="form-control nota" placeholder="Trabalhos" value="{{ $nota_aluno->trabalhos_etapa1 }}" name="trabalhos_etapa1,{{$aluno->id_aluno}}">
               </td>
               <td>
-              <input type="" class="form-control nota" placeholder="Avaliação" value="{{ $nota_aluno->avaliacao_etapa2 }}"  name="avaliacao_etapa2,{{$aluno->codigo_aluno}}">
-              <input type="" class="form-control nota" placeholder="Atividade" value="{{ $nota_aluno->atividade_etapa2 }}" name="atividade_etapa2,{{$aluno->codigo_aluno}}">
-              <input type="" class="form-control nota" placeholder="Trabalhos" value="{{ $nota_aluno->trabalhos_etapa2 }}" name="trabalhos_etapa2,{{$aluno->codigo_aluno}}">
+              <input type="" class="form-control nota" placeholder="Avaliação" value="{{ $nota_aluno->avaliacao_etapa2 }}"  name="avaliacao_etapa2,{{$aluno->id_aluno}}">
+              <input type="" class="form-control nota" placeholder="Atividade" value="{{ $nota_aluno->atividade_etapa2 }}" name="atividade_etapa2,{{$aluno->id_aluno}}">
+              <input type="" class="form-control nota" placeholder="Trabalhos" value="{{ $nota_aluno->trabalhos_etapa2 }}" name="trabalhos_etapa2,{{$aluno->id_aluno}}">
               </td>
               @endif
               @endforeach

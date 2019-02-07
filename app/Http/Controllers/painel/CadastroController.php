@@ -41,10 +41,10 @@ class CadastroController extends Controller
       return redirect()->route('cadastrar_turma');   
     }
 
-    public function mostra_turma($codigo_turma)
+    public function mostra_turma($id_turma)
     {
-      $turma_info = getTurmaWhereID($codigo_turma);
-      $professores_turma = getProfessoresTurma($codigo_turma);
+      $turma_info = getTurmaWhereID($id_turma);
+      $professores_turma = getProfessoresTurma($id_turma);
       $mostra_footer_header = 'sim';
       $mostra_professores_turma = 'sim';
       return view('painel/templates/turma', compact(['turma_info','mostra_footer_header','mostra_professores_turma','professores_turma']));
@@ -65,10 +65,9 @@ class CadastroController extends Controller
     {
 
       $dados = $req->all();
-      $codigo_professor = geraCodigoProfessor();
       $id_disciplina = $req->input('id_disciplina');
       $formFuncionario = Funcionario::create($dados);
-      $dados['codigo_professor'] = $codigo_professor;
+      $dados['codigo_professor'] = geraCodigoProfessor();
       $dados['id_funcionario'] = $formFuncionario->id;
       $formProfessor = Professor::create($dados);      
       //Relaciona professor e disciplina(s)

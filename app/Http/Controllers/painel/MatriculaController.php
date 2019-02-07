@@ -20,11 +20,11 @@ class MatriculaController extends Controller
       return view('painel/administrativo/matricular/index', compact('turmas'));
     }
 
-    public function matricular_aluno(Request $req, $codigo_turma)
+    public function matricular_aluno(Request $req, $id_turma)
     {
-      $turma_info = getTurmaWhereID($codigo_turma);
-      $professores_turma = getProfessoresTurma($codigo_turma);
-      $alunos_turma = getAlunosTurma($codigo_turma);
+      $turma_info = getTurmaWhereID($id_turma);
+      $professores_turma = getProfessoresTurma($id_turma);
+      $alunos_turma = getAlunosTurma($id_turma);
       $todos_alunos = getAlunos();
       $dados = $req->all();
       
@@ -45,8 +45,8 @@ class MatriculaController extends Controller
         }
         
       }
-      $professores_turma = getProfessoresTurma($codigo_turma);
-      $alunos_turma = getAlunosTurma($codigo_turma);
+      $professores_turma = getProfessoresTurma($id_turma);
+      $alunos_turma = getAlunosTurma($id_turma);
       $todos_alunos = getAlunos();
       $req->session()->flash('mensagem_sucesso', 'Aluno(s) Matriculado(s)!');
       return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma','professores_turma']));

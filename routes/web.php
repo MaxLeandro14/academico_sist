@@ -6,7 +6,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     //CADASTRO - Turma
     Route::get('cadastrar_turma', 'CadastroController@index_cadastrar_turma')->name('cadastrar_turma');
     Route::post('cadastrar_turma', 'CadastroController@cadastrar_turma')->name('cadastra_turma');
-    Route::get('cadastrar_turma/{codigo_turma}','CadastroController@mostra_turma')->name('mostra_turma');
+    Route::get('cadastrar_turma/{id_turma}','CadastroController@mostra_turma')->name('mostra_turma');
 
     //CADASTRO - Professor
     Route::get('cadastrar_professor','CadastroController@index_cadastrar_professor')->name('cadastrar_professor');
@@ -18,13 +18,13 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
 
     //MATRICULA
     Route::get('matricular_aluno','MatriculaController@index_matricular_aluno')->name('matricular_aluno');
-    Route::get('matricular_aluno/{codigo_turma}', 'MatriculaController@matricular_aluno')->name('matricula_aluno');
-    Route::post('matricular_aluno/{codigo_turma}', 'MatriculaController@matricular_aluno')->name('matricula_aluno');
+    Route::get('matricular_aluno/{id_turma}', 'MatriculaController@matricular_aluno')->name('matricula_aluno');
+    Route::post('matricular_aluno/{id_turma}', 'MatriculaController@matricular_aluno')->name('matricula_aluno');
 
     //FINANCEIRO - Aluno
     Route::get('financeiro_aluno','FinanceiroController@index_financeiro_aluno')->name('index_financeiro_aluno');
     Route::get('financeiro_aluno/{codigo_aluno}','FinanceiroController@financeiro_aluno')->name('financeiro_aluno');
-    Route::get('financeiro_aluno/{id_aluno}/{nome_aluno}','FinanceiroController@mostra_aluno')->name('mostra_aluno');
+    Route::get('financeiro_aluno/{codigo_aluno}/{nome_aluno}','FinanceiroController@mostra_aluno')->name('mostra_aluno');
     Route::post('financeiro_aluno_salva/{id_parcela}/{mes_parcela}','FinanceiroController@financeiro_aluno_salva')->name('financeiro_aluno_salva');
 
     //FINANCEIRO - Professor
@@ -33,9 +33,9 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
 
     //Minhas Turmas
     Route::get('minhas_turmas','MinhasTurmasController@index_minhas_turmas')->name('minhas_turmas');
-    Route::get('minhas_turmas/{codigo_turma}/{id_disciplina}','MinhasTurmasController@minhas_turmas')->name('turma');
-    Route::post('minhas_turmas/{codigo_turma}/{id_disciplina}','MinhasTurmasController@minhas_turmas')->name('muda_bimestre');
-    Route::post('salva_notas/{codigo_turma}/{id_disciplina}','MinhasTurmasController@salva_notas')->name('salva_notas');
+    Route::get('minhas_turmas/{id_turma}/{id_disciplina}','MinhasTurmasController@minhas_turmas')->name('turma');
+    Route::post('minhas_turmas/{id_turma}/{id_disciplina}','MinhasTurmasController@minhas_turmas')->name('muda_bimestre');
+    Route::post('salva_notas/{id_turma}/{id_disciplina}','MinhasTurmasController@salva_notas')->name('salva_notas');
     
 
     //Script de Teste // Adiciona Parcela

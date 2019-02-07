@@ -15,7 +15,7 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form action="{{ route('matricula_aluno',$turma_info->codigo_turma) }}" method="POST" >
+  <form action="{{ route('matricula_aluno',$turma_info->id) }}" method="POST" >
     {{csrf_field()}}
     <input type="hidden" name="id_turma" value="{{$turma_info->id}}">
     @include('painel.templates.turma')
@@ -45,7 +45,7 @@
                 <table id="tabela" class="table tabela" pageLength='5' aaSorting='0 asc'>
                 <thead>
                   <tr>
-                    <th>CPF</th>
+                    <th>Código</th>
                     <th>Aluno</th>
                     <th>Situação</th>
                   </tr>
@@ -54,7 +54,7 @@
                 <tbody>
                   @foreach($alunos_turma as $aluno)
                   <tr>
-                    <td> {{ $aluno->cpf }} </td>
+                    <td> {{ $aluno->codigo_aluno }} </td>
                     <td> {{ $aluno->nome_aluno }} </td>
                     <td> {{ $aluno->situacao_procedencia }} </td>
                   </tr>

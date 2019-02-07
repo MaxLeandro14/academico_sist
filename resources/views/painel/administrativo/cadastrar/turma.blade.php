@@ -57,7 +57,7 @@
       @foreach($turmas as $turma)
       <tr>
         <td>
-          <a  class="" data-toggle="modal" data-target="#modal_template" title="Mais Detalhes" href="{{ route('mostra_turma',$turma->codigo_turma) }}">{{ $turma->codigo_turma }}</a>
+          <a  class="" data-toggle="modal" data-target="#modal_template" title="Mais Detalhes" href="{{ route('mostra_turma',$turma->id) }}">{{ $turma->codigo_turma }}</a>
         </td>
         <td>{{ $turma->nivel }}</td>
         <td>{{ $turma->ano }}</td>
