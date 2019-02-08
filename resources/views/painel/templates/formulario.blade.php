@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="">Nome</label>
-        <input required type="text" class="form-control" placeholder="Nome" name="nome">
+        <input required type="text" class="form-control upper" placeholder="Nome" name="nome">
       </div>
     </div>
     <div class="col-md-2">
@@ -29,11 +29,11 @@
     </div>
     <div class="col-md-4">
       <label for="">Nacionalidade</label>
-      <input required type="text" class="form-control" placeholder="Nacionalidade" name="nacionalidade">
+      <input required type="text" class="form-control upper" placeholder="Nacionalidade" name="nacionalidade">
     </div>
     <div class="col-md-4">
       <label for="">Cidade</label>
-      <input required type="text" class="form-control" placeholder="Cidade" name="cidade">
+      <input required type="text" class="form-control upper" placeholder="Cidade" name="cidade">
     </div>
   </div>
 
@@ -62,11 +62,16 @@
     </div>
     <div class="col-md-4">
       <label for="">Local</label>
-      <input required type="text" class="form-control" placeholder="Local de Nascimento" name="local_nascimento">
+      <input required type="text" class="form-control upper" placeholder="Local de Nascimento" name="local_nascimento">
     </div>
     <div class="col-md-4">
-      <label for="">UF</label>
-      <input required type="text" maxlength="2" class="form-control uf" placeholder="UF Local de Nascimento" name="uf_local_nascimento" id="uf_local_nascimento" onkeypress="upper('uf_local_nascimento')" onkeyup="upper('uf_local_nascimento')">
+      <label for="">UF - Local Nascimento</label>
+      <select required class="form-control select2_generico" name="uf_local_nascimento">
+        @if(isset($aluno->uf_local_nascimento))<option>{{ $aluno->uf_local_nascimento }}</option>@endif
+        @foreach($ufs as $uf)
+        <option value="{{$uf->UF}}">{{$uf->Estado}} - {{$uf->UF}}</option>
+        @endforeach
+      </select>
     </div>
   </div>
 
@@ -85,13 +90,18 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <label for="">Órgão Emissor</label>
       <input required type="text" class="form-control" placeholder="Órgão Emissor" name="orgao_emissor" id="orgao_emissor" onkeypress="upper('orgao_emissor')" onkeyup="upper('orgao_emissor')">
     </div>
-    <div class="col-md-1">
-      <label for="">UF</label>
-      <input required maxlength="2" type="text" class="form-control" placeholder="UF" name="uf_orgao_emissor" id="uf" onkeypress="upper('uf')" onkeyup="upper('uf')">
+    <div class="col-md-2">
+      <label for="">UF - Emissor</label>
+      <select required class="form-control select2_generico" name="uf_orgao_emissor">
+        @if(isset($aluno->uf_orgao_emissor))<option>{{ $aluno->uf_orgao_emissor }}</option>@endif
+        @foreach($ufs as $uf)
+        <option value="{{$uf->UF}}">{{$uf->Estado}} - {{$uf->UF}}</option>
+        @endforeach
+      </select>
     </div>
   </div>
 
@@ -119,7 +129,7 @@
     </div>
     <div class="col-md-6">
       <label for="">Categoria</label>
-      <input required type="text" class="form-control" placeholder="Categoria" name="categoria">
+      <input required type="text" class="form-control upper" placeholder="Categoria" name="categoria">
     </div>
   </div>
 
@@ -134,8 +144,13 @@
       <input required type="text" class="form-control" placeholder="Série" name="serie_ctps">
     </div>
     <div class="col-md-2">
-      <label for="">UF Emissão</label>
-      <input required maxlength="2" type="text" class="form-control" placeholder="UF Emissão CTPS" name="uf_ctps" id="uf_ctps" onkeypress="upper('uf')" onkeyup="upper('uf')">
+      <label for="">UF - Emissão</label>
+      <select required class="form-control select2_generico" name="uf_ctps">
+        @if(isset($aluno->uf_ctps))<option>{{ $aluno->uf_ctps }}</option>@endif
+        @foreach($ufs as $uf)
+        <option value="{{$uf->UF}}">{{$uf->Estado}} - {{$uf->UF}}</option>
+        @endforeach
+      </select>
     </div>
     <div class="col-md-3">
       <div class="form-group">
@@ -156,11 +171,11 @@
   <div class="row">
     <div class="col-md-3" id="pai_estado_civil">
       <label for="">Pai</label>
-      <input required type="text" class="form-control" placeholder="Nome do Pai" name="nome_pai">
+      <input required type="text" class="form-control upper" placeholder="Nome do Pai" name="nome_pai">
     </div>
     <div class="col-md-3" id="mae_estado_civil">
       <label for="">Mãe</label>
-      <input required type="text" class="form-control" placeholder="Nome da Mãe" name="nome_mae">
+      <input required type="text" class="form-control upper" placeholder="Nome da Mãe" name="nome_mae">
     </div>
     <div class="col-md-2">
       <div class="form-group">
@@ -176,7 +191,7 @@
     <div id="master_estado_civil">
     <div class="col-md-4" id="conjuge">
       <label for="">Cônjuge</label>
-      <input type="text" class="form-control" placeholder="Cônjuge" name="conjuge">
+      <input type="text" class="form-control upper" placeholder="Cônjuge" name="conjuge">
     </div>
   </div>
   </div>
@@ -248,11 +263,11 @@
     </div>
     <div class="col-md-3">
         <label for="">Contrato de Experiência de </label>
-        <input required type="text" class="form-control" placeholder="Dias" name="dias_contrato">
+        <input required type="text" class="form-control dias" placeholder="Dias" name="dias_contrato">
     </div>
     <div class="col-md-3">
         <label for="">Prorrogado por mais </label>
-        <input type="text" class="form-control" placeholder="Dias de prorrogação" name="dias_prorrogacao">
+        <input type="text" class="form-control dias" placeholder="Dias de prorrogação" name="dias_prorrogacao">
     </div>
   </div>
   

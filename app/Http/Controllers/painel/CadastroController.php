@@ -13,6 +13,7 @@ use App\Funcionario;
 use App\Disciplina;
 use App\DisciplinaProfessor;
 use App\DiarioProfessor;
+use App\UF;
 
 class CadastroController extends Controller
 {
@@ -57,8 +58,9 @@ class CadastroController extends Controller
     {
       $disciplinas = Disciplina::all();
       $cargos = Cargo::all();
+      $ufs = UF::all();
       $disciplinas_professores = getDisciplinaProfessor();  
-      return view('painel/administrativo/cadastrar/professor', compact(['disciplinas','disciplinas_professores','cargos']));
+      return view('painel/administrativo/cadastrar/professor', compact(['disciplinas','disciplinas_professores','cargos','ufs']));
     }
 
     public function cadastrar_professor(Request $req)
@@ -83,7 +85,8 @@ class CadastroController extends Controller
     //ALUNO
     public function index_cadastrar_aluno()
     {
-      return view('painel/administrativo/cadastrar/aluno');
+      $ufs = UF::all();
+      return view('painel/administrativo/cadastrar/aluno',compact(['ufs']));
     }
 
     public function cadastrar_aluno(Request $req)

@@ -39,8 +39,8 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     
 
     //Script de Teste // Adiciona Parcela
-    Route::get('cadastra_parelas','FinanceiroController@cadastra_parelas')->name('cadastrar_parelas');
-    Route::post('cadastra_parelas','FinanceiroController@cadastra_parelas')->name('cadastra_parelas');
+    Route::get('cadastra_parcelas','FinanceiroController@cadastra_parelas')->name('cadastrar_parcelas');
+    Route::post('cadastra_parcelas','FinanceiroController@cadastra_parelas')->name('cadastra_parcelas');
 
     //Gerenciamento - ACL
     Route::resource('usuarios', 'UsuarioController');

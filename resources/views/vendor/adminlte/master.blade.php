@@ -43,6 +43,8 @@
     <style type="text/css">
     .nota{width: 30%!important}
     .nome_aluno{width: 20%!important}
+    .upper{text-transform: uppercase!important}
+    .select2_status_pagamento{width:45% !important}
     </style>
     
 </head>
@@ -77,6 +79,7 @@ $('#salva').on('click', function (e) {
     div_form2.html(html);
     this.form.submit();
 });
+
 </script>
 <script type="text/javascript">
     $('.cpf').mask('000.000.000-00', {reverse: true});
@@ -86,6 +89,7 @@ $('#salva').on('click', function (e) {
     $('.identidade').mask("#.##0-0", {reverse: true});
     $('.carga_horaria_m').mask("000h", {reverse: true});
     $('.carga_horaria_s').mask("00h", {reverse: true});
+    $('.dias').mask("00 dias", {reverse: true});
 </script>
 <script type="text/javascript">
     function upper(nome){
@@ -174,7 +178,10 @@ $('#salva').on('click', function (e) {
                 placeholder: "Selecione um Cargo",
                 
             });
-
+            $('.select2_status_pagamento').select2({
+                
+            });
+            
             $(document).ready(function() {
                 $('#example').DataTable();
             } );

@@ -23,6 +23,7 @@ class CreateTurmasTable extends Migration
             $table->string('ano');
             $table->string('turno');
             $table->string('ano_letivo');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
          $this->call(UsersTableSeeder::class);
          $this->call(DisciplinaTableSeeder::class);
          $this->call(CargoTableSeeder::class);
+         $this->call(UFTableSeeder::class);
          factory(\App\Aluno::class, 50)->create();         
          //$this->call(ProfessorTableSeeder::class);
          //$this->call(DisciplinaNivelTableSeeder::class);

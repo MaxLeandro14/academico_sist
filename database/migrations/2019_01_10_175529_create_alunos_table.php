@@ -43,6 +43,7 @@ class CreateAlunosTable extends Migration
             $table->date('data_matricula');
             $table->date('data_cancelamento')->nullable();
             $table->string('valor_matricula');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

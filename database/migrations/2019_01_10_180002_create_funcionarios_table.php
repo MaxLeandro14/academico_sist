@@ -48,13 +48,13 @@ class CreateFuncionariosTable extends Migration
             $table->string('grau_conclusao');
             $table->date('data_admissao');
             $table->string('salario');
-            
             $table->unsignedInteger('id_cargo');
             $table->foreign('id_cargo')->references('id')->on('cargos');
             $table->string('carga_horaria_mensal');
             $table->string('carga_horaria_semanal');
             $table->string('dias_contrato');
             $table->string('dias_prorrogacao')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

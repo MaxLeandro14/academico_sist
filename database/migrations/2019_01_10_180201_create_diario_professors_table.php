@@ -27,6 +27,7 @@ class CreateDiarioProfessorsTable extends Migration
             $table->string('media_bimestral')->nullable();
             $table->string('faltas_bimestral')->nullable();
             $table->string('nome_bimestre')->nullable();
+            $table->string('status')->nullable();
             $table->unsignedInteger('id_turma_disciplina');
             $table->foreign('id_turma_disciplina')->references('id')->on('turma_disciplinas');
             $table->unsignedInteger('id_disciplina');

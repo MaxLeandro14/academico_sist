@@ -135,7 +135,7 @@
         <td>{{ $parcela->mes_parcela }}</td>
         <td>{{ $parcela->valor_parcela }}</td>
         <td>
-          <select required class="form-control" id="{{$parcela->mes_parcela}}" name="status" onchange="add_require({{$parcela->mes_parcela}})" onselect="add_require({{$parcela->mes_parcela}})">
+          <select required class="form-control select2_status_pagamento" id="{{$parcela->mes_parcela}}" name="status" onchange="add_require({{$parcela->mes_parcela}})" onselect="add_require({{$parcela->mes_parcela}})">
             @if($parcela->status == 'PAGO')
             <option>PAGO</option>
             <option>PENDENTE</option>
