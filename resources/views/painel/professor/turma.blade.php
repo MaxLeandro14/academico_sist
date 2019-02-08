@@ -13,7 +13,7 @@
     <h3 class="box-title">Diário do professor
     <form method="POST" action="{{ route('muda_bimestre',[$turma_info->id,$turma_info->id_disciplina]) }}" >
       {{csrf_field()}}
-      <select required class="form-control select2_generico" id="bimestre">
+      <select required class="form-control select2_generico" id="muda_bimestre">
         @foreach($bimestres as $bimestre)
         <option @if(session('bimestre_selecionado') == $bimestre ) selected @endif  value="{{$bimestre}}" >
           <strong>{{$bimestre}}° Bimestre</strong>
@@ -127,7 +127,7 @@
     </div>
     <div id="div_bimestre_form2"></div>
     <div class="box-footer">
-      <button type="submit" id="salva" class="btn btn-primary">Salvar</button>
+      <button type="submit" id="salva_notas" class="btn btn-primary">Salvar</button>
     </div>
   </form>
 

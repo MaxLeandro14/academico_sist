@@ -38,13 +38,12 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-    <!-- Minhas funcoes JS -->
-    <script src="{{ asset('js/funcoes.js') }}"></script>
+    <!-- Meus estilos -->
     <style type="text/css">
     .nota{width: 30%!important}
     .nome_aluno{width: 20%!important}
     .upper{text-transform: uppercase!important}
-    .select2_status_pagamento{width:45% !important}
+    .select2_status_pagamento{width:42% !important}
     </style>
     
 </head>
@@ -56,48 +55,28 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
-<!--  -->
-<script type="text/javascript">
-$('#bimestre').on('select2:select', function (e) {
-    var bimestre = $('#bimestre').val();
-    var div_form1 = $("#div_bimestre_form1");
-    var div_form2 = $("#div_bimestre_form2");
-    var html = '<input type="hidden" name="bimestre" value="';
-    html = html.concat(bimestre);
-    html = html.concat('">');
-    div_form1.html(html);
-    div_form2.html(html);
-    this.form.submit();
-});
 
-$('#salva').on('click', function (e) {
-    var bimestre = $('#bimestre').val();
-    var div_form2 = $("#div_bimestre_form2");
-    var html = '<input type="hidden" name="bimestre" value="';
-    html = html.concat(bimestre);
-    html = html.concat('">');
-    div_form2.html(html);
-    this.form.submit();
-});
-
-</script>
+<!-- Minhas funcoes JS -->
+<script src="{{ asset('js/funcoes.js') }}"></script>
 <script type="text/javascript">
+//Mascaras jQuery
+$(document).ready(function(){
     $('.cpf').mask('000.000.000-00', {reverse: true});
     $('.telefone').mask('(00) 0 0000-0000', {reverse: false});
     $('.cep').mask('00000-000', {reverse: false});
     $('.dinheiro').mask('000.000.000.000.000,00', {reverse: true});
     $('.identidade').mask("#.##0-0", {reverse: true});
-    $('.carga_horaria_m').mask("000h", {reverse: true});
-    $('.carga_horaria_s').mask("00h", {reverse: true});
-    $('.dias').mask("00 dias", {reverse: true});
-</script>
-<script type="text/javascript">
-    function upper(nome){
-    var text = document.getElementById(nome);
-        var upper = text.value.toUpperCase();
-        text.value = upper;
-    };
-
+    $('.carga_horaria_m').mask("000 h", {reverse: true});
+    $('.carga_horaria_s').mask("00 h", {reverse: true});
+    $('.dias').mask("000 dias", {reverse: true});
+    $('.pis').mask('000.00000.00-0', {reverse: true});
+    $('.serie').mask('000-0', {reverse: true});
+    $('.ctps').mask('0000000', {reverse: true});
+    $('.nome').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {'translation': {
+        A: {pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/}
+      }
+    });
+});
 </script>
 
 @if(config('adminlte.plugins.select2'))

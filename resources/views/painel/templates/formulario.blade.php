@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="">Nome</label>
-        <input required type="text" class="form-control upper" placeholder="Nome" name="nome">
+        <input required type="text" class="form-control upper nome" placeholder="Nome" name="nome">
       </div>
     </div>
     <div class="col-md-2">
@@ -29,11 +29,11 @@
     </div>
     <div class="col-md-4">
       <label for="">Nacionalidade</label>
-      <input required type="text" class="form-control upper" placeholder="Nacionalidade" name="nacionalidade">
+      <input required type="text" class="form-control upper nome" placeholder="Nacionalidade" name="nacionalidade">
     </div>
     <div class="col-md-4">
       <label for="">Cidade</label>
-      <input required type="text" class="form-control upper" placeholder="Cidade" name="cidade">
+      <input required type="text" class="form-control upper nome" placeholder="Cidade" name="cidade">
     </div>
   </div>
 
@@ -62,7 +62,7 @@
     </div>
     <div class="col-md-4">
       <label for="">Local</label>
-      <input required type="text" class="form-control upper" placeholder="Local de Nascimento" name="local_nascimento">
+      <input required type="text" class="form-control upper nome" placeholder="Local de Nascimento" name="local_nascimento">
     </div>
     <div class="col-md-4">
       <label for="">UF - Local Nascimento</label>
@@ -92,7 +92,7 @@
     </div>
     <div class="col-md-2">
       <label for="">Órgão Emissor</label>
-      <input required type="text" class="form-control" placeholder="Órgão Emissor" name="orgao_emissor" id="orgao_emissor" onkeypress="upper('orgao_emissor')" onkeyup="upper('orgao_emissor')">
+      <input required maxlength="6" type="text" class="form-control upper" placeholder="Órgão Emissor" name="orgao_emissor">
     </div>
     <div class="col-md-2">
       <label for="">UF - Emissor</label>
@@ -137,11 +137,11 @@
   <div class="row">
     <div class="col-md-2">
       <label for="">CTPS</label>
-      <input required type="text" class="form-control" placeholder="CTPS" name="ctps">
+      <input required type="text" class="form-control ctps" placeholder="CTPS" name="ctps">
     </div>
     <div class="col-md-2">
       <label for="">Série</label>
-      <input required type="text" class="form-control" placeholder="Série" name="serie_ctps">
+      <input required type="text" class="form-control serie" placeholder="Série" name="serie_ctps">
     </div>
     <div class="col-md-2">
       <label for="">UF - Emissão</label>
@@ -163,7 +163,7 @@
     </div>
     <div class="col-md-3">
       <label for="">PIS/PASEP</label>
-      <input required type="text" class="form-control" placeholder="PIS/PASEP" name="pis_pasep">
+      <input required type="text" class="form-control pis" placeholder="PIS/PASEP" name="pis_pasep">
     </div>
   </div>
 
@@ -171,16 +171,16 @@
   <div class="row">
     <div class="col-md-3" id="pai_estado_civil">
       <label for="">Pai</label>
-      <input required type="text" class="form-control upper" placeholder="Nome do Pai" name="nome_pai">
+      <input required type="text" class="form-control upper nome" placeholder="Nome do Pai" name="nome_pai">
     </div>
     <div class="col-md-3" id="mae_estado_civil">
       <label for="">Mãe</label>
-      <input required type="text" class="form-control upper" placeholder="Nome da Mãe" name="nome_mae">
+      <input required type="text" class="form-control upper nome" placeholder="Nome da Mãe" name="nome_mae">
     </div>
     <div class="col-md-2">
       <div class="form-group">
         <label for="">Estado Civil</label>
-        <select required class="form-control select2_estado_civil" name="estado_civil" id="estado_civil"  onselect="e_civil()" onchange="e_civil()">
+        <select required class="form-control select2_estado_civil" name="estado_civil" id="estado_civil">
           <option></option>
           <option>Casado(a)</option>
           <option>Solteiro(a)</option>
@@ -191,7 +191,7 @@
     <div id="master_estado_civil">
     <div class="col-md-4" id="conjuge">
       <label for="">Cônjuge</label>
-      <input type="text" class="form-control upper" placeholder="Cônjuge" name="conjuge">
+      <input type="text" class="form-control upper nome" placeholder="Cônjuge" name="conjuge">
     </div>
   </div>
   </div>

@@ -34,7 +34,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label>Nível</label>
-            <select @if(isset($turma_info)) disabled @endif class="form-control select2_nivel" required name="nivel" id="nivel" onselect="ano_nivel();" onchange="ano_nivel();">
+            <select @if(isset($turma_info)) disabled @endif class="form-control select2_nivel" required name="nivel" id="nivel">
               <option>@if(isset($turma_info)){{ $turma_info->nivel }}@endif</option>
               <option>Fundamental 1</option>
               <option>Fundamental 2</option>
