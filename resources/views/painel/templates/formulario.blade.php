@@ -272,7 +272,7 @@
   </div>
   
   <br>
-<div class="row" style="text-align: center;">
+<div class="row center">
   <div class="col-md-12">
     <label>A EMPRESA E O CANDIDATO SE RESPONSABILIZAM PELAS INFORMAÇÕES ACIMA PRESTADAS</label>
   </div>

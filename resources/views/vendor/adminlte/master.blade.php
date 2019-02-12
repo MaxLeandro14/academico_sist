@@ -44,6 +44,8 @@
     .nome_aluno{width: 20%!important}
     .upper{text-transform: uppercase!important}
     .select2_status_pagamento{width:42% !important}
+    .center-text{text-align: center!important}
+    .div-table{margin:auto; width: 90%}
     </style>
     
 </head>
@@ -56,11 +58,16 @@
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
 
+@if(config('adminlte.plugins.select2'))
+    <!-- Select2 -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+@endif
+
 <!-- Minhas funcoes JS -->
 <script src="{{ asset('js/funcoes.js') }}"></script>
 <script type="text/javascript">
-//Mascaras jQuery
 $(document).ready(function(){
+    //Mascaras jQuery com mask
     $('.cpf').mask('000.000.000-00', {reverse: true});
     $('.telefone').mask('(00) 0 0000-0000', {reverse: false});
     $('.cep').mask('00000-000', {reverse: false});
@@ -76,98 +83,27 @@ $(document).ready(function(){
         A: {pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/}
       }
     });
+    //Personalizacao do Select2
+    $('.select2_nivel').select2({placeholder: "Selecione um Nível"});
+    $('.select2_ano').select2({placeholder: "Selecione um Ano"});
+    $('.select2_professores').select2({placeholder: "Adicione Professores"});
+    $('.select2_turno').select2({placeholder: "Selecione um Turno"});
+    $('.select2_disciplina').select2({placeholder: "Selecione disciplinas"});
+    $('.select2_responsavel').select2({placeholder: "Selecione um Responsável"});
+    $('.select2_sexo').select2({placeholder: "Selecione um Sexo"});
+    $('.select2_situacao').select2({placeholder: "Selecione uma Situação"});
+    $('.select2_aluno').select2({placeholder: "Adicione Alunos"});
+    $('.select2_estado_civil').select2({placeholder: "Estado Civil"});
+    $('.select2_cargo').select2({placeholder: "Escolha um Cargo"});
+    $('.select2_generico').select2({});
+    $('.select2_cargo').select2({placeholder: "Selecione um Cargo"});
+    $('.select2_status_pagamento').select2({});
+    
+    
+    $('#example').DataTable();
+    
 });
 </script>
-
-@if(config('adminlte.plugins.select2'))
-    <!-- Select2 -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.select2_nivel').select2({
-                
-                placeholder: "Selecione um Nível",
-                
-            });
-
-            $('.select2_ano').select2({
-                
-                placeholder: "Selecione um Ano",
-                
-            });
-            
-            $('.select2_professores').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Adicione Professores",
-                
-            });
-
-            $('.select2_turno').select2({
-                
-                placeholder: "Selecione um Turno",
-                
-            });
-
-            $('.select2_disciplina').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Selecione disciplinas",
-                
-            });
-
-            $('.select2_responsavel').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Selecione um Responsável",
-                
-            });
-
-            $('.select2_sexo').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Selecione um Sexo",
-                
-            });
-
-            $('.select2_situacao').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Selecione uma Situação",
-                
-            });
-
-            $('.select2_aluno').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Adicione Alunos",
-                
-            });
-
-            $('.select2_estado_civil').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Estado Civil",
-                
-            });
-
-            $('.select2_cargo').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Escolha um Cargo",
-                
-            });
-
-            $('.select2_generico').select2({});
-
-            $('.select2_cargo').select2({
-                //maximumSelectionLength: 2
-                placeholder: "Selecione um Cargo",
-                
-            });
-            $('.select2_status_pagamento').select2({
-                
-            });
-            
-            $(document).ready(function() {
-                $('#example').DataTable();
-            } );
-             
-        });
-    </script>
-@endif
 
 @if(config('adminlte.plugins.datatables'))
     <!-- DataTables with bootstrap 3 renderer -->

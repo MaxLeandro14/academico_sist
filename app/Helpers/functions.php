@@ -48,36 +48,6 @@ function getTurmaWhereID($id_turma)
 
 
 
-if (! function_exists('getAlunoWhereCodigo')) {
-function getAlunoWhereCodigo($codigo_aluno)
-{
-  $aluno_parcela = DB::table('alunos')
-  ->join('parcelas', 'alunos.id', '=', 'parcelas.id_aluno')
-  ->select('alunos.*','parcelas.valor_parcela')->where('alunos.codigo_aluno', '=', $codigo_aluno)
-  ->first();
-
-    return $aluno_parcela;
-}
-
-}
-
-
-
-if (! function_exists('getParcelasWhereCodigo')) {
-function getParcelasWhereCodigo($codigo_aluno)
-{
-  $aluno_parcela = DB::table('alunos')
-  ->join('parcelas', 'alunos.id', '=', 'parcelas.id_aluno')
-  ->select('parcelas.*')->where('alunos.codigo_aluno', '=', $codigo_aluno)
-  ->get();
-
-    return $aluno_parcela;
-}
-
-}
-
-
-
 if (! function_exists('getAlunosTurma')) {
 function getAlunosTurma($id_turma)
 {

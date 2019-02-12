@@ -13,7 +13,7 @@
   <div class="box-header with-border">
     <h3 class="box-title">Turmas cadastradas</h3>
   </div>  
-  <div style=" margin:auto; width: 90%" >
+  <div class="div-table">
     <table id="tabela" class="table tabela" pageLength='10' aaSorting='1 asc'>
     <thead>
       <tr>

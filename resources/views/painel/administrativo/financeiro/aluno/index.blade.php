@@ -13,7 +13,7 @@
   <div class="box-header with-border">
     <h3 class="box-title">Alunos</h3>
   </div>  
-  <div style=" margin:auto; width: 90%" >
+  <div class="div-table">
     <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
     <thead>
       <tr>
@@ -28,7 +28,7 @@
     <tbody>
       @foreach($alunos as $aluno)
       <tr>
-        <td><a href="{{ route('financeiro_aluno',$aluno->codigo_aluno) }}">{{ $aluno->nome_aluno }}</a></td>
+        <td><a href="{{ route('financeiro_aluno',$aluno->id) }}">{{ $aluno->nome_aluno }}</a></td>
         <td>{{ $aluno->sexo }}</td>
         <td>{{ $aluno->cpf }}</td>
         <td>{{ $aluno->fone }}</td>

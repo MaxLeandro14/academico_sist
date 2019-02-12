@@ -18,16 +18,15 @@ class FinanceiroController extends Controller
       return view('painel/administrativo/financeiro/aluno/index',compact('alunos'));
     }
 
-    public function financeiro_aluno($codigo_aluno)
+    public function financeiro_aluno($id_aluno)
     {
-      $aluno = getAlunoWhereCodigo($codigo_aluno);
-      $parcelas = getParcelasWhereCodigo($codigo_aluno);
-      return view('painel/administrativo/financeiro/aluno/aluno',compact(['aluno','parcelas']));
+      $aluno = Aluno::find($id_aluno);
+      return view('painel/administrativo/financeiro/aluno/aluno',compact(['aluno']));
     }
 
-    public function mostra_aluno($codigo_aluno)
+    public function mostra_aluno($id_aluno)
     {
-      $aluno = getAlunoWhereCodigo($codigo_aluno);
+      $aluno = Aluno::find($id_aluno);
       $mostra_footer_header = 'sim';
       return view('painel.templates.aluno', compact(['aluno','mostra_footer_header']));
     }
@@ -35,8 +34,8 @@ class FinanceiroController extends Controller
     public function financeiro_aluno_salva(Request $req, $id_parcela, $mes_parcela )
     {
 
-      $debug = updateParcela($req,$id_parcela,$mes_parcela);
-      return redirect()->route('financeiro_aluno',$req->input('codigo_aluno'));
+      updateParcela($req,$id_parcela,$mes_parcela);
+      return redirect()->route('financeiro_aluno',$req->input('id_aluno'));
       
     }
 

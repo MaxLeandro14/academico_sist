@@ -186,7 +186,7 @@
       <label for="">Valor da Mensalidade</label>
       <div class="input-group">
             <span class="input-group-addon">R$</span>
-            <input required type="text" class="form-control dinheiro" placeholder="00,00" name="valor_parcela" value="@if(isset($aluno->valor_parcela)){{ $aluno->valor_parcela }}@endif">
+            <input required type="text" class="form-control dinheiro" placeholder="00,00" name="valor_parcela" value="@if(isset($aluno->parcelas[0]->valor_parcela)){{ $aluno->parcelas[0]->valor_parcela }}@endif">
           </div>
     </div>
   </div>

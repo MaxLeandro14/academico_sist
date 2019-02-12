@@ -22,8 +22,9 @@
           <div class="form-group">
             <label>Professores</label>
             <select required class="form-control select2_professores" multiple="multiple" name="professores[]">
-              @foreach($disciplinas_professores as $disciplina_professor)
-              <option value="{{ $disciplina_professor->id }},{{ $disciplina_professor->id_disciplina }},{{ $disciplina_professor->id_professor }}" >{{ $disciplina_professor->codigo_professor }} - {{ $disciplina_professor->nome }} - {{ $disciplina_professor->nome_disciplina }}</option>
+              @foreach($disciplinas_professores->disciplina as $key => $disciplina_professor)
+              <option value="{{ $disciplina_professor->id }},{{ $disciplina_professor->id }},{{ $disciplina_professor->professor[$key]->id }}">{{ $disciplina_professor->professor[$key]->codigo_professor }} - {{ $disciplina_professor->professor[$key]->id_funcionario }} - {{ $disciplina_professor->disciplina[$key]->nome_disciplina }}
+              </option>
               @endforeach
             </select>
           </div>
@@ -41,7 +42,7 @@
   <div class="box-header with-border">
     <h3 class="box-title">Turmas cadastradas</h3>
   </div>  
-  <div style=" margin:auto; width: 90%" >
+  <div class="div-table">
     <table id="tabela" class="table tabela" pageLength='10' aaSorting='0 asc'>
     <thead>
       <tr>
