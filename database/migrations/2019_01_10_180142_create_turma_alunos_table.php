@@ -15,8 +15,10 @@ class CreateTurmaAlunosTable extends Migration
     {
         Schema::create('turma_alunos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_aluno');
-            $table->string('id_turma');
+            $table->unsignedInteger('id_aluno');
+            $table->foreign('id_aluno')->references('id')->on('alunos');
+            $table->unsignedInteger('id_turma');
+            $table->foreign('id_turma')->references('id')->on('turmas');
             $table->timestamps();
         });
     }

@@ -48,7 +48,7 @@
                 <h3 class="box-title">Alunos da Turma</h3>
               </div>  
               <div>
-                <table id="tabela" class="table tabela" pageLength='5' aaSorting='0 asc'>
+                <table id="tabela" class="table tabela" pageLength='5' aaSorting='1 asc'>
                 <thead>
                   <tr>
                     <th>Código</th>
@@ -67,7 +67,7 @@
                     <td>
                       <form action="{{ route('remove_aluno',[$turma_info->id,$aluno->id_aluno]) }}" method="POST">
                         {{csrf_field()}}
-                        <input type="hidden" name="id_aluno" value="{{ $aluno->id }}">
+                        <input type="hidden" name="id_turma_aluno" value="{{ $aluno->id }}">
                         <button title="Remover Aluno" class="form-control btn btn-danger">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                       </button> 
