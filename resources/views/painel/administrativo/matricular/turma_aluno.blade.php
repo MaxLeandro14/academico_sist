@@ -23,7 +23,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <label>Adicione Alunos à Turma</label>
-            <select class="form-control select2_aluno" multiple="multiple" name="id_alunos[]">
+            <select required class="form-control select2_aluno" multiple="multiple" name="id_alunos[]">
               @foreach($todos_alunos as $aluno)
               <option value="{{ $aluno->id }}">
                 {{ $aluno->cpf }} - {{ $aluno->nome_aluno }} - {{ $aluno->situacao_procedencia }}
@@ -33,7 +33,13 @@
           </div>
         </div>
       </div>
+  <!-- /.box-body -->
 
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <a type="button" class="btn btn-default" href="{{ route('matricular_aluno') }}">Voltar</a>
+    </div>
+    </form>
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
@@ -48,6 +54,7 @@
                     <th>Código</th>
                     <th>Aluno</th>
                     <th>Situação</th>
+                    <th>Ação</th>
                   </tr>
                 </thead>
 
@@ -57,6 +64,15 @@
                     <td> {{ $aluno->codigo_aluno }} </td>
                     <td> {{ $aluno->nome_aluno }} </td>
                     <td> {{ $aluno->situacao_procedencia }} </td>
+                    <td>
+                      <form action="{{ route('remove_aluno',[$turma_info->id,$aluno->id_aluno]) }}" method="POST">
+                        {{csrf_field()}}
+                        <input type="hidden" name="id_aluno" value="{{ $aluno->id }}">
+                        <button title="Remover Aluno" class="form-control btn btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button> 
+                      </form>
+                   </td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -101,12 +117,6 @@
       </div>
 
     </div>
-    <!-- /.box-body -->
-
-    <div class="box-footer">
-      <button type="submit" class="btn btn-primary">Salvar</button>
-      <a type="button" class="btn btn-default" href="{{ route('matricular_aluno') }}">Voltar</a>
-    </div>
-  </form>
+  
 </div>
 @stop

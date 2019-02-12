@@ -76,6 +76,6 @@ class FinanceiroController extends Controller
         }
         
       }
-      return redirect()->route('financeiro_aluno');
+      return redirect()->route('index_financeiro_aluno');
     }
 }

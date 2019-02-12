@@ -73,7 +73,7 @@
         <div class="col-md-5">
           <div class="form-group">
             <label>Descrição</label>
-            <input type="text" required class="form-control" placeholder="Descrição da Turma"  name="descricao" @if(isset($turma_info)) disabled  value="{{ $turma_info->descricao }}"@endif>
+            <input type="text" required class="form-control upper" placeholder="Descrição da Turma"  name="descricao" @if(isset($turma_info)) disabled  value="{{ $turma_info->descricao }}"@endif>
           </div>    
         </div>
       </div>

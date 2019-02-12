@@ -22,9 +22,7 @@ class CadastroController extends Controller
     //TURMA
     public function index_cadastrar_turma()
     {
-      //$disciplinas_professores = getDisciplinaProfessor();
-      $disciplinas_professores = DisciplinaProfessor::all();
-      //dd($disciplinas_professores);
+      $disciplinas_professores = getDisciplinaProfessor();
       $turmas = getTodasTurmas();
       return view('painel/administrativo/cadastrar/turma', compact(['disciplinas_professores','turmas']));
     }

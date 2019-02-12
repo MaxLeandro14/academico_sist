@@ -12,7 +12,7 @@
         
       </div>
       <div class="modal-footer">
-        <a type="button" class="btn btn-default" data-dismiss="modal">Voltar</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
       </div>
     </div>
   </div>

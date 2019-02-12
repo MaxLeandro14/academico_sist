@@ -20,6 +20,7 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     Route::get('matricular_aluno','MatriculaController@index_matricular_aluno')->name('matricular_aluno');
     Route::get('matricular_aluno/{id_turma}', 'MatriculaController@matricular_aluno')->name('matricula_aluno');
     Route::post('matricular_aluno/{id_turma}', 'MatriculaController@matricular_aluno')->name('matricula_aluno');
+    Route::post('matricular_aluno/{id_turma}/{id_aluno}', 'MatriculaController@remove_aluno')->name('remove_aluno');
 
     //FINANCEIRO - Aluno
     Route::get('financeiro_aluno','FinanceiroController@index_financeiro_aluno')->name('index_financeiro_aluno');

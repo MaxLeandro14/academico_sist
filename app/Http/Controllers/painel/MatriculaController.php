@@ -45,11 +45,20 @@ class MatriculaController extends Controller
         }
         
       }
-      $professores_turma = getProfessoresTurma($id_turma);
+      
       $alunos_turma = getAlunosTurma($id_turma);
       $todos_alunos = getAlunos();
       $req->session()->flash('mensagem_sucesso', 'Aluno(s) Matriculado(s)!');
       return view('painel/administrativo/matricular/turma_aluno', compact(['turma_info','todos_alunos','alunos_turma','professores_turma']));
+    }
+
+    public function remove_aluno(Request $req,$id_turma,$id_aluno)
+    {
+      
+      echo $id_turma.' ';
+      echo $id_aluno;
+      dd($req->all());
+    
     }
 
 }
