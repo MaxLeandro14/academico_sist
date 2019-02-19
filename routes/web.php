@@ -27,17 +27,20 @@ $this->group(['middleware'=> ['auth'], 'namespace'=>'Painel'], function(){
     Route::get('financeiro_aluno/{codigo_aluno}','FinanceiroController@financeiro_aluno')->name('financeiro_aluno');
     Route::get('financeiro_aluno/{codigo_aluno}/{nome_aluno}','FinanceiroController@mostra_aluno')->name('mostra_aluno');
     Route::post('financeiro_aluno_salva/{id_parcela}/{mes_parcela}','FinanceiroController@financeiro_aluno_salva')->name('financeiro_aluno_salva');
-
     //FINANCEIRO - Professor
     Route::get('financeiro_professor','FinanceiroController@index_financeiro_professor')->name('index_financeiro_professor');
     Route::get('financeiro_professor/{id_professor}','FinanceiroController@financeiro_professor')->name('financeiro_professor');
 
-    //Minhas Turmas
+    //MINHAS TURMAS
     Route::get('minhas_turmas','MinhasTurmasController@index_minhas_turmas')->name('minhas_turmas');
     Route::get('minhas_turmas/{id_turma}/{id_disciplina}','MinhasTurmasController@minhas_turmas')->name('turma');
     Route::post('minhas_turmas/{id_turma}/{id_disciplina}','MinhasTurmasController@minhas_turmas')->name('muda_bimestre');
     Route::post('salva_notas/{id_turma}/{id_disciplina}','MinhasTurmasController@salva_notas')->name('salva_notas');
     
+    //EDITAR - Turma
+    Route::get('editar_turma','EditaController@index_turmas')->name('editar_turma');
+    Route::get('editar_turma/{id_turma}','EditaController@edita_turma')->name('edita_turma');
+    Route::post('salva_turma/{id_turma}','EditaController@salva_turma')->name('salva_turma');
 
     //Script de Teste // Adiciona Parcela
     Route::get('cadastra_parcelas','FinanceiroController@cadastra_parelas')->name('cadastrar_parcelas');

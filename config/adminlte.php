@@ -141,7 +141,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Turma',
-                    'url'  => '#',
+                    'url'  => 'editar_turma',
                 ],
                 [
                     'text' => 'Disciplina',

@@ -135,6 +135,31 @@ function getAlunos()
 
 
 
+if (! function_exists('getProfessoresNotIn')) {
+function getProfessoresNotIn($id_turma)
+{
+
+  $professores = DB::table('turma_disciplinas')
+  ->join('turmas', 'turma_disciplinas.id_turma', '=', 'turmas.id')
+  ->rightJoin('disciplina_professors', 'turma_disciplinas.id_disciplina_professor', '=', 'disciplina_professors.id')
+  ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
+  ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
+  ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
+  ->select('turma_disciplinas.*','turmas.id as id_turma','funcionarios.nome','professors.codigo_professor','professors.id as id_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')->whereNotIn('disciplina_professors.id_disciplina', function ($query) 
+      {
+      $query->select('id_disciplina')
+      ->from('turma_disciplinas');
+      })
+  ->get();
+
+  
+  return $professores;
+}
+
+}
+
+
+
 if (! function_exists('getProfessores')) {
 function getProfessores()
 {
