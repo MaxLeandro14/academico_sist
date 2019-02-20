@@ -35,7 +35,7 @@ class CadastroController extends Controller
       $formTurma = Turma::create($input);
       
       foreach ($professor_disciplina as $professor_disciplina) { 
-        $input = formataDadosTurmaDisciplina($professor_disciplina,$formTurma);
+        $input = formataDadosTurmaDisciplina($professor_disciplina,$formTurma->id);
         TurmaDisciplina::create($input);   
       }
       $req->session()->flash('mensagem_sucesso', 'Turma Cadastrada!');

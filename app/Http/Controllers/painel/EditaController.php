@@ -18,23 +18,24 @@ class EditaController extends Controller
 
 	  $turma_info = getTurmaWhereID($id_turma);
       $professores_turma = getProfessoresTurma($id_turma);
+      dd($professores_turma);
       $professores = getProfessoresNotIn($id_turma);
-      dd($professores);
+      //dd($professores);
       $alunos_turma = getAlunosTurma($id_turma);
       
       return view('painel/administrativo/editar/turma/turma', compact(['turma_info','alunos_turma','professores_turma','professores']));
 
     }
 
-    public function salva_turma(Request $req)
+    public function salva_turma(Request $req, $id_turma)
     {
 
     	dd($req->all());
     	$professor = $req->input('professores');
 
     	foreach ($professor as $professor) { 
-        	$input = formataDadosTurmaDisciplina($professor,$formTurma);
-        	TurmaDisciplina::find()->update($input);   
+        	$input = formataDadosTurmaDisciplina($professor,$formTurma,$id_turma);
+          TurmaDisciplina::find()->update($input);   
       	}
 
     	//formataDadosTurmaDisciplina()

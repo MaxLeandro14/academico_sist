@@ -25,7 +25,7 @@
             <label>Professores</label>
             <select required class="form-control select2_professores" multiple="multiple" name="professores[]">
               @foreach($professores as $professor)
-              <option value="{{$professor->id_turma_disciplina}},{{ $professor->id_professor }},{{ $professor->id_disciplina }},{{ $professor->id_professor }}" >{{ $professor->codigo_professor }} - {{ $professor->nome }} - {{ $professor->nome_disciplina }}
+              <option value="{{$professor->id_disciplina_professor}},{{ $professor->id_professor }},{{ $professor->id_disciplina }},{{ $professor->id_professor }}" >{{ $professor->codigo_professor }} - {{ $professor->nome }} - {{ $professor->nome_disciplina }}
               </option>
               @endforeach
             </select>

@@ -145,11 +145,14 @@ function getProfessoresNotIn($id_turma)
   ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
   ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
   ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
-  ->select('turma_disciplinas.*','turmas.id as id_turma','funcionarios.nome','professors.codigo_professor','professors.id as id_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')->whereNotIn('disciplina_professors.id_disciplina', function ($query) 
+  ->select('turma_disciplinas.id_disciplina_professor','turmas.id as id_turma','funcionarios.nome','professors.codigo_professor','professors.id as id_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')
+  /*->whereNotIn('disciplina_professors.id_disciplina', function ($query)
       {
       $query->select('id_disciplina')
       ->from('turma_disciplinas');
-      })
+      })*/
+  ->where('turma_disciplinas.id_turma', '!=',$id_turma)
+  //->distinct()
   ->get();
 
   
@@ -257,13 +260,13 @@ function formataDadosTurma($professor_disciplina,$req,$codigo_turma)
 
 
 if (! function_exists('formataDadosTurmaDisciplina')) {
-function formataDadosTurmaDisciplina($professor_disciplina,$form)
+function formataDadosTurmaDisciplina($professor_disciplina,$id_turma)
 {
 	$dados = explode(',', $professor_disciplina);
     $input['id_disciplina_professor'] = $dados[0];
     $input['id_disciplina'] = $dados[1];
     $input['id_professor'] = $dados[2];  
-    $input['id_turma'] = $form->id;
+    $input['id_turma'] = $id_turma;
   	return $input;
 }
 
