@@ -106,7 +106,7 @@ function getProfessoresTurma($id_turma)
   ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
   ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
   ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
-  ->select('turma_disciplinas.id as id_turma_disciplina','turmas.id as id_turma','funcionarios.nome','professors.codigo_professor','professors.id as id_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')->where('turmas.id', '=', $id_turma)
+  ->select('disciplina_professors.id as id_disciplina_professor','turma_disciplinas.id as id_turma_disciplina','turmas.id as id_turma','funcionarios.nome','professors.codigo_professor','professors.id as id_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')->where('turmas.id', '=', $id_turma)
   ->get();
 
     return $professores_turma;
@@ -138,21 +138,26 @@ function getAlunos()
 if (! function_exists('getProfessoresNotIn')) {
 function getProfessoresNotIn($id_turma)
 {
+  $id_disciplina_professor =  DB::table('disciplina_professors')
+  ->leftJoin('turma_disciplinas', 'disciplina_professors.id', '=', 'turma_disciplinas.id_disciplina_professor')
+  ->select('turma_disciplinas.id_disciplina_professor as id')
+  ->where('turma_disciplinas.id_turma', '=',$id_turma)
+  ->get();
+  $id_disciplina_professor = json_decode(json_encode($id_disciplina_professor),true);
+  
+  foreach ($id_disciplina_professor as $key => $value) {
+    $id[$key] = $value['id'];
+  }
 
   $professores = DB::table('turma_disciplinas')
   ->join('turmas', 'turma_disciplinas.id_turma', '=', 'turmas.id')
-  ->rightJoin('disciplina_professors', 'turma_disciplinas.id_disciplina_professor', '=', 'disciplina_professors.id')
+  ->leftJoin('disciplina_professors', 'turma_disciplinas.id_disciplina_professor', '=', 'disciplina_professors.id')
   ->join('disciplinas', 'disciplina_professors.id_disciplina', '=', 'disciplinas.id')
   ->join('professors', 'disciplina_professors.id_professor', '=', 'professors.id')
   ->join('funcionarios', 'professors.id_funcionario', '=', 'funcionarios.id')
-  ->select('turma_disciplinas.id_disciplina_professor','turmas.id as id_turma','funcionarios.nome','professors.codigo_professor','professors.id as id_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')
-  /*->whereNotIn('disciplina_professors.id_disciplina', function ($query)
-      {
-      $query->select('id_disciplina')
-      ->from('turma_disciplinas');
-      })*/
-  ->where('turma_disciplinas.id_turma', '!=',$id_turma)
-  //->distinct()
+  ->select('turma_disciplinas.id_disciplina_professor','funcionarios.nome','professors.codigo_professor','professors.id as id_professor','disciplinas.nome_disciplina','disciplinas.id as id_disciplina')
+  ->whereNotIn('turma_disciplinas.id_disciplina_professor', $id )
+  ->distinct()
   ->get();
 
   
