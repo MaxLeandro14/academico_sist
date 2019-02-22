@@ -100,8 +100,6 @@ $(document).ready(function(){
     $('.select2_status_pagamento').select2({});
     
     
-    $('#example').DataTable();
-    
 });
 </script>
 

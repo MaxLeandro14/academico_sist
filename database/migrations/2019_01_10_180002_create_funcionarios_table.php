@@ -54,7 +54,7 @@ class CreateFuncionariosTable extends Migration
             $table->string('carga_horaria_semanal');
             $table->string('dias_contrato');
             $table->string('dias_prorrogacao')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default('ATIVO');
             $table->timestamps();
         });
     }

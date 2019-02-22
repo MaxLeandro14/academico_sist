@@ -10,7 +10,7 @@ class MinhasTurmasController extends Controller
     //MINHAS TURMAS
     public function index_minhas_turmas()
     {
-      $codigo_professor = 'C18D';//auth()->user()->codigo;
+      $codigo_professor = '897E';//auth()->user()->codigo;
       $minhas_turmas = getTurmaDisciplinaWhereID($codigo_professor);
       return view('painel/professor/index',compact('minhas_turmas'));
         

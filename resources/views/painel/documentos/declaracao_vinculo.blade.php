@@ -14,7 +14,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example" class="table table-bordered table-striped">
+              <table id="tabela" class="table tabela table-bordered table-striped" pageLength="5" aaSorting="1 asc">
                 <thead>
                 <tr>
                   <th>Código</th>
