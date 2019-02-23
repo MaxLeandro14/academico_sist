@@ -23,6 +23,10 @@ $('#salva_notas').on('click', function (e) {
     this.form.submit();
 });
 
+$('.submit').on('click', function (e) {
+  this.form.submit();
+});
+
 $('#nivel').on('change', function (e) {
   var nivel = $("#nivel").val();
   var ano = $("#ano");

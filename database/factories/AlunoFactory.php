@@ -26,6 +26,7 @@ $factory->define(App\Aluno::class, function (Faker $faker) {
         'uf_colegio_procedencia'	=>	addslashes($faker->regionAbbr),
         'situacao_procedencia'	=>	addslashes($faker->randomElements($array = array ('Cursando','Aprovado','Reprovado'), $count = 1)[0]),
         'cep'	=>	addslashes($faker->numerify('65044-###')),
+        'status'  =>  addslashes($faker->randomElements($array = array ('ATIVO','INATIVO'), $count = 1)[0]),
         'data_matricula'	=>	$faker->date($format = 'Y-m-d', $max = 'now'),
         'valor_matricula'	=>	addslashes($faker->numberBetween($min = 100, $max = 350))
         

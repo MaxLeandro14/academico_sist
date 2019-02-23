@@ -26,7 +26,7 @@
             <select required class="form-control select2_aluno" multiple="multiple" name="id_alunos[]">
               @foreach($todos_alunos as $aluno)
               <option value="{{ $aluno->id }}">
-                {{ $aluno->cpf }} - {{ $aluno->nome_aluno }} - {{ $aluno->situacao_procedencia }}
+                {{ $aluno->cpf }} - {{ $aluno->nome_aluno }} - {{ $aluno->codigo_aluno }}
               </option>
               @endforeach
             </select>
@@ -53,7 +53,7 @@
                   <tr>
                     <th>Código</th>
                     <th>Aluno</th>
-                    <th>Situação</th>
+                    <th>Status</th>
                     <th>Ação</th>
                   </tr>
                 </thead>
@@ -63,14 +63,16 @@
                   <tr>
                     <td> {{ $aluno->codigo_aluno }} </td>
                     <td> {{ $aluno->nome_aluno }} </td>
-                    <td> {{ $aluno->situacao_procedencia }} </td>
+                    <td> {{ $aluno->status }} </td>
                     <td>
                       <form action="{{ route('remove_aluno',[$turma_info->id,$aluno->id_aluno]) }}" method="POST">
                         {{csrf_field()}}
                         <input type="hidden" name="id_turma_aluno" value="{{ $aluno->id }}">
-                        <button title="Remover Aluno" class="form-control btn btn-danger">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                      </button> 
+                        <input type="hidden" name="status" value="@if($aluno->status == 'ATIVO') {{ 'INATIVO' }} @else {{'ATIVO'}} @endif">
+                        <label class="switch" title="@if($aluno->status == 'ATIVO') {{ 'Desligar Aluno' }} @else {{'Ativar ALuno'}} @endif">
+                          <input class="submit" @if($aluno->status == 'ATIVO') {{ 'checked' }} @endif type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
                       </form>
                    </td>
                   </tr>

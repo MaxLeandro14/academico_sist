@@ -55,6 +55,7 @@ class MatriculaController extends Controller
     {
       
       //TurmaAluno::destroy($req->input('id_turma_aluno'));
+      Aluno::find($id_aluno)->update($req->all());
       //DiarioProfessor::where([['id_turma', $id_turma],['id_aluno',$id_aluno]])->delete();
       return redirect()->route('matricula_aluno',$id_turma);
     

@@ -39,14 +39,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <!-- Meus estilos -->
-    <style type="text/css">
-    .nota{width: 30%!important}
-    .nome_aluno{width: 20%!important}
-    .upper{text-transform: uppercase!important}
-    .select2_status_pagamento{width:42% !important}
-    .center-text{text-align: center!important}
-    .div-table{margin:auto; width: 90%}
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     
 </head>
 <body class="hold-transition @yield('body_class')">
