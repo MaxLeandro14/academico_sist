@@ -21,6 +21,7 @@
         <th>sexo</th>
         <th>CPF</th>
         <th>Contato</th>
+        <th>Status</th>
         <th>Valor Matrícula</th>
       </tr>
     </thead>
@@ -32,6 +33,7 @@
         <td>{{ $aluno->sexo }}</td>
         <td>{{ $aluno->cpf }}</td>
         <td>{{ $aluno->fone }}</td>
+        <td>{{ $aluno->status }}</td>
         <td>{{ $aluno->valor_matricula }}</td>
       </tr>
       @endforeach

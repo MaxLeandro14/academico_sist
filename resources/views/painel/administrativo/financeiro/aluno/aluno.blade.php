@@ -81,12 +81,9 @@
   <hr><h4> Matrícula do Aluno</h4>
   <div class="row">
     <div class="col-md-4">
-      <label for="">Situação do Aluno</label>
+      <label for="">Status do Aluno</label>
       <select disabled class="form-control select2_situacao">
-        <option>{{ $aluno->situacao_procedencia }}</option>
-        <option>Cursando</option>
-        <option>Aprovado</option>
-        <option>Reprovado</option>
+        <option>{{ $aluno->status }}</option>
       </select>
     </div>
     <div class="col-md-3">

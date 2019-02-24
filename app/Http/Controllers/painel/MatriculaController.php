@@ -51,12 +51,9 @@ class MatriculaController extends Controller
       
     }
 
-    public function remove_aluno(Request $req,$id_turma,$id_aluno)
+    public function desativa_aluno_turma(Request $req,$id_turma,$id_aluno)
     {
-      
-      //TurmaAluno::destroy($req->input('id_turma_aluno'));
-      Aluno::find($id_aluno)->update($req->all());
-      //DiarioProfessor::where([['id_turma', $id_turma],['id_aluno',$id_aluno]])->delete();
+      TurmaAluno::where([['id_turma', $id_turma],['id_aluno',$id_aluno]])->update(['status' => $req->input('status')]);
       return redirect()->route('matricula_aluno',$id_turma);
     
     }

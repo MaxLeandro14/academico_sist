@@ -161,6 +161,7 @@
       <label for="">Situação do Aluno</label>
       <select required class="form-control select2_situacao" name="situacao_procedencia">
         @if(isset($aluno->situacao_procedencia))<option>{{ $aluno->situacao_procedencia }}</option>@endif
+        <option>Outro</option>
         <option>Cursando</option>
         <option>Aprovado</option>
         <option>Reprovado</option>

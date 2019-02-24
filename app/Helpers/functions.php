@@ -54,7 +54,7 @@ function getAlunosTurma($id_turma)
 	$alunos_turma = DB::table('turma_alunos')
       ->join('turmas', 'turma_alunos.id_turma', '=', 'turmas.id')
       ->join('alunos', 'turma_alunos.id_aluno', '=', 'alunos.id')
-      ->select('turma_alunos.*','alunos.id as id_aluno','alunos.status','alunos.codigo_aluno','alunos.nome_aluno','alunos.cpf','alunos.situacao_procedencia')->where('turmas.id', '=', $id_turma)
+      ->select('turma_alunos.*','turma_alunos.status as status_aluno_turma','alunos.id as id_aluno','alunos.status','alunos.codigo_aluno','alunos.nome_aluno','alunos.cpf','alunos.situacao_procedencia')->where('turmas.id', '=', $id_turma)
       ->get();
 
   	return $alunos_turma;
@@ -125,7 +125,9 @@ function getAlunos()
     {
     $query->select('id_aluno')
     ->from('turma_alunos');
-    })->orderByRaw('nome_aluno','ASC')
+    })
+  ->where('status', '=', 'ATIVO')
+  ->orderByRaw('nome_aluno','ASC')
     ->get();
 
     return $todos_alunos;

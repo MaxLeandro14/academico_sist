@@ -28,6 +28,14 @@
             </div>
           </div>
         </div>
+        @if(isset($turma_info->ano_letivo))
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Ano Letivo</label>
+            <input type="number" disabled class="form-control" name="" value="{{ $turma_info->ano_letivo }}">
+          </div>
+        </div>
+        @endif
       </div>
 
       <div class="row">

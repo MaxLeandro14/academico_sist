@@ -19,6 +19,7 @@ class CreateTurmaAlunosTable extends Migration
             $table->foreign('id_aluno')->references('id')->on('alunos');
             $table->unsignedInteger('id_turma');
             $table->foreign('id_turma')->references('id')->on('turmas');
+            $table->string('status')->default('ATIVO');
             $table->timestamps();
         });
     }

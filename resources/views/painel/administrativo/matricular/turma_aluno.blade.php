@@ -63,14 +63,14 @@
                   <tr>
                     <td> {{ $aluno->codigo_aluno }} </td>
                     <td> {{ $aluno->nome_aluno }} </td>
-                    <td> {{ $aluno->status }} </td>
+                    <td> {{ $aluno->status_aluno_turma }} </td>
                     <td>
-                      <form action="{{ route('remove_aluno',[$turma_info->id,$aluno->id_aluno]) }}" method="POST">
+                      <form action="{{ route('desativa_aluno_turma',[$turma_info->id,$aluno->id_aluno]) }}" method="POST">
                         {{csrf_field()}}
                         <input type="hidden" name="id_turma_aluno" value="{{ $aluno->id }}">
-                        <input type="hidden" name="status" value="@if($aluno->status == 'ATIVO') {{ 'INATIVO' }} @else {{'ATIVO'}} @endif">
-                        <label class="switch" title="@if($aluno->status == 'ATIVO') {{ 'Desligar Aluno' }} @else {{'Ativar ALuno'}} @endif">
-                          <input class="submit" @if($aluno->status == 'ATIVO') {{ 'checked' }} @endif type="checkbox">
+                        <input type="hidden" name="status" value="@if($aluno->status_aluno_turma == 'ATIVO') {{ 'INATIVO' }} @else {{'ATIVO'}} @endif">
+                        <label class="switch" title="@if($aluno->status_aluno_turma == 'ATIVO') {{ 'Desligar Aluno' }} @else {{'Ativar ALuno'}} @endif">
+                          <input class="submit" @if($aluno->status_aluno_turma == 'ATIVO') {{ 'checked' }} @endif type="checkbox">
                           <span class="slider round"></span>
                         </label>
                       </form>
